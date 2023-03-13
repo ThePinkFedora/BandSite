@@ -3,6 +3,11 @@
 @use './units';
 @use './fonts';
 
+// @forward './colors';
+// @forward './breakpoints';
+// @forward './units';
+// @forward './fonts';
+
 *, *::before, *::after{
     box-sizing: border-box;
 }
@@ -14,12 +19,19 @@ html{
 
 body{
     font-family: 'Avenir Next';
-    font-size: 14px;
-    font-weight: 400; //Redundant, temp maybe
+    font-size: 13px;
+    font-weight: 400;
     line-height: 22px;
+    
     color: colors.$primary-dark;
     background-color: colors.$primary-light; //Redundant, temp maybe
     margin: 0;
+
+    @include tablet{
+        font-size: 14px;
+        // font-weight: 400; //Redundant, temp maybe
+        line-height: 22px;
+    }
 }
 
 a, address{
@@ -28,29 +40,54 @@ a, address{
     text-decoration: none;
 }
 
+img{
+    max-width: 100%;
+}
+
 .header, .footer{
     color: colors.$primary-light;
     background-color: colors.$primary-dark; //BandSite-Black
     margin: 0;
 }
 
+section{
+    padding: units.$spaceUnit*2;
+}
+
+
+
 //Page Header
 h1{
-    font-size: 60px;
+    font-size: 24px;
     font-weight: 700;
-    line-height: 68px;
+    line-height: 32px;
+    @include tablet{
+        font-size: 60px;
+        // font-weight: 700;
+        line-height: 68px;
+    }
+
 }
 //Section Header
 h2{
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 44px;
+    @extend h1;
+    @include tablet{
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 44px;
+    }
 }
 //Subheader
 h3{
-    font-size: 24px;
-    font-size: 600;
-    line-height: 32px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+
+    @include tablet{
+        font-size: 24px;
+        // font-size: 600;
+        line-height: 32px;
+    }
 }
 //labels & buttons
 .label,button{
@@ -123,5 +160,23 @@ h3{
             padding-top: units.$spaceUnit*2;
 
         }
+    }
+}
+
+
+
+
+.footer{
+    padding: units.$spaceUnit*2;
+}
+
+.contacts{
+    list-style-type: none;
+    padding: 0;
+    h4:first-child{
+        margin-bottom: 0;
+    }
+    h4 + h4{
+        margin-top: 0;
     }
 }

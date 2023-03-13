@@ -27,12 +27,18 @@ html {
 
 body {
   font-family: "Avenir Next";
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
   line-height: 22px;
   color: #323232;
   background-color: #FFFFFF;
   margin: 0;
+}
+@media (min-width: 768px) {
+  body {
+    font-size: 14px;
+    line-height: 22px;
+  }
 }
 
 a, address {
@@ -41,28 +47,50 @@ a, address {
   text-decoration: none;
 }
 
+img {
+  max-width: 100%;
+}
+
 .header, .footer {
   color: #FFFFFF;
   background-color: #323232;
   margin: 0;
 }
 
-h1 {
-  font-size: 60px;
-  font-weight: 700;
-  line-height: 68px;
+section {
+  padding: 16px;
 }
 
-h2 {
-  font-size: 36px;
+h1, h2 {
+  font-size: 24px;
   font-weight: 700;
-  line-height: 44px;
+  line-height: 32px;
+}
+@media (min-width: 768px) {
+  h1, h2 {
+    font-size: 60px;
+    line-height: 68px;
+  }
+}
+
+@media (min-width: 768px) {
+  h2 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 44px;
+  }
 }
 
 h3 {
-  font-size: 24px;
-  font-size: 600;
-  line-height: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+}
+@media (min-width: 768px) {
+  h3 {
+    font-size: 24px;
+    line-height: 32px;
+  }
 }
 
 .label, button {
@@ -123,4 +151,49 @@ h3 {
     margin: 0 24px;
     padding-top: 16px;
   }
+}
+
+.footer {
+  padding: 16px;
+}
+
+.contacts {
+  list-style-type: none;
+  padding: 0;
+}
+.contacts h4:first-child {
+  margin-bottom: 0;
+}
+.contacts h4 + h4 {
+  margin-top: 0;
+}
+
+.intro {
+  color: #FFFFFF;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero {
+  width: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.hero__image {
+  width: 100%;
+}
+.hero::after {
+  content: ".";
+  background-color: #323232;
+  opacity: 0.5;
+  position: absolute;
+  inset: 0 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }/*# sourceMappingURL=bio.css.map */

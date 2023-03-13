@@ -1,1 +1,43 @@
-@use './partials/global'; 
+@use './partials/global' as *;
+
+@use './partials/colors';
+@use './partials/breakpoints' as *;
+@use './partials/units';
+@use './partials/fonts';
+
+
+
+
+.intro{
+    color: colors.$primary-light; 
+    // padding: units.$spaceUnit*8 units.$spaceUnit*4;
+    padding-top: units.$spaceUnit*8;
+    padding-bottom: units.$spaceUnit*8;
+    position: relative;   
+    z-index: 1;
+    overflow: hidden;
+}
+
+
+.hero{
+    width: 100%;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    &__image{
+        width: 100%;
+    }
+
+    &::after{
+        content: '.';
+        background-color: colors.$primary-dark;
+        opacity: .5;
+        position: absolute;
+        inset: 0 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+}

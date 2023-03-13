@@ -1,0 +1,9 @@
+#Ignore .vscode folders and files
+.vscode
+
+#Ignore .DS_Store folders and files
+.DS_Store
+
+#Ignore scss map files
+*.css.map
+
