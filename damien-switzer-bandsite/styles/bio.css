@@ -1,0 +1,126 @@
+@font-face {
+  font-family: "Avenir Next";
+  src: url("../assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir Next";
+  src: url("../assets/fonts/AvenirNextLTPro-Demi.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir Next";
+  src: url("../assets/fonts/AvenirNextLTPro-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Avenir Next";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #323232;
+  background-color: #FFFFFF;
+  margin: 0;
+}
+
+a, address {
+  color: unset;
+  font-style: normal;
+  text-decoration: none;
+}
+
+.header, .footer {
+  color: #FFFFFF;
+  background-color: #323232;
+  margin: 0;
+}
+
+h1 {
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 68px;
+}
+
+h2 {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 44px;
+}
+
+h3 {
+  font-size: 24px;
+  font-size: 600;
+  line-height: 32px;
+}
+
+.label, button {
+  font-size: 12px;
+  font-weight: bold 700;
+  line-height: 20px;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    line-height: 20px;
+  }
+}
+.logo {
+  padding: 16px 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: center;
+}
+.header > * {
+  margin: 0;
+}
+@media (min-width: 768px) {
+  .header {
+    flex-direction: row;
+    align-items: center;
+  }
+  .header * {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+.main-nav {
+  margin: 0;
+}
+.main-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.main-nav__item {
+  margin: 0;
+  padding-bottom: 16px;
+  flex-grow: 1;
+}
+.main-nav__item--active {
+  font-weight: bold;
+  border-bottom: 2px solid #FFFFFF;
+}
+@media (min-width: 768px) {
+  .main-nav__item {
+    margin: 0 24px;
+    padding-top: 16px;
+  }
+}/*# sourceMappingURL=bio.css.map */

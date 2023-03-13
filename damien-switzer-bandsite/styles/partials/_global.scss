@@ -1,0 +1,127 @@
+@use './colors';
+@use './breakpoints' as *;
+@use './units';
+@use './fonts';
+
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+html{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Avenir Next';
+    font-size: 14px;
+    font-weight: 400; //Redundant, temp maybe
+    line-height: 22px;
+    color: colors.$primary-dark;
+    background-color: colors.$primary-light; //Redundant, temp maybe
+    margin: 0;
+}
+
+a, address{
+    color:unset;
+    font-style: normal;
+    text-decoration: none;
+}
+
+.header, .footer{
+    color: colors.$primary-light;
+    background-color: colors.$primary-dark; //BandSite-Black
+    margin: 0;
+}
+
+//Page Header
+h1{
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 68px;
+}
+//Section Header
+h2{
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 44px;
+}
+//Subheader
+h3{
+    font-size: 24px;
+    font-size: 600;
+    line-height: 32px;
+}
+//labels & buttons
+.label,button{
+    font-size: 12px;
+    font-weight: bold 700;
+    line-height: 20px;
+}
+
+@include tablet{
+    .footer{
+        line-height: 20px;
+    }
+}
+
+.logo{
+    padding: units.$spaceUnit*2 0;
+}
+
+.header{
+    // padding: 0 units.$spaceUnit*2;
+    // @include units.marginProp(padding-left);
+    // @include units.marginProp(padding-right);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    
+
+    & > *{
+        margin: 0;
+
+    }
+
+    @include tablet{
+        flex-direction: row;
+        align-items: center;
+
+        * {
+            margin-left: units.$spaceUnit*2;
+            margin-right: units.$spaceUnit*2;
+        }
+    }
+
+}
+
+.main-nav{
+    margin: 0;
+    ul{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    &__item{
+        margin: 0;
+        padding-bottom: units.$spaceUnit*2;
+        flex-grow: 1;
+
+        ///In terms of font size
+        // @extend .label;
+        &--active{
+            font-weight: bold;
+            border-bottom: 2px solid colors.$primary-light;
+        }
+
+        @include tablet{
+            margin: 0 units.$spaceUnit*3;
+            padding-top: units.$spaceUnit*2;
+
+        }
+    }
+}

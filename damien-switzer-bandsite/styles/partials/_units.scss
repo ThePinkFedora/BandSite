@@ -1,0 +1,35 @@
+$spaceUnit: 8px;
+
+
+$layoutColumns: auto;
+$layoutGutters: 16px;
+$layoutMargins: 16px;
+
+@media (min-width: 768px) {
+    $layoutColumns: auto;
+    $layoutGutters: 24px;
+    $layoutMargins: 36px;
+}
+
+@media (min-width: 1280px) {
+    $layoutColumns: 63px;
+    $layoutGutters: 24px; 
+    $layoutMargins: auto;
+}
+
+@mixin marginProp($property){
+    #{$property}: 16px;
+    @media (min-width: 768px) {
+        #{$property}: 36px;
+    }
+    @media (min-width: 1280px) {
+        #{$property}: auto;
+    }
+}
+
+
+// $layoutColumnsDesktop: 63px;
+// $layoutGuttersDesktop: 24px;
+// $layoutMarginsDesktop: auto;
+
+
