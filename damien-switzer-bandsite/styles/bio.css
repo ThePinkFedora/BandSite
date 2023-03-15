@@ -80,13 +80,13 @@ h2 {
   }
 }
 
-h3 {
+h3, .subheader, .about__quote q {
   font-size: 14px;
   font-weight: 600;
   line-height: 22px;
 }
 @media (min-width: 768px) {
-  h3 {
+  h3, .subheader, .about__quote q {
     font-size: 24px;
     line-height: 32px;
   }
@@ -153,8 +153,9 @@ h4 {
   }
 }
 .main-nav__item {
+  width: 100%;
   margin: 0;
-  padding-bottom: 16px;
+  padding-bottom: 8px;
   flex-grow: 1;
 }
 .main-nav__item--active {
@@ -163,7 +164,9 @@ h4 {
 }
 @media (min-width: 768px) {
   .main-nav__item {
+    width: unset;
     padding-top: 16px;
+    padding-bottom: 16px;
   }
 }
 @media (min-width: 1280px) {
@@ -272,18 +275,55 @@ h4 {
 
 .intro {
   color: #FFFFFF;
-  padding-top: 64px;
-  padding-bottom: 64px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   max-width: 100%;
   position: relative;
   z-index: 1;
   overflow: hidden;
 }
 
+.about {
+  padding-top: 1.7em;
+}
+.about h2 {
+  margin-bottom: 0.3em;
+}
+.about__quote {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  margin: 0;
+  padding-top: 0.5em;
+}
+.about__quote q {
+  display: block;
+}
+.about__quote cite {
+  font-style: normal;
+}
+.about__quote figcaption {
+  padding: 0.5em 0;
+}
+.about p {
+  margin: 8px 0;
+}
 .about__content {
-  max-width: 85%;
   margin: auto;
 }
+@media (min-width: 768px) {
+  .about__content {
+    max-width: 85%;
+  }
+}
+.about__image {
+  aspect-ratio: 1.85;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: bottom;
+     object-position: bottom;
+}
+
 .hero {
   width: 100%;
   position: absolute;

@@ -51,10 +51,10 @@ img{
 }
 
 section, .footer{
-    // padding: $spaceUnit*2;
+    // padding: $space-unit*2;
 
     // @include tablet{
-    //     padding: $spaceUnit*4.5; 
+    //     padding: $space-unit*4.5; 
     // }
 }
 
@@ -84,7 +84,7 @@ h2{
     }
 }
 //Subheader
-h3{
+h3, .subheader{
     font-size: 14px;
     font-weight: 600;
     line-height: 22px;
@@ -115,11 +115,11 @@ h4{
 
 .logo{
     line-height: 0;
-    padding: $spaceUnit*2 0;
+    padding: $space-unit*2 0;
 }
 
 .header{
-    // padding: 0 $spaceUnit*2;
+    // padding: 0 $space-unit*2;
     // @include marginProp(padding-left);
     // @include marginProp(padding-right);
     
@@ -146,8 +146,8 @@ h4{
             margin-right: $margins_Tablet;
 
             // * {
-            //     margin-left: $spaceUnit*2;
-            //     margin-right: $spaceUnit*2;
+            //     margin-left: $space-unit*2;
+            //     margin-right: $space-unit*2;
             // }
         }
     }
@@ -174,8 +174,9 @@ h4{
     }
 
     &__item{
+        width: 100%;
         margin: 0;
-        padding-bottom: $spaceUnit*2;
+        padding-bottom: $space-unit;
         flex-grow: 1;
 
         
@@ -188,13 +189,15 @@ h4{
         }
 
         @include tablet{
-            // margin: 0 $spaceUnit*3;
-            padding-top: $spaceUnit*2;
+            width: unset;
+            // margin: 0 $space-unit*3;
+            padding-top: $space-unit*2;
+            padding-bottom: $space-unit*2;
         }
 
         @include desktop{
-            padding-top: $spaceUnit*4;
-            padding-bottom: $spaceUnit*4;
+            padding-top: $space-unit*4;
+            padding-bottom: $space-unit*4;
         }
     }
 }
@@ -203,11 +206,11 @@ h4{
 
 
 .footer{
-    // padding: $spaceUnit*2;
+    // padding: $space-unit*2;
     
     // flex-direction: column;
     
-    padding-top: $spaceUnit; //Workaround for preventing margin-collapse
+    padding-top: $space-unit; //Workaround for preventing margin-collapse
 
     &__content{
         @extend .content-container;
@@ -215,14 +218,14 @@ h4{
         display: flex;
         flex-direction: column;
         
-        // margin: $spaceUnit*2;
-        // padding: $spaceUnit*2;
+        // margin: $space-unit*2;
+        // padding: $space-unit*2;
 
         gap: $gutters_Mobile;
         
         @include tablet{
-            // margin: $spaceUnit*4;
-            // padding: $spaceUnit*4.5;
+            // margin: $space-unit*4;
+            // padding: $space-unit*4.5;
             
             flex-direction: row;
             flex-wrap: wrap;
