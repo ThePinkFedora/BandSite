@@ -1,5 +1,5 @@
 $tablet-size: 768px;
-$desktop-size: 1028px;
+$desktop-size: 1280px;
 
 @mixin tablet{
     @media (min-width: $tablet-size){
@@ -9,6 +9,12 @@ $desktop-size: 1028px;
 
 @mixin desktop{
     @media (min-width: $desktop-size){
+        @content;
+    }
+}
+
+@mixin mobile{
+    @media (max-width: calc($tablet-size - 1px)){
         @content;
     }
 }

@@ -29,7 +29,7 @@ body {
   font-family: "Avenir Next";
   font-size: 13px;
   font-weight: 400;
-  line-height: 22px;
+  line-height: 18px;
   color: #323232;
   background-color: #FFFFFF;
   margin: 0;
@@ -57,10 +57,6 @@ img {
   margin: 0;
 }
 
-section {
-  padding: 16px;
-}
-
 h1, h2 {
   font-size: 24px;
   font-weight: 700;
@@ -73,10 +69,13 @@ h1, h2 {
   }
 }
 
+h2 {
+  font-weight: 600; /**These are supposed to be 700, but they definetely look more like 600 in the mockup**/
+  margin-top: 0;
+}
 @media (min-width: 768px) {
   h2 {
     font-size: 36px;
-    font-weight: 700;
     line-height: 44px;
   }
 }
@@ -93,7 +92,11 @@ h3 {
   }
 }
 
-.label, button {
+h4 {
+  font-weight: 600;
+}
+
+.label, .footer__copyright, button {
   font-size: 12px;
   font-weight: bold 700;
   line-height: 20px;
@@ -105,26 +108,27 @@ h3 {
   }
 }
 .logo {
+  line-height: 0;
   padding: 16px 0;
 }
 
-.header {
+.header__content {
+  max-width: 1024px;
+  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   text-align: center;
 }
-.header > * {
+.header__content > * {
   margin: 0;
 }
 @media (min-width: 768px) {
-  .header {
+  .header__content {
     flex-direction: row;
     align-items: center;
-  }
-  .header * {
-    margin-left: 16px;
-    margin-right: 16px;
+    margin-left: 36px;
+    margin-right: 36px;
   }
 }
 
@@ -137,6 +141,17 @@ h3 {
   padding: 0;
   display: flex;
 }
+@media (min-width: 768px) {
+  .main-nav ul {
+    margin-left: 64px;
+    gap: 64px;
+  }
+}
+@media (min-width: 1280px) {
+  .main-nav ul {
+    gap: 32px;
+  }
+}
 .main-nav__item {
   margin: 0;
   padding-bottom: 16px;
@@ -148,35 +163,127 @@ h3 {
 }
 @media (min-width: 768px) {
   .main-nav__item {
-    margin: 0 24px;
     padding-top: 16px;
+  }
+}
+@media (min-width: 1280px) {
+  .main-nav__item {
+    padding-top: 32px;
+    padding-bottom: 32px;
   }
 }
 
 .footer {
-  padding: 16px;
+  padding-top: 8px;
 }
-
-.contacts {
-  list-style-type: none;
-  padding: 0;
+.footer__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
-.contacts h4:first-child {
+@media (min-width: 768px) {
+  .footer__content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+}
+@media (min-width: 1280px) {
+  .footer__content {
+    margin: auto;
+  }
+}
+.footer h2 {
   margin-bottom: 0;
 }
-.contacts h4 + h4 {
+.footer p {
+  margin: 0;
+  padding: 0;
+}
+.footer .logo {
+  padding: 0;
+}
+@media (min-width: 768px) {
+  .footer .logo {
+    position: absolute;
+    top: 48px;
+    right: 36px;
+  }
+}
+.footer__icon-list {
+  height: auto;
+  margin-bottom: 8px;
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .footer__icon-list {
+    margin-top: 8px;
+  }
+}
+.footer__icon {
+  height: 24px;
+}
+.footer__contact-list {
+  list-style-type: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.footer__contact-list h4:first-child {
+  margin: 0;
+}
+.footer__contact-list h4 + h4 {
   margin-top: 0;
+}
+@media (min-width: 768px) {
+  .footer__contact-list {
+    margin-bottom: 16px;
+    flex-direction: row;
+    gap: 48px;
+  }
+}
+@media (min-width: 1280px) {
+  .footer__contact-list {
+    gap: 80px;
+  }
+}
+.content-container, .about, .footer__content {
+  max-width: 1024px;
+  padding: 16px;
+}
+@media (min-width: 768px) {
+  .content-container, .about, .footer__content {
+    padding: 36px;
+  }
+}
+@media (min-width: 1280px) {
+  .content-container, .about, .footer__content {
+    padding: 36px 36px;
+    margin: 0 auto;
+  }
 }
 
 .intro {
   color: #FFFFFF;
   padding-top: 64px;
   padding-bottom: 64px;
+  max-width: 100%;
   position: relative;
   z-index: 1;
   overflow: hidden;
 }
 
+.about__content {
+  max-width: 85%;
+  margin: auto;
+}
 .hero {
   width: 100%;
   position: absolute;
@@ -196,4 +303,19 @@ h3 {
   width: 100%;
   height: 100%;
   z-index: 1;
+}
+
+.gallery {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+@media (min-width: 768px) {
+  .gallery {
+    gap: 24px;
+  }
+  .gallery__image {
+    width: calc(33% - 14px);
+  }
 }/*# sourceMappingURL=bio.css.map */

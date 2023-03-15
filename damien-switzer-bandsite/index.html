@@ -11,19 +11,21 @@
   <body>
     <!-- Header -->
     <header class="header">
-      <!-- Logo -->
-      <a class="logo">
-        <img class="logo__image" src="./assets/logos/Logo-bandsite.svg" alt="logo" />
-      </a>
-      <!-- Navbar -->
-      <nav class="main-nav">
-        <!-- NavBar List -->
-        <ul class="main-nav__list">
-          <!-- NavBar Item -->
-          <li class="main-nav__item main-nav__item--active"><a class="main-nav__link" href="./">Biography</a></li>
-          <li class="main-nav__item"><a class="main-nav__link" href="./shows/">Shows</a></li>
-        </ul>
-      </nav>
+      <div class="header__content">
+        <!-- Logo -->
+        <a class="logo">
+          <img class="logo__image" src="./assets/logos/Logo-bandsite.svg" alt="logo" />
+        </a>
+        <!-- Navbar -->
+        <nav class="main-nav">
+          <!-- NavBar List -->
+          <ul class="main-nav__list">
+            <!-- NavBar Item -->
+            <li class="main-nav__item main-nav__item--active"><a class="main-nav__link" href="./">Biography</a></li>
+            <li class="main-nav__item"><a class="main-nav__link" href="./shows/">Shows</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <!-- Main -->
@@ -36,105 +38,124 @@
         </div>
 
         <!-- Title -->
-        <h1>The Bees Knees</h1>
+        <div class="content-container">
+          <h1>The Bees Knees</h1>
+        </div>
       </section>
 
       <!-- About -->
       <section class="about">
+        <!-- <div class="content-container"> -->
         <!-- Section Header -->
         <h2>About the Musicians</h2>
-        <img class="about__image" src="./assets/images/band.jpg" alt="band" />
-        <!-- Quote -->
-        <p>"We push each other to be the best. It’s not uncommon for one of us to say ‘this needs to be better, back to the drawing board"</p>
-        <!-- Cite -->
-        <p>- Bryan Teddy, lead vocalist of The Bees Knees</p>
-        <!-- Bio -->
-        <article class="bio">
-          <!-- Bio Title -->
-          <h3 class="bio__title">The Bees Knees</h3>
-          <!-- Bio Content -->
-          <p class="bio__copy">
-            The Bees Knees is a pop rock band originating from San Francisco, California. The band consists of lead vocalist Bryan Teddy, guitarist Mack
-            Tolkens, guitarist Andrew Green, bassist Kent Zulkee and drummer Freddie Fischer. The band achieved its first commercial success as an unsigned act,
-            drawing attention from manager Cam Adams. Having worked with other popular acts (The Elephant In The Room, One Trick Pony, The Cat’s Meow), Adams
-            was confident the band could succeed even further, pushing them to sign with Magenta Records.
-          </p>
-          <p class="bio__copy">
-            From there, the band has soared, gaining international recognition and ranking in the top 10 on the Poster Charts. New fans immediately fell in love
-            with the band’s original and organic attitude, solidifying their place as one of the hottest and fastest up and coming acts of this century. Fans
-            affectionately refer to themselves as “The Hive” and are drawn to their candid and authentic performances on stage. Looking forward to touring in
-            the future, The Bees Knees are currently recording their second studio album, looking to be released in late 2021.
-          </p>
-        </article>
+        <div class="about__content">
+          <img class="about__image" src="./assets/images/band.jpg" alt="band" />
+          <!-- Quote -->
+          <p>"We push each other to be the best. It’s not uncommon for one of us to say ‘this needs to be better, back to the drawing board"</p>
+          <!-- Cite -->
+          <p>- Bryan Teddy, lead vocalist of The Bees Knees</p>
+          <!-- Bio -->
+          <article class="bio">
+            <!-- Bio Title -->
+            <h3 class="bio__title">The Bees Knees</h3>
+            <!-- Bio Content -->
+            <p class="bio__copy">
+              The Bees Knees is a pop rock band originating from San Francisco, California. The band consists of lead vocalist Bryan Teddy, guitarist Mack
+              Tolkens, guitarist Andrew Green, bassist Kent Zulkee and drummer Freddie Fischer. The band achieved its first commercial success as an unsigned
+              act, drawing attention from manager Cam Adams. Having worked with other popular acts (The Elephant In The Room, One Trick Pony, The Cat’s Meow),
+              Adams was confident the band could succeed even further, pushing them to sign with Magenta Records.
+            </p>
+            <p class="bio__copy">
+              From there, the band has soared, gaining international recognition and ranking in the top 10 on the Poster Charts. New fans immediately fell in
+              love with the band’s original and organic attitude, solidifying their place as one of the hottest and fastest up and coming acts of this century.
+              Fans affectionately refer to themselves as “The Hive” and are drawn to their candid and authentic performances on stage. Looking forward to
+              touring in the future, The Bees Knees are currently recording their second studio album, looking to be released in late 2021.
+            </p>
+          </article>
+        </div>
+        <!-- </div> -->
       </section>
 
       <!-- Photo Galley -->
       <section class="photo-gallery">
-        <!-- Section Header -->
-        <h2>Photo Gallery</h2>
-        <article class="gallery">
-          <img class="gallery__image" src="./assets/images/Photo-gallery-1.jpg" alt="gallery image 1" />
-          <img class="gallery__image" src="./assets/images/Photo-gallery-2.jpg" alt="gallery image 2" />
-          <img class="gallery__image" src="./assets/images/Photo-gallery-3.jpg" alt="gallery image 3" />
-          <img class="gallery__image" src="./assets/images/Photo-gallery-4.jpg" alt="gallery image 4" />
-          <img class="gallery__image" src="./assets/images/Photo-gallery-5.jpg" alt="gallery image 5" />
-          <img class="gallery__image" src="./assets/images/Photo-gallery-6.jpg" alt="gallery image 6" />
-          <img class="gallery__image" src="./assets/images/Photo-gallery-7.jpg" alt="gallery image 7" />
-          <img class="gallery__image" src="./assets/images/Photo-gallery-8.jpg" alt="gallery image 8" />
-          <img class="gallery__image" src="./assets/images/Photo-gallery-9.jpg" alt="gallery image 9" />
-        </article>
+        <div class="content-container">
+          <!-- Section Header -->
+          <h2>Photo Gallery</h2>
+          <article class="gallery">
+            <img class="gallery__image" src="./assets/images/Photo-gallery-1.jpg" alt="gallery image 1" />
+            <img class="gallery__image" src="./assets/images/Photo-gallery-2.jpg" alt="gallery image 2" />
+            <img class="gallery__image" src="./assets/images/Photo-gallery-3.jpg" alt="gallery image 3" />
+            <img class="gallery__image" src="./assets/images/Photo-gallery-4.jpg" alt="gallery image 4" />
+            <img class="gallery__image" src="./assets/images/Photo-gallery-5.jpg" alt="gallery image 5" />
+            <img class="gallery__image" src="./assets/images/Photo-gallery-6.jpg" alt="gallery image 6" />
+            <img class="gallery__image" src="./assets/images/Photo-gallery-7.jpg" alt="gallery image 7" />
+            <img class="gallery__image" src="./assets/images/Photo-gallery-8.jpg" alt="gallery image 8" />
+            <img class="gallery__image" src="./assets/images/Photo-gallery-9.jpg" alt="gallery image 9" />
+          </article>
+        </div>
       </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-      <!-- Section/Footer Header -->
-      <h2 class="footer__header">Get in Touch</h2>
-      <!-- Social -->
-      <div class="social">
+      <div class="footer__content">
+        <!-- Section/Footer Header -->
+        <h2 class="footer__header">Get in Touch</h2>
+        <!-- Social -->
+        <!-- <div class="footer__social"> -->
         <!-- Social Icons List -->
-        <ul class="social-list">
-          <img class="social-icon" src="./assets/icons/Icon-instagram.svg" alt="instagram" />
-          <img class="social-icon" src="./assets/icons/Icon-facebook.svg" alt="facebook" />
-          <img class="social-icon" src="./assets/icons/Icon-twitter.svg" alt="twitter" />
+        <div class="footer__icon-list">
+          <img class="footer__icon" src="./assets/icons/Icon-instagram.svg" alt="instagram" />
+          <img class="footer__icon" src="./assets/icons/Icon-facebook.svg" alt="facebook" />
+          <img class="footer__icon" src="./assets/icons/Icon-twitter.svg" alt="twitter" />
+        </div>
+        <!-- </div> -->
+
+        <!-- Contacts-List -->
+        <ul class="footer__contact-list">
+          <!-- Contact Item -->
+          <li class="footer__contact__item">
+            <h4>Cam Adams</h4>
+            <h4>The Bees Knees Management</h4>
+
+            <p>
+              503 Broadway Penthouse,<br />
+              New York, NY 10012, USA<br />
+              <br />
+              <a href="mailto: info@thebeesknees.com">info@thebeesknees.com</a>
+            </p>
+          </li>
+          <li class="footer__contact__item">
+            <h4>Pearl Gregg</h4>
+            <h4>Limitless Artist Group</h4>
+
+            <p>
+              Booking Agent for<br />
+              US / South America / Japan<br />
+              <br />
+              <a href="mailto: pearl.gregg@limitlessag.com">pearl.gregg@limitlessag.com</a>
+            </p>
+          </li>
+          <li class="footer__contact__item">
+            <h4>Carson Whyte</h4>
+            <h4>ARCH Entertainment</h4>
+
+            <p>
+              Booking Agent for<br />
+              UK / EU / AU<br />
+              <br />
+              <a href="mailto: cwhyte@archentertainment.com">cwhyte@archentertainment.com</a>
+            </p>
+          </li>
         </ul>
+
+        <a class="logo">
+          <img class="logo__image" src="./assets/logos/Logo-bandsite.svg" alt="logo" />
+        </a>
+
+        <!-- Copyright -->
+        <p class="footer__copyright">Copyright The Bees Knees © 2021 All Rights Reserved</p>
       </div>
-
-      <a class="logo">
-        <img class="logo__image" src="./assets/logos/Logo-bandsite.svg" alt="logo" />
-      </a>
-
-      <!-- Contacts-List -->
-      <ul class="contacts">
-        <!-- Contact Item -->
-        <li class="contacts__item">
-          <h4>Cam Adams</h4>
-          <h4>The Bees Knees Management</h4>
-
-          <address>503 Broadway Penthouse, New York, NY 10012, USA</address>
-
-          <a href="mailto: info@thebeesknees.com">info@thebeesknees.com</a>
-        </li>
-        <li class="contacts__item">
-          <h4>Pearl Gregg</h4>
-          <h4>Limitless Artist Group</h4>
-
-          <p>Booking Agent for US / South America / Japan</p>
-
-          <a href="mailto: pearl.gregg@limitlessag.com">pearl.gregg@limitlessag.com</a>
-        </li>
-        <li class="contacts__item">
-          <h4>Carson Whyte</h4>
-          <h4>ARCH Entertainment</h4>
-
-          <p>Booking Agent for UK / EU / AU</p>
-
-          <a href="mailto: cwhyte@archentertainment.com">cwhyte@archentertainment.com</a>
-        </li>
-      </ul>
-
-      <!-- Copyright -->
-      <p class="copyright"></p>
     </footer>
   </body>
 </html>

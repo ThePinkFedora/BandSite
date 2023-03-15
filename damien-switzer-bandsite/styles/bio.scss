@@ -13,9 +13,28 @@
     // padding: units.$spaceUnit*8 units.$spaceUnit*4;
     padding-top: units.$spaceUnit*8;
     padding-bottom: units.$spaceUnit*8;
+    max-width: 100%;
     position: relative;   
     z-index: 1;
     overflow: hidden;
+}
+
+.about{
+    @extend .content-container;
+
+    // @include mobile{
+    //     & > .content-container{
+    //         padding: 0;
+    //     }
+    // }
+    &__content{
+        // max-width: 576px;
+        max-width: 85%;
+        margin: auto;
+        @include tablet{
+            // padding: 0 60px;
+        }
+    }
 }
 
 
@@ -39,5 +58,25 @@
         width: 100%;
         height: 100%;
         z-index: 1;
+    }
+}
+
+
+
+.gallery{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    // max-width: 1280px;
+    // margin: auto;
+
+
+    @include tablet{
+        gap: 24px;
+
+        &__image{
+            width: calc(33% - 14px);
+        }
     }
 }

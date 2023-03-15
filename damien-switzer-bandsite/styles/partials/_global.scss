@@ -1,6 +1,6 @@
 @use './colors';
 @use './breakpoints' as *;
-@use './units';
+@use './units' as *;
 @use './fonts';
 
 // @forward './colors';
@@ -21,7 +21,7 @@ body{
     font-family: 'Avenir Next';
     font-size: 13px;
     font-weight: 400;
-    line-height: 22px;
+    line-height: 18px;
     
     color: colors.$primary-dark;
     background-color: colors.$primary-light; //Redundant, temp maybe
@@ -50,8 +50,12 @@ img{
     margin: 0;
 }
 
-section{
-    padding: units.$spaceUnit*2;
+section, .footer{
+    // padding: $spaceUnit*2;
+
+    // @include tablet{
+    //     padding: $spaceUnit*4.5; 
+    // }
 }
 
 
@@ -71,9 +75,11 @@ h1{
 //Section Header
 h2{
     @extend h1;
+    font-weight: 600; /**These are supposed to be 700, but they definetely look more like 600 in the mockup**/
+    margin-top: 0;
     @include tablet{
         font-size: 36px;
-        font-weight: 700;
+        // font-weight: 700;
         line-height: 44px;
     }
 }
@@ -89,6 +95,11 @@ h3{
         line-height: 32px;
     }
 }
+//Subheader, same size just demi-bold
+h4{
+    font-weight: 600;
+}
+
 //labels & buttons
 .label,button{
     font-size: 12px;
@@ -103,35 +114,43 @@ h3{
 }
 
 .logo{
-    padding: units.$spaceUnit*2 0;
+    line-height: 0;
+    padding: $spaceUnit*2 0;
 }
 
 .header{
-    // padding: 0 units.$spaceUnit*2;
-    // @include units.marginProp(padding-left);
-    // @include units.marginProp(padding-right);
+    // padding: 0 $spaceUnit*2;
+    // @include marginProp(padding-left);
+    // @include marginProp(padding-right);
     
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    text-align: center;
-    
+    &__content{
+        max-width: $maxWidth;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
 
-    & > *{
-        margin: 0;
 
-    }
+        
 
-    @include tablet{
-        flex-direction: row;
-        align-items: center;
+        & > *{
+            margin: 0;
 
-        * {
-            margin-left: units.$spaceUnit*2;
-            margin-right: units.$spaceUnit*2;
+        }
+
+        @include tablet{
+            flex-direction: row;
+            align-items: center;
+            margin-left: $margins_Tablet;
+            margin-right: $margins_Tablet;
+
+            // * {
+            //     margin-left: $spaceUnit*2;
+            //     margin-right: $spaceUnit*2;
+            // }
         }
     }
-
 }
 
 .main-nav{
@@ -141,12 +160,25 @@ h3{
         margin: 0;
         padding: 0;
         display: flex;
+
+        @include tablet{
+            margin-left: 64px;
+            gap: 64px;
+        }
+
+        @include desktop{
+            gap: 32px;
+        }
+
+
     }
 
     &__item{
         margin: 0;
-        padding-bottom: units.$spaceUnit*2;
+        padding-bottom: $spaceUnit*2;
         flex-grow: 1;
+
+        
 
         ///In terms of font size
         // @extend .label;
@@ -156,9 +188,13 @@ h3{
         }
 
         @include tablet{
-            margin: 0 units.$spaceUnit*3;
-            padding-top: units.$spaceUnit*2;
+            // margin: 0 $spaceUnit*3;
+            padding-top: $spaceUnit*2;
+        }
 
+        @include desktop{
+            padding-top: $spaceUnit*4;
+            padding-bottom: $spaceUnit*4;
         }
     }
 }
@@ -167,16 +203,141 @@ h3{
 
 
 .footer{
-    padding: units.$spaceUnit*2;
+    // padding: $spaceUnit*2;
+    
+    // flex-direction: column;
+    
+    padding-top: $spaceUnit; //Workaround for preventing margin-collapse
+
+    &__content{
+        @extend .content-container;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        
+        // margin: $spaceUnit*2;
+        // padding: $spaceUnit*2;
+
+        gap: $gutters_Mobile;
+        
+        @include tablet{
+            // margin: $spaceUnit*4;
+            // padding: $spaceUnit*4.5;
+            
+            flex-direction: row;
+            flex-wrap: wrap;
+            
+            ///$gutters_Tablet is 24px, but it looks a lot more like 32px
+            ///gap: $gutters_Tablet;
+            gap: 32px; 
+            
+        }
+
+        @include desktop{
+            // gap: 64px;
+            margin: auto; 
+        }
+    }
+
+    h2{
+        // margin-top: 8px;
+        margin-bottom: 0;
+        // margin-right: 24px;
+        // width: 220px;
+        // order: -2;
+    }
+    p{
+        margin: 0;
+        padding: 0;
+    }
+
+    .logo{
+        padding: 0;
+        @include tablet{
+            position: absolute;
+            top:48px;
+            right:36px;
+            // top:40px;
+            // right:36px;
+            // order: -1;
+            // align-self: flex-end;
+        }
+    }
+
+    &__icon-list{
+        // height: 24px;
+        height: auto;
+        // margin-top: 16px;
+        // margin-bottom: 32px;
+        
+        margin-bottom: 8px;
+        display: flex;
+        gap: 32px;
+        align-items: center;
+        // order: -2;
+
+        @include tablet{
+            margin-top: 8px;
+        }
+
+        // justify-content: space-between;
+    }
+
+    &__icon{
+        height: 24px;
+    }
+
+    &__contact-list{
+        list-style-type: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 64px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+
+        h4:first-child{
+            margin: 0;
+            // margin-bottom: 0;
+        }
+        h4 + h4{
+            margin-top: 0;
+        }
+
+        @include tablet{
+            margin-bottom: 16px;
+            flex-direction: row;
+            // gap: 24px;
+            gap: 48px;
+        }
+
+        @include desktop{
+            gap:80px; 
+        }
+    }
+
+    &__copyright{
+        @extend .label;
+
+    }
+    
 }
 
-.contacts{
-    list-style-type: none;
-    padding: 0;
-    h4:first-child{
-        margin-bottom: 0;
+
+.content-container{
+    max-width: $maxWidth;
+    // margin: 16px;
+    padding: $margins_Mobile;
+    // margin: auto;
+
+    @include tablet{
+        // margin: 36px;
+        padding: $margins_Tablet;
     }
-    h4 + h4{
-        margin-top: 0;
+    @include desktop{
+        padding: $margins_Tablet $margins_Tablet;
+        // padding: 0 36px;
+        margin: 0 $margins_Desktop;
     }
 }
