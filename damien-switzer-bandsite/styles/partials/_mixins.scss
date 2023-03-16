@@ -1,0 +1,43 @@
+@use './breakpoints' as *;
+@use './units';
+
+@mixin common-flex-container($rowOrColumn: row){
+    display: flex;
+    flex-direction: $rowOrColumn;
+    gap: units.$pad-between-components-mobile;
+    @include tablet{
+        gap: units.$pad-between-components-tablet;
+    }
+}
+
+@mixin common-flex-container-items($rowOrColumn: row){
+    display: flex;
+    flex-direction: $rowOrColumn;
+    gap: units.$gutters_Mobile;
+    @include tablet{
+        gap: units.$gutters_Tablet;
+    }
+}
+
+@mixin common-content-container{
+    max-width: units.$maxWidth;
+    margin-left: units.$margins_Mobile;
+    margin-right: units.$margins_Mobile;
+    margin-bottom: units.$margins_Mobile;
+    
+    @include tablet{
+        margin-left: units.$margins_Tablet;
+        margin-right: units.$margins_Tablet;
+        margin-bottom: units.$margins_Tablet;
+        
+    }
+    @include desktop{
+        margin-left: units.$margins_Desktop;
+        margin-right: units.$margins_Desktop;
+    }
+}
+
+@mixin flex-column{
+    display: flex;
+    flex-direction: column;
+}

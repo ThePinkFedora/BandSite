@@ -10,6 +10,8 @@
 
 *, *::before, *::after{
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html{
@@ -34,7 +36,7 @@ body{
     }
 }
 
-a, address{
+a, address,cite{
     color:unset;
     font-style: normal;
     text-decoration: none;
@@ -67,7 +69,6 @@ h1{
     line-height: 32px;
     @include tablet{
         font-size: 60px;
-        // font-weight: 700;
         line-height: 68px;
     }
 
@@ -76,11 +77,17 @@ h1{
 h2{
     @extend h1;
     font-weight: 600; /**These are supposed to be 700, but they definetely look more like 600 in the mockup**/
-    margin-top: 0;
+
+    padding: $pad-before-headlines-adjusted-mobile 0 $pad-after-headlines-adjusted-mobile 0;
     @include tablet{
         font-size: 36px;
         // font-weight: 700;
         line-height: 44px;
+        padding: $pad-before-headlines-adjusted-tablet 0 $pad-after-headlines-adjusted-tablet 0;
+    }
+
+    @include desktop{
+        padding-bottom: $pad-after-headlines-adjusted-desktop;
     }
 }
 //Subheader
@@ -89,10 +96,14 @@ h3, .subheader{
     font-weight: 600;
     line-height: 22px;
 
+    padding: $pad-before-headlines-adjusted-mobile 0 $pad-after-headlines-adjusted-mobile 0;
+
     @include tablet{
         font-size: 24px;
-        // font-size: 600;
         line-height: 32px;
+
+        padding-top: $pad-before-headlines-tablet;
+        padding-bottom: 20px;
     }
 }
 //Subheader, same size just demi-bold
@@ -132,12 +143,6 @@ h4{
         text-align: center;
 
 
-        
-
-        & > *{
-            margin: 0;
-
-        }
 
         @include tablet{
             flex-direction: row;
@@ -150,6 +155,10 @@ h4{
             //     margin-right: $space-unit*2;
             // }
         }
+
+        @include desktop{
+            margin: auto;
+        }
     }
 }
 
@@ -157,16 +166,15 @@ h4{
     margin: 0;
     ul{
         list-style-type: none;
-        margin: 0;
-        padding: 0;
         display: flex;
 
         @include tablet{
-            margin-left: 64px;
-            gap: 64px;
+            margin-left: 72px;
+            gap: 56px;
         }
 
         @include desktop{
+            margin-left: 64px;
             gap: 32px;
         }
 
@@ -174,30 +182,26 @@ h4{
     }
 
     &__item{
+        $border-width: 3px;
+
         width: 100%;
         margin: 0;
-        padding-bottom: $space-unit;
+        padding-bottom: $padding-2;
         flex-grow: 1;
 
-        
-
-        ///In terms of font size
-        // @extend .label;
         &--active{
             font-weight: bold;
-            border-bottom: 2px solid colors.$primary-light;
+            border-bottom: $border-width solid colors.$primary-light;
         }
 
         @include tablet{
             width: unset;
-            // margin: 0 $space-unit*3;
-            padding-top: $space-unit*2;
-            padding-bottom: $space-unit*2;
+            padding: $padding-4 - $border-width 0;
+            
         }
 
         @include desktop{
-            padding-top: $space-unit*4;
-            padding-bottom: $space-unit*4;
+            padding: $padding-5 - $border-width 0;
         }
     }
 }
@@ -331,16 +335,41 @@ h4{
 .content-container{
     max-width: $maxWidth;
     // margin: 16px;
-    padding: $margins_Mobile;
+    // padding: $margins_Mobile;
+    padding-left: $margins_Mobile;
+    padding-right: $margins_Mobile;
     // margin: auto;
 
     @include tablet{
         // margin: 36px;
-        padding: $margins_Tablet;
+        // padding: $margins_Tablet;
+        padding-left: $margins_Tablet;
+        padding-right: $margins_Tablet;
     }
     @include desktop{
-        padding: $margins_Tablet $margins_Tablet;
+        // padding: $margins_Tablet $margins_Tablet;
+        padding-left: $margins_Tablet;
+        padding-right: $margins_Tablet;
         // padding: 0 36px;
         margin: 0 $margins_Desktop;
+    }
+}
+
+@mixin page-content-layout{
+    max-width: $maxWidth;
+    padding-left: $margins_Mobile;
+    padding-right: $margins_Mobile;
+    
+    @include tablet{
+        padding-left: $margins_Tablet;
+        padding-right: $margins_Tablet;
+        
+    }
+    @include desktop{
+        padding-left: $margins_Tablet;
+        padding-right: $margins_Tablet;
+        // padding: 0 36px;
+        margin-left: $margins_Desktop;
+        margin-right: $margins_Desktop;
     }
 }

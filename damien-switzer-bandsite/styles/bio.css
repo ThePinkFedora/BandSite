@@ -18,6 +18,8 @@
 }
 *, *::before, *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -41,7 +43,7 @@ body {
   }
 }
 
-a, address {
+a, address, cite {
   color: unset;
   font-style: normal;
   text-decoration: none;
@@ -71,12 +73,18 @@ h1, h2 {
 
 h2 {
   font-weight: 600; /**These are supposed to be 700, but they definetely look more like 600 in the mockup**/
-  margin-top: 0;
+  padding: 22px 0 14px 0;
 }
 @media (min-width: 768px) {
   h2 {
     font-size: 36px;
     line-height: 44px;
+    padding: 50px 0 24px 0;
+  }
+}
+@media (min-width: 1280px) {
+  h2 {
+    padding-bottom: 36px;
   }
 }
 
@@ -84,11 +92,14 @@ h3, .subheader, .about__quote q {
   font-size: 14px;
   font-weight: 600;
   line-height: 22px;
+  padding: 22px 0 14px 0;
 }
 @media (min-width: 768px) {
   h3, .subheader, .about__quote q {
     font-size: 24px;
     line-height: 32px;
+    padding-top: 48px;
+    padding-bottom: 20px;
   }
 }
 
@@ -113,15 +124,12 @@ h4 {
 }
 
 .header__content {
-  max-width: 1024px;
+  max-width: 1020px;
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   text-align: center;
-}
-.header__content > * {
-  margin: 0;
 }
 @media (min-width: 768px) {
   .header__content {
@@ -131,24 +139,28 @@ h4 {
     margin-right: 36px;
   }
 }
+@media (min-width: 1280px) {
+  .header__content {
+    margin: auto;
+  }
+}
 
 .main-nav {
   margin: 0;
 }
 .main-nav ul {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
   display: flex;
 }
 @media (min-width: 768px) {
   .main-nav ul {
-    margin-left: 64px;
-    gap: 64px;
+    margin-left: 72px;
+    gap: 56px;
   }
 }
 @media (min-width: 1280px) {
   .main-nav ul {
+    margin-left: 64px;
     gap: 32px;
   }
 }
@@ -160,19 +172,17 @@ h4 {
 }
 .main-nav__item--active {
   font-weight: bold;
-  border-bottom: 2px solid #FFFFFF;
+  border-bottom: 3px solid #FFFFFF;
 }
 @media (min-width: 768px) {
   .main-nav__item {
     width: unset;
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding: 21px 0;
   }
 }
 @media (min-width: 1280px) {
   .main-nav__item {
-    padding-top: 32px;
-    padding-bottom: 32px;
+    padding: 29px 0;
   }
 }
 
@@ -257,71 +267,55 @@ h4 {
     gap: 80px;
   }
 }
-.content-container, .about, .footer__content {
-  max-width: 1024px;
-  padding: 16px;
+.content-container, .footer__content {
+  max-width: 1020px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 @media (min-width: 768px) {
-  .content-container, .about, .footer__content {
-    padding: 36px;
+  .content-container, .footer__content {
+    padding-left: 36px;
+    padding-right: 36px;
   }
 }
 @media (min-width: 1280px) {
-  .content-container, .about, .footer__content {
-    padding: 36px 36px;
+  .content-container, .footer__content {
+    padding-left: 36px;
+    padding-right: 36px;
     margin: 0 auto;
   }
 }
 
 .intro {
   color: #FFFFFF;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  max-width: 100%;
+  width: 100%;
+  max-height: 630px;
+  aspect-ratio: 1.7;
+  display: flex;
+  align-items: center;
   position: relative;
   z-index: 1;
   overflow: hidden;
 }
-
-.about {
-  padding-top: 1.7em;
-}
-.about h2 {
-  margin-bottom: 0.3em;
-}
-.about__quote {
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 22px;
-  margin: 0;
-  padding-top: 0.5em;
-}
-.about__quote q {
-  display: block;
-}
-.about__quote cite {
-  font-style: normal;
-}
-.about__quote figcaption {
-  padding: 0.5em 0;
-}
-.about p {
-  margin: 8px 0;
-}
-.about__content {
-  margin: auto;
+.intro__content {
+  max-width: 1020px;
+  padding-left: 16px;
+  padding-right: 16px;
+  flex-grow: 1;
 }
 @media (min-width: 768px) {
-  .about__content {
-    max-width: 85%;
+  .intro__content {
+    padding-left: 36px;
+    padding-right: 36px;
   }
 }
-.about__image {
-  aspect-ratio: 1.85;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: bottom;
-     object-position: bottom;
+@media (min-width: 1280px) {
+  .intro__content {
+    padding-left: 36px;
+    padding-right: 36px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .hero {
@@ -345,16 +339,129 @@ h4 {
   z-index: 1;
 }
 
+.about {
+  max-width: 1020px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+@media (min-width: 768px) {
+  .about {
+    margin-left: 36px;
+    margin-right: 36px;
+    margin-bottom: 36px;
+  }
+}
+@media (min-width: 1280px) {
+  .about {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.about__header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+@media (min-width: 768px) {
+  .about__header {
+    gap: 36px;
+  }
+}
+.about__quote q {
+  display: block;
+  padding: 0 0 4px 0;
+}
+@media (min-width: 768px) {
+  .about__quote q {
+    padding: 0 0 12px 0;
+  }
+}
+.about__quote figcaption {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+}
+@media (min-width: 768px) {
+  .about__quote figcaption {
+    font-size: 15px;
+  }
+}
+@media (min-width: 1280px) {
+  .about__quote {
+    max-width: 720px;
+  }
+}
+.about__content {
+  margin: auto;
+}
+@media (min-width: 768px) {
+  .about__content {
+    max-width: 83%;
+  }
+}
+.about__image {
+  aspect-ratio: 1.85;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: bottom;
+     object-position: bottom;
+}
+.about .bio__title {
+  color: #000000;
+}
+.about .bio__content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+@media (min-width: 768px) {
+  .about .bio__content {
+    gap: 24px;
+  }
+}
+@media (min-width: 768px) {
+  .about .bio__content {
+    flex-direction: row;
+  }
+}
+
+.photo-gallery {
+  background-color: #FAFAFA;
+}
+.photo-gallery__content {
+  max-width: 1020px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+@media (min-width: 768px) {
+  .photo-gallery__content {
+    margin-left: 36px;
+    margin-right: 36px;
+    margin-bottom: 36px;
+  }
+}
+@media (min-width: 1280px) {
+  .photo-gallery__content {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 .gallery {
   display: flex;
+  flex-direction: row;
+  gap: 16px;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 16px;
 }
 @media (min-width: 768px) {
   .gallery {
     gap: 24px;
   }
+}
+@media (min-width: 768px) {
   .gallery__image {
     width: calc(33% - 14px);
   }

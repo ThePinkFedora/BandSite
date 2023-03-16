@@ -13,37 +13,41 @@ $columns_Mobile: auto;
 $gutters_Mobile: 16px;
 
 
-$maxWidth: 1024px;
-
-// $layoutColumns: auto;
-// $layoutGutters: 16px;
-// $layoutMargins: 16px;
-
-// @media (min-width: 768px) {
-//     $layoutColumns: auto;
-//     $layoutGutters: 24px;
-//     $layoutMargins: 36px;
-// }
-
-// @media (min-width: 1280px) {
-//     $layoutColumns: 63px;
-//     $layoutGutters: 24px; 
-//     $layoutMargins: auto;
-// }
-
-// @mixin marginProp($property){
-//     #{$property}: 16px;
-//     @media (min-width: 768px) {
-//         #{$property}: 36px;
-//     }
-//     @media (min-width: 1280px) {
-//         #{$property}: auto;
-//     }
-// }
+//*** CHANGING, 1024 as really good originally, but now 1088 is seeming where it's at. Test and revert if needed
+// $maxWidth: 1024px;
+$maxWidth: 1020px;
 
 
-// $layoutColumnsDesktop: 63px;
-// $layoutGuttersDesktop: 24px;
-// $layoutMarginsDesktop: auto;
+//Padding increments
+$padding-1: 4px;
+$padding-2: 8px;
+$padding-3: 16px;
+$padding-4: 24px;
+$padding-5: 32px;
+$padding-6: 40px;
+$padding-7: 48px;
+$padding-8: 56px;
+$padding-9: 64px;
+$padding-10: 80px;
 
+
+$pad-before-headlines-mobile: 24px;
+$pad-after-headlines-mobile: 16px;
+$pad-between-components-mobile: 16px;
+
+$pad-before-headlines-adjusted-mobile: 20px;
+$pad-after-headlines-adjusted-mobile: 10px;
+
+$pad-before-headlines-adjusted-mobile: 22px;
+$pad-after-headlines-adjusted-mobile: 14px;
+
+$pad-before-headlines-tablet: 48px;
+$pad-after-headlines-tablet: 36px;
+$pad-between-components-tablet: 36px;
+
+$pad-before-headlines-adjusted-tablet: 50px;
+$pad-after-headlines-adjusted-tablet: 24px;
+
+///It seems to be temporarily less for tablet, then more again for desktop
+$pad-after-headlines-adjusted-desktop: 36px;
 
