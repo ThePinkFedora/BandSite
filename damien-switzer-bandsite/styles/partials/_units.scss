@@ -35,11 +35,15 @@ $pad-before-headlines-mobile: 24px;
 $pad-after-headlines-mobile: 16px;
 $pad-between-components-mobile: 16px;
 
-$pad-before-headlines-adjusted-mobile: 20px;
-$pad-after-headlines-adjusted-mobile: 10px;
+// $pad-before-headlines-adjusted-mobile: 20px;
+// $pad-after-headlines-adjusted-mobile: 10px;
 
 $pad-before-headlines-adjusted-mobile: 22px;
-$pad-after-headlines-adjusted-mobile: 14px;
+// $pad-after-headlines-adjusted-mobile: 16px; //Style guided says 16px, but due to line height looks more like 8px
+// $pad-after-headlines-adjusted-mobile: 8px;
+
+$pad-after-headlines-h2-adjusted-mobile: 8px;
+$pad-after-headlines-h3-adjusted-mobile: 12px;
 
 $pad-before-headlines-tablet: 48px;
 $pad-after-headlines-tablet: 36px;

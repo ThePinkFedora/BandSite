@@ -4,77 +4,43 @@
 @use './fonts';
 @use './mixins';
 
-// @forward './colors';
-// @forward './breakpoints';
-// @forward './units';
-// @forward './fonts';
-
+//# Resets
 *, *::before, *::after{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-html{
-    margin: 0;
-    padding: 0;
-}
-
-body{
-    font-family: 'Avenir Next';
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 18px;
-    
-    color: colors.$primary-dark;
-    background-color: colors.$primary-light; //Redundant, temp maybe
-    margin: 0;
-
-    @include tablet{
-        font-size: 14px;
-        // font-weight: 400; //Redundant, temp maybe
-        line-height: 22px;
-    }
-}
-
-a, address,cite{
     color:unset;
     font-style: normal;
     text-decoration: none;
 }
 
-// img{
-//     max-width: 100%;
-// }
+//# Setup initial Fonts, Colors, Padding
+//## Body
+body{
+    font: fonts.$font-body-mobile;
+    color: colors.$primary-dark;
+    background-color: colors.$primary-light; 
 
-.header, .footer{
-    color: colors.$primary-light; //White
-    background-color: colors.$primary-dark; //BandSite-Black
-}
-
-
-//Page Header
-h1{
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 32px;
     @include tablet{
-        font-size: 60px;
-        line-height: 68px;
+        font: fonts.$font-body-tablet;
+    }
+}
+//## Page Header
+h1{
+    font: fonts.$font-pageheader-mobile;
+    @include tablet{
+        font: fonts.$font-pageheader-tablet;
     }
 
 }
-//Section Header
+//## Section Header
 h2{
-    @extend h1;
-    font-weight: 600; /**These are supposed to be 700, but they definetely look more like 600 in the mockup**/
-
-    padding: $pad-before-headlines-adjusted-mobile 0 $pad-after-headlines-adjusted-mobile 0;
+    font: fonts.$font-sectionheader-mobile;
+    padding: $pad-before-headlines-adjusted-mobile 0 $pad-after-headlines-h2-adjusted-mobile 0;
     width: 100%;
+
     @include tablet{
-        font-size: 36px;
-        // font-weight: 700;
-        line-height: 44px;
+        font: fonts.$font-sectionheader-tablet;
         padding: $pad-before-headlines-adjusted-tablet 0 $pad-after-headlines-adjusted-tablet 0;
     }
 
@@ -82,59 +48,59 @@ h2{
         padding-bottom: $pad-after-headlines-adjusted-desktop;
     }
 }
-//Subheader
+//## Subheader
 h3, .subheader{
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 22px;
-
-    padding: $pad-before-headlines-adjusted-mobile 0 $pad-after-headlines-adjusted-mobile 0;
+    font: fonts.$font-subheader-mobile;
+    padding: $pad-before-headlines-adjusted-mobile 0 $pad-after-headlines-h3-adjusted-mobile 0;
 
     @include tablet{
-        font-size: 24px;
-        line-height: 32px;
-
+        font: fonts.$font-subheader-tablet;
         padding-top: $pad-before-headlines-tablet;
         padding-bottom: 20px;
     }
 }
-//Subheader, same size just demi-bold
+//## Subheader variant, 1em just demi-bold
 h4{
     font-weight: 600;
 }
 
-//labels & buttons
-.label,button{
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 20px;
-}
-
-@include tablet{
-    .footer{
-        line-height: 20px;
+//## Footer
+.footer{
+    font: fonts.$font-footer-mobile;
+    color: colors.$primary-light;
+    background-color: colors.$primary-dark;
+    @include tablet{
+        font: fonts.$font-footer-tablet;
     }
 }
 
+//## Logo
 .logo{
-    line-height: 0;
+    line-height: 0; //Workaround for whitespace text within that ends up adding space on the bottom
 }
 
-.header{
-    
-    // padding: 0 $space-unit*2;
-    // @include marginProp(padding-left);
-    // @include marginProp(padding-right);
+///Unusedd so far
+// //labels & buttons
+// .label,button{
+//     font-size: 12px;
+//     font-weight: 700;
+//     line-height: 20px;
+// }
 
+//# Setup static components
+
+//## Header
+.header{
+    background-color: colors.$primary-dark;
     @include tablet{
         display: flex;
         justify-content: center;
     }
 
     .logo{
-        padding: $space-unit*2 0;
+        padding: $padding-2 0;// ($padding-3 - $padding-1) 0;
+        // padding-top: $padding-3;
     }
-
     
     &__content{
         max-width: $maxWidth;
@@ -143,20 +109,16 @@ h4{
         flex-direction: column;
         align-items: stretch;
         text-align: center;
-
         flex-grow: 1;
-
+        padding-top: $padding-2;
+        // gap: $padding-1;
 
         @include tablet{
             flex-direction: row;
             align-items: center;
+            padding-top:0;
             margin-left: $margins_Tablet;
             margin-right: $margins_Tablet;
-
-            // * {
-            //     margin-left: $space-unit*2;
-            //     margin-right: $space-unit*2;
-            // }
         }
 
         @include desktop{
@@ -164,26 +126,26 @@ h4{
         }
     }
 }
-
+//## Main Navigation
 .main-nav{
-    margin: 0;
-    
+    &, a{
+        color: colors.$secondary-light;
+    }
     
     ul{
+        padding-top: $padding-1;
         list-style-type: none;
         display: flex;
 
         @include tablet{
             margin-left: 72px;
-            gap: 56px;
+            gap: $padding-8;
         }
 
         @include desktop{
             margin-left: 64px;
-            gap: 32px;
+            gap: $padding-5;
         }
-
-
     }
 
     &__item{
@@ -194,15 +156,19 @@ h4{
         padding-bottom: $padding-2;
         flex-grow: 1;
 
+
+        &--active, &:hover{
+            color: colors.$secondary-light;
+            border-bottom: $border-width solid colors.$primary-light;
+        }
+
         &--active{
             font-weight: bold;
-            border-bottom: $border-width solid colors.$primary-light;
         }
 
         @include tablet{
             width: unset;
             padding: $padding-4 - $border-width 0;
-            
         }
 
         @include desktop{
@@ -210,76 +176,48 @@ h4{
         }
     }
 }
-
-
-
-
+//## Footer
 .footer{
+    // color: colors.$primary-light;
+    // background-color: colors.$primary-dark;
     display: flex;
     justify-content: center;
 
     &__header{
         padding-bottom: 0;
         max-width: 220px;
-        @include tablet{
-            order: -2;
-        }
-        
+        order: -2;
     }
 
     &__content{
         @include mixins.common-content-container;
         @include mixins.common-flex-container(column);
         width: auto;
-        // flex-basis: 100%;
         flex: 1;
-        // width: 100%;
-        position: relative;
-
-        
 
         @include tablet{
-            flex-direction: row;
-            flex-wrap: wrap;
+            flex-flow: row wrap;
             align-items: baseline;
-            // row-gap: 24px;
             & > *{
-                // flex-basis: 237px;
-                
                 flex: 1;
             }
-        }
-
-        @include desktop{
-            margin: auto; 
-
-            
         }
     }
 
     .logo{
-        // margin: 16px 0;
-        margin-top: 32px;
+        margin-top: $padding-5;
         @include tablet{
             margin: 0;
-            // position: absolute;
-            // top:62px;
-            // right:36px;
             order: -1;
             text-align: right;
         }
     }
 
     &__icon-list{
-        height: auto;
-        margin-bottom: 8px;
+        margin-bottom: $padding-2;
         display: flex;
-        gap: 32px;
-
-        @include tablet{
-            order: -2;
-        }
-        
+        gap: $padding-5;
+        order: -2;        
     }
 
     &__icon{
@@ -289,13 +227,9 @@ h4{
     &__contact-list{
         @include mixins.common-flex-container-items(column);
         list-style-type: none;
-        width: 100%;
         margin-bottom: $padding-2;
         @include tablet{
             flex-direction: row;
-        }
-
-        @include desktop{
         }
     }
 
@@ -306,67 +240,10 @@ h4{
         justify-content: center;
         align-items: baseline;
         flex: 1;
-        
-
-        @include tablet{
-            // flex-basis: 237px;
-            // flex-grow: 1;
-        }
     }
 
     &__copyright{
-        flex-basis: 100%;
-        width: 100%;
-        font-size: 10px;
-
-        @include tablet{
-            font-size: 14px;
-        }
-        // @extend .label;
-
+        flex: 100%;
+        font-size: .925em;
     }
-    
 }
-
-
-// .content-container{
-//     max-width: $maxWidth;
-//     // margin: 16px;
-//     // padding: $margins_Mobile;
-//     padding-left: $margins_Mobile;
-//     padding-right: $margins_Mobile;
-//     // margin: auto;
-
-//     @include tablet{
-//         // margin: 36px;
-//         // padding: $margins_Tablet;
-//         padding-left: $margins_Tablet;
-//         padding-right: $margins_Tablet;
-//     }
-//     @include desktop{
-//         // padding: $margins_Tablet $margins_Tablet;
-//         padding-left: $margins_Tablet;
-//         padding-right: $margins_Tablet;
-//         // padding: 0 36px;
-//         margin: 0 $margins_Desktop;
-//     }
-// }
-
-// @mixin page-content-layout{
-//     max-width: $maxWidth;
-//     padding-left: $margins_Mobile;
-//     padding-right: $margins_Mobile;
-    
-//     @include tablet{
-//         padding-left: $margins_Tablet;
-//         padding-right: $margins_Tablet;
-        
-//     }
-//     @include desktop{
-//         padding-left: $margins_Tablet;
-//         padding-right: $margins_Tablet;
-//         // padding: 0 36px;
-//         margin-left: $margins_Desktop;
-//         margin-right: $margins_Desktop;
-//     }
-// }

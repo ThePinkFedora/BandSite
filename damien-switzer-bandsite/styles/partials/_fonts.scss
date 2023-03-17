@@ -1,18 +1,90 @@
+@use './breakpoints' as *;
+
+$font-family: 'Avenir Next';
+
 @font-face {
-    font-family: 'Avenir Next';
+    font-family: $font-family;
     src: url("../assets/fonts/AvenirNextLTPro-Regular.otf") format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Avenir Next';
+    font-family: $font-family;
     src: url("../assets/fonts/AvenirNextLTPro-Demi.otf") format('opentype');
     font-weight: 600;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Avenir Next';
+    font-family: $font-family;
     src: url("../assets/fonts/AvenirNextLTPro-Bold.otf") format('opentype');
     font-weight: bold;
     font-style: normal;
 }
+
+
+$size-pageheader-mobile: 1.5rem; //24px;
+$height-pageheader-mobile: 2rem; //32px;
+$weight-pageheader-mobile: 700;
+$font-pageheader-mobile: $weight-pageheader-mobile #{$size-pageheader-mobile}/#{$height-pageheader-mobile} $font-family;
+
+$size-sectionheader-mobile: 1.5rem; //24px;
+$height-sectionheader-mobile: 2rem; //32px;
+// $weight-sectionheader-mobile: 700; //Style guide says 700, but looks more like 600
+$weight-sectionheader-mobile: 600;
+$font-sectionheader-mobile: $weight-sectionheader-mobile #{$size-sectionheader-mobile}/#{$height-sectionheader-mobile} $font-family;
+
+$size-subheader-mobile: 0.875rem; //14px;
+$height-subheader-mobile: 1.375rem; //22px;
+$weight-subheader-mobile: 600;
+$font-subheader-mobile: $weight-subheader-mobile #{$size-subheader-mobile}/#{$height-subheader-mobile} $font-family;
+
+$size-body-mobile: 0.8125rem; //13px;
+$height-body-mobile: 1.125rem; //18px;
+$weight-body-mobile: 400;
+$font-body-mobile: $weight-body-mobile #{$size-body-mobile}/#{$height-body-mobile} $font-family;
+
+$size-footer-mobile: 0.8125rem; //13px;
+$height-footer-mobile: 1.125rem; //18px;
+$weight-footer-mobile: 400;
+$font-footer-mobile: $weight-footer-mobile #{$size-footer-mobile}/#{$height-footer-mobile} $font-family;
+
+$size-labelsbuttons-mobile: 0.625rem; //10px;
+$height-labelsbuttons-mobile: 1.25rem; //20px;
+$weight-labelsbuttons-mobile: 700;
+$font-labelsbuttons-mobile: $weight-labelsbuttons-mobile #{$size-labelsbuttons-mobile}/#{$height-labelsbuttons-mobile} $font-family;
+
+
+$size-pageheader-tablet: 3.75rem; //60px;
+$height-pageheader-tablet: 4.25rem; //68px;
+$weight-pageheader-tablet: 700;
+$font-pageheader-tablet: $weight-pageheader-tablet #{$size-pageheader-tablet}/#{$height-pageheader-tablet} $font-family;
+
+$size-sectionheader-tablet: 2.25rem; //36px;
+$height-sectionheader-tablet: 2.75rem; //44px;
+// $weight-sectionheader-tablet: 700; //Style guide says 700, but looks more like 600
+$weight-sectionheader-tablet: 600; 
+$font-sectionheader-tablet: $weight-sectionheader-tablet #{$size-sectionheader-tablet}/#{$height-sectionheader-tablet} $font-family;
+
+$size-subheader-tablet: 1.5rem; //24px;
+$height-subheader-tablet: 2rem; //32px;
+$weight-subheader-tablet: 600;
+$font-subheader-tablet: $weight-subheader-tablet #{$size-subheader-tablet}/#{$height-subheader-tablet} $font-family;
+
+$size-body-tablet: 0.875rem; //14px;
+$height-body-tablet: 1.375rem; //22px;
+$weight-body-tablet: 400;
+$font-body-tablet: $weight-body-tablet #{$size-body-tablet}/#{$height-body-tablet} $font-family;
+
+$size-footer-tablet: 0.875rem; //14px;
+$height-footer-tablet: 1.25rem; //20px;
+$weight-footer-tablet: 400;
+$font-footer-tablet: $weight-footer-tablet #{$size-footer-tablet}/#{$height-footer-tablet} $font-family;
+
+$size-labelsbuttons-tablet: 0.75rem; //12px;
+$height-labelsbuttons-tablet: 1.25rem; //20px;
+$weight-labelsbuttons-tablet: 700;
+$font-labelsbuttons-tablet: $weight-labelsbuttons-tablet #{$size-labelsbuttons-tablet}/#{$height-labelsbuttons-tablet} $font-family;
+
+
+
+

@@ -20,61 +20,39 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-html {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: "Avenir Next";
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 18px;
-  color: #323232;
-  background-color: #FFFFFF;
-  margin: 0;
-}
-@media (min-width: 768px) {
-  body {
-    font-size: 14px;
-    line-height: 22px;
-  }
-}
-
-a, address, cite {
   color: unset;
   font-style: normal;
   text-decoration: none;
 }
 
-.header, .footer {
-  color: #FFFFFF;
-  background-color: #323232;
-}
-
-h1, h2 {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 32px;
+body {
+  font: 400 0.8125rem/1.125rem "Avenir Next";
+  color: #323232;
+  background-color: #FFFFFF;
 }
 @media (min-width: 768px) {
-  h1, h2 {
-    font-size: 60px;
-    line-height: 68px;
+  body {
+    font: 400 0.875rem/1.375rem "Avenir Next";
+  }
+}
+
+h1 {
+  font: 700 1.5rem/2rem "Avenir Next";
+}
+@media (min-width: 768px) {
+  h1 {
+    font: 700 3.75rem/4.25rem "Avenir Next";
   }
 }
 
 h2 {
-  font-weight: 600; /**These are supposed to be 700, but they definetely look more like 600 in the mockup**/
-  padding: 22px 0 14px 0;
+  font: 600 1.5rem/2rem "Avenir Next";
+  padding: 22px 0 8px 0;
   width: 100%;
 }
 @media (min-width: 768px) {
   h2 {
-    font-size: 36px;
-    line-height: 44px;
+    font: 600 2.25rem/2.75rem "Avenir Next";
     padding: 50px 0 24px 0;
   }
 }
@@ -85,15 +63,12 @@ h2 {
 }
 
 h3, .subheader, .about__quote q {
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 22px;
-  padding: 22px 0 14px 0;
+  font: 600 0.875rem/1.375rem "Avenir Next";
+  padding: 22px 0 12px 0;
 }
 @media (min-width: 768px) {
   h3, .subheader, .about__quote q {
-    font-size: 24px;
-    line-height: 32px;
+    font: 600 1.5rem/2rem "Avenir Next";
     padding-top: 48px;
     padding-bottom: 20px;
   }
@@ -103,21 +78,24 @@ h4 {
   font-weight: 600;
 }
 
-.label, button {
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 20px;
+.footer {
+  font: 400 0.8125rem/1.125rem "Avenir Next";
+  color: #FFFFFF;
+  background-color: #323232;
 }
-
 @media (min-width: 768px) {
   .footer {
-    line-height: 20px;
+    font: 400 0.875rem/1.25rem "Avenir Next";
   }
 }
+
 .logo {
   line-height: 0;
 }
 
+.header {
+  background-color: #323232;
+}
 @media (min-width: 768px) {
   .header {
     display: flex;
@@ -125,7 +103,7 @@ h4 {
   }
 }
 .header .logo {
-  padding: 16px 0;
+  padding: 8px 0;
 }
 .header__content {
   max-width: 1020px;
@@ -135,11 +113,13 @@ h4 {
   align-items: stretch;
   text-align: center;
   flex-grow: 1;
+  padding-top: 8px;
 }
 @media (min-width: 768px) {
   .header__content {
     flex-direction: row;
     align-items: center;
+    padding-top: 0;
     margin-left: 36px;
     margin-right: 36px;
   }
@@ -150,10 +130,11 @@ h4 {
   }
 }
 
-.main-nav {
-  margin: 0;
+.main-nav, .main-nav a {
+  color: #FAFAFA;
 }
 .main-nav ul {
+  padding-top: 4px;
   list-style-type: none;
   display: flex;
 }
@@ -175,9 +156,12 @@ h4 {
   padding-bottom: 8px;
   flex-grow: 1;
 }
+.main-nav__item--active, .main-nav__item:hover {
+  color: #FAFAFA;
+  border-bottom: 3px solid #FFFFFF;
+}
 .main-nav__item--active {
   font-weight: bold;
-  border-bottom: 3px solid #FFFFFF;
 }
 @media (min-width: 768px) {
   .main-nav__item {
@@ -198,11 +182,7 @@ h4 {
 .footer__header {
   padding-bottom: 0;
   max-width: 220px;
-}
-@media (min-width: 768px) {
-  .footer__header {
-    order: -2;
-  }
+  order: -2;
 }
 .footer__content {
   max-width: 1020px;
@@ -214,7 +194,6 @@ h4 {
   gap: 16px;
   width: auto;
   flex: 1;
-  position: relative;
 }
 @media (min-width: 768px) {
   .footer__content {
@@ -236,17 +215,11 @@ h4 {
 }
 @media (min-width: 768px) {
   .footer__content {
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     align-items: baseline;
   }
   .footer__content > * {
     flex: 1;
-  }
-}
-@media (min-width: 1280px) {
-  .footer__content {
-    margin: auto;
   }
 }
 .footer .logo {
@@ -260,15 +233,10 @@ h4 {
   }
 }
 .footer__icon-list {
-  height: auto;
   margin-bottom: 8px;
   display: flex;
   gap: 32px;
-}
-@media (min-width: 768px) {
-  .footer__icon-list {
-    order: -2;
-  }
+  order: -2;
 }
 .footer__icon {
   height: 24px;
@@ -278,7 +246,6 @@ h4 {
   flex-direction: column;
   gap: 16px;
   list-style-type: none;
-  width: 100%;
   margin-bottom: 8px;
 }
 @media (min-width: 768px) {
@@ -307,21 +274,15 @@ h4 {
   }
 }
 .footer__copyright {
-  flex-basis: 100%;
-  width: 100%;
-  font-size: 10px;
-}
-@media (min-width: 768px) {
-  .footer__copyright {
-    font-size: 14px;
-  }
+  flex: 100%;
+  font-size: 0.925em;
 }
 
 .intro {
   color: #FFFFFF;
   width: 100%;
   max-height: 630px;
-  aspect-ratio: 1.7;
+  aspect-ratio: 1.72;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -356,8 +317,8 @@ h4 {
   z-index: -1;
 }
 .hero__image {
-  display: block;
   width: 100%;
+  display: block;
 }
 .hero::after {
   content: ".";
@@ -406,29 +367,24 @@ h4 {
     gap: 36px;
   }
 }
+.about__quote {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 680px;
+}
 .about__quote q {
   display: block;
-  padding: 0 0 4px 0;
+  padding: 0;
 }
 @media (min-width: 768px) {
   .about__quote q {
-    padding: 0 0 12px 0;
+    font-size: 23px;
   }
 }
 .about__quote figcaption {
   font-weight: 600;
-  font-size: 14px;
-  line-height: 22px;
-}
-@media (min-width: 768px) {
-  .about__quote figcaption {
-    font-size: 15px;
-  }
-}
-@media (min-width: 1280px) {
-  .about__quote {
-    max-width: 720px;
-  }
+  word-spacing: 0.2em;
 }
 @media (min-width: 768px) {
   .about__content {
@@ -493,8 +449,7 @@ h4 {
     margin-right: auto;
   }
 }
-
-.gallery {
+.photo-gallery .gallery {
   display: flex;
   flex-direction: row;
   gap: 16px;
@@ -502,15 +457,15 @@ h4 {
   flex-wrap: wrap;
 }
 @media (min-width: 768px) {
-  .gallery {
+  .photo-gallery .gallery {
     gap: 24px;
   }
 }
-.gallery__image {
+.photo-gallery .gallery__image {
   width: 100%;
 }
 @media (min-width: 768px) {
-  .gallery__image {
+  .photo-gallery .gallery__image {
     width: calc(33% - 14px);
   }
 }/*# sourceMappingURL=bio.css.map */

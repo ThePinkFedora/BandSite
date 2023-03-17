@@ -9,24 +9,20 @@
 
 
 .intro{
-
     color: colors.$primary-light; 
 
     width: 100%;
     max-height: 630px;
-    aspect-ratio: 1.7;
+    aspect-ratio: 1.72;
     display: flex;
     justify-content: center;
     align-items: center;
-
-
 
     position: relative;   
     z-index: 1;
     overflow: hidden;
 
     &__content{
-        // @include page-content-layout; 
         @include mixins.common-content-container(false);
         flex-grow: 1
     }
@@ -36,14 +32,14 @@
 .hero{
     width: 100%;
     position: absolute;
-    // inset: 0;
     left:0;
     bottom: 0;
     z-index: -1;
 
     &__image{
-        display: block;
         width: 100%;
+        display: block;
+        
     }
 
     //Darken overlay
@@ -72,33 +68,28 @@
     }
 
     &__quote{
-        // max-width: 792px;
+        display: flex;
+        flex-direction: column;
+        gap: units.$padding-2;
+        max-width: 680px;
+
         q{
             @extend .subheader;
             display: block;
-            padding: 0 0 4px 0;
+            padding: 0;
+
             @include tablet{
-                padding: 0 0 12px 0;
+                font-size: 23px; ///Default subheader looks slightly too big
             }
         }
 
         figcaption{
             font-weight: 600;
-            font-size: 14px;
-            line-height: 22px;
-
-            @include tablet{
-                font-size: 15px;
-            }
-        }
-
-        @include desktop{
-            max-width: 720px;
+            word-spacing: .2em;
         }
     }
 
     &__content{
-        // margin: auto;
         @include tablet{
             max-width: 83%;
         }
@@ -127,6 +118,7 @@
                 flex-direction: row;
             }
         }
+        
 
     }
 }
@@ -138,19 +130,18 @@
     &__content{
         @include mixins.common-content-container;
     }
-}
 
 
-
-.gallery{
-    @include mixins.common-flex-container-items;
-    justify-content: space-between;
-    flex-wrap: wrap;
-
-    &__image{
-        width: 100%;
-        @include tablet{
-            width: calc(33% - 14px);
+    .gallery{
+        @include mixins.common-flex-container-items;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    
+        &__image{
+            width: 100%;
+            @include tablet{
+                width: calc(33% - 14px);
+            }
         }
     }
 }
