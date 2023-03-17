@@ -49,14 +49,9 @@ a, address, cite {
   text-decoration: none;
 }
 
-img {
-  max-width: 100%;
-}
-
 .header, .footer {
   color: #FFFFFF;
   background-color: #323232;
-  margin: 0;
 }
 
 h1, h2 {
@@ -74,6 +69,7 @@ h1, h2 {
 h2 {
   font-weight: 600; /**These are supposed to be 700, but they definetely look more like 600 in the mockup**/
   padding: 22px 0 14px 0;
+  width: 100%;
 }
 @media (min-width: 768px) {
   h2 {
@@ -107,9 +103,9 @@ h4 {
   font-weight: 600;
 }
 
-.label, .footer__copyright, button {
+.label, button {
   font-size: 12px;
-  font-weight: bold 700;
+  font-weight: 700;
   line-height: 20px;
 }
 
@@ -120,9 +116,17 @@ h4 {
 }
 .logo {
   line-height: 0;
-  padding: 16px 0;
 }
 
+@media (min-width: 768px) {
+  .header {
+    display: flex;
+    justify-content: center;
+  }
+}
+.header .logo {
+  padding: 16px 0;
+}
 .header__content {
   max-width: 1020px;
   margin: auto;
@@ -130,6 +134,7 @@ h4 {
   flex-direction: column;
   align-items: stretch;
   text-align: center;
+  flex-grow: 1;
 }
 @media (min-width: 768px) {
   .header__content {
@@ -187,19 +192,56 @@ h4 {
 }
 
 .footer {
-  padding-top: 8px;
+  display: flex;
+  justify-content: center;
+}
+.footer__header {
+  padding-bottom: 0;
+  max-width: 220px;
+}
+@media (min-width: 768px) {
+  .footer__header {
+    order: -2;
+  }
 }
 .footer__content {
-  position: relative;
+  max-width: 1020px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 16px;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: auto;
+  flex: 1;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .footer__content {
+    margin-left: 36px;
+    margin-right: 36px;
+    margin-bottom: 36px;
+  }
+}
+@media (min-width: 1280px) {
+  .footer__content {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (min-width: 768px) {
+  .footer__content {
+    gap: 36px;
+  }
 }
 @media (min-width: 768px) {
   .footer__content {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 32px;
+    align-items: baseline;
+  }
+  .footer__content > * {
+    flex: 1;
   }
 }
 @media (min-width: 1280px) {
@@ -207,21 +249,14 @@ h4 {
     margin: auto;
   }
 }
-.footer h2 {
-  margin-bottom: 0;
-}
-.footer p {
-  margin: 0;
-  padding: 0;
-}
 .footer .logo {
-  padding: 0;
+  margin-top: 32px;
 }
 @media (min-width: 768px) {
   .footer .logo {
-    position: absolute;
-    top: 48px;
-    right: 36px;
+    margin: 0;
+    order: -1;
+    text-align: right;
   }
 }
 .footer__icon-list {
@@ -229,60 +264,56 @@ h4 {
   margin-bottom: 8px;
   display: flex;
   gap: 32px;
-  align-items: center;
 }
 @media (min-width: 768px) {
   .footer__icon-list {
-    margin-top: 8px;
+    order: -2;
   }
 }
 .footer__icon {
   height: 24px;
 }
 .footer__contact-list {
-  list-style-type: none;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  margin-bottom: 64px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
-}
-.footer__contact-list h4:first-child {
-  margin: 0;
-}
-.footer__contact-list h4 + h4 {
-  margin-top: 0;
+  gap: 16px;
+  list-style-type: none;
+  width: 100%;
+  margin-bottom: 8px;
 }
 @media (min-width: 768px) {
   .footer__contact-list {
-    margin-bottom: 16px;
+    gap: 24px;
+  }
+}
+@media (min-width: 768px) {
+  .footer__contact-list {
     flex-direction: row;
-    gap: 48px;
   }
 }
-@media (min-width: 1280px) {
-  .footer__contact-list {
-    gap: 80px;
-  }
-}
-.content-container, .footer__content {
-  max-width: 1020px;
-  padding-left: 16px;
-  padding-right: 16px;
+.footer__contact-item {
+  padding-bottom: 8px;
+  max-width: 232px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: baseline;
+  flex: 1;
 }
 @media (min-width: 768px) {
-  .content-container, .footer__content {
-    padding-left: 36px;
-    padding-right: 36px;
+  .footer__contact-item {
+    gap: 24px;
   }
 }
-@media (min-width: 1280px) {
-  .content-container, .footer__content {
-    padding-left: 36px;
-    padding-right: 36px;
-    margin: 0 auto;
+.footer__copyright {
+  flex-basis: 100%;
+  width: 100%;
+  font-size: 10px;
+}
+@media (min-width: 768px) {
+  .footer__copyright {
+    font-size: 14px;
   }
 }
 
@@ -292,6 +323,7 @@ h4 {
   max-height: 630px;
   aspect-ratio: 1.7;
   display: flex;
+  justify-content: center;
   align-items: center;
   position: relative;
   z-index: 1;
@@ -299,20 +331,18 @@ h4 {
 }
 .intro__content {
   max-width: 1020px;
-  padding-left: 16px;
-  padding-right: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
   flex-grow: 1;
 }
 @media (min-width: 768px) {
   .intro__content {
-    padding-left: 36px;
-    padding-right: 36px;
+    margin-left: 36px;
+    margin-right: 36px;
   }
 }
 @media (min-width: 1280px) {
   .intro__content {
-    padding-left: 36px;
-    padding-right: 36px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -321,10 +351,12 @@ h4 {
 .hero {
   width: 100%;
   position: absolute;
-  inset: 0;
+  left: 0;
+  bottom: 0;
   z-index: -1;
 }
 .hero__image {
+  display: block;
   width: 100%;
 }
 .hero::after {
@@ -332,28 +364,34 @@ h4 {
   background-color: #323232;
   opacity: 0.5;
   position: absolute;
-  inset: 0 0;
+  inset: 0;
   display: block;
-  width: 100%;
-  height: 100%;
   z-index: 1;
 }
 
 .about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.about__content-wrapper {
   max-width: 1020px;
   margin-left: 16px;
   margin-right: 16px;
   margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 @media (min-width: 768px) {
-  .about {
+  .about__content-wrapper {
     margin-left: 36px;
     margin-right: 36px;
     margin-bottom: 36px;
   }
 }
 @media (min-width: 1280px) {
-  .about {
+  .about__content-wrapper {
     margin-left: auto;
     margin-right: auto;
   }
@@ -392,20 +430,24 @@ h4 {
     max-width: 720px;
   }
 }
-.about__content {
-  margin: auto;
-}
 @media (min-width: 768px) {
   .about__content {
     max-width: 83%;
   }
 }
 .about__image {
-  aspect-ratio: 1.85;
+  width: 100%;
+  aspect-ratio: 1.845;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: bottom;
      object-position: bottom;
+}
+@media (min-width: 768px) {
+  .about__image {
+    -o-object-position: center;
+       object-position: center;
+  }
 }
 .about .bio__title {
   color: #000000;
@@ -427,6 +469,9 @@ h4 {
 }
 
 .photo-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #FAFAFA;
 }
 .photo-gallery__content {
@@ -460,6 +505,9 @@ h4 {
   .gallery {
     gap: 24px;
   }
+}
+.gallery__image {
+  width: 100%;
 }
 @media (min-width: 768px) {
   .gallery__image {

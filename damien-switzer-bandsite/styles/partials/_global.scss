@@ -2,6 +2,7 @@
 @use './breakpoints' as *;
 @use './units' as *;
 @use './fonts';
+@use './mixins';
 
 // @forward './colors';
 // @forward './breakpoints';
@@ -42,24 +43,14 @@ a, address,cite{
     text-decoration: none;
 }
 
-img{
-    max-width: 100%;
-}
+// img{
+//     max-width: 100%;
+// }
 
 .header, .footer{
-    color: colors.$primary-light;
+    color: colors.$primary-light; //White
     background-color: colors.$primary-dark; //BandSite-Black
-    margin: 0;
 }
-
-section, .footer{
-    // padding: $space-unit*2;
-
-    // @include tablet{
-    //     padding: $space-unit*4.5; 
-    // }
-}
-
 
 
 //Page Header
@@ -79,6 +70,7 @@ h2{
     font-weight: 600; /**These are supposed to be 700, but they definetely look more like 600 in the mockup**/
 
     padding: $pad-before-headlines-adjusted-mobile 0 $pad-after-headlines-adjusted-mobile 0;
+    width: 100%;
     @include tablet{
         font-size: 36px;
         // font-weight: 700;
@@ -114,7 +106,7 @@ h4{
 //labels & buttons
 .label,button{
     font-size: 12px;
-    font-weight: bold 700;
+    font-weight: 700;
     line-height: 20px;
 }
 
@@ -126,13 +118,23 @@ h4{
 
 .logo{
     line-height: 0;
-    padding: $space-unit*2 0;
 }
 
 .header{
+    
     // padding: 0 $space-unit*2;
     // @include marginProp(padding-left);
     // @include marginProp(padding-right);
+
+    @include tablet{
+        display: flex;
+        justify-content: center;
+    }
+
+    .logo{
+        padding: $space-unit*2 0;
+    }
+
     
     &__content{
         max-width: $maxWidth;
@@ -142,6 +144,7 @@ h4{
         align-items: stretch;
         text-align: center;
 
+        flex-grow: 1;
 
 
         @include tablet{
@@ -164,6 +167,8 @@ h4{
 
 .main-nav{
     margin: 0;
+    
+    
     ul{
         list-style-type: none;
         display: flex;
@@ -210,84 +215,71 @@ h4{
 
 
 .footer{
-    // padding: $space-unit*2;
-    
-    // flex-direction: column;
-    
-    padding-top: $space-unit; //Workaround for preventing margin-collapse
+    display: flex;
+    justify-content: center;
+
+    &__header{
+        padding-bottom: 0;
+        max-width: 220px;
+        @include tablet{
+            order: -2;
+        }
+        
+    }
 
     &__content{
-        @extend .content-container;
+        @include mixins.common-content-container;
+        @include mixins.common-flex-container(column);
+        width: auto;
+        // flex-basis: 100%;
+        flex: 1;
+        // width: 100%;
         position: relative;
-        display: flex;
-        flex-direction: column;
-        
-        // margin: $space-unit*2;
-        // padding: $space-unit*2;
 
-        gap: $gutters_Mobile;
         
+
         @include tablet{
-            // margin: $space-unit*4;
-            // padding: $space-unit*4.5;
-            
             flex-direction: row;
             flex-wrap: wrap;
-            
-            ///$gutters_Tablet is 24px, but it looks a lot more like 32px
-            ///gap: $gutters_Tablet;
-            gap: 32px; 
-            
+            align-items: baseline;
+            // row-gap: 24px;
+            & > *{
+                // flex-basis: 237px;
+                
+                flex: 1;
+            }
         }
 
         @include desktop{
-            // gap: 64px;
             margin: auto; 
+
+            
         }
     }
 
-    h2{
-        // margin-top: 8px;
-        margin-bottom: 0;
-        // margin-right: 24px;
-        // width: 220px;
-        // order: -2;
-    }
-    p{
-        margin: 0;
-        padding: 0;
-    }
-
     .logo{
-        padding: 0;
+        // margin: 16px 0;
+        margin-top: 32px;
         @include tablet{
-            position: absolute;
-            top:48px;
-            right:36px;
-            // top:40px;
+            margin: 0;
+            // position: absolute;
+            // top:62px;
             // right:36px;
-            // order: -1;
-            // align-self: flex-end;
+            order: -1;
+            text-align: right;
         }
     }
 
     &__icon-list{
-        // height: 24px;
         height: auto;
-        // margin-top: 16px;
-        // margin-bottom: 32px;
-        
         margin-bottom: 8px;
         display: flex;
         gap: 32px;
-        align-items: center;
-        // order: -2;
 
         @include tablet{
-            margin-top: 8px;
+            order: -2;
         }
-
-        // justify-content: space-between;
+        
     }
 
     &__icon{
@@ -295,81 +287,86 @@ h4{
     }
 
     &__contact-list{
+        @include mixins.common-flex-container-items(column);
         list-style-type: none;
         width: 100%;
-        margin: 0;
-        padding: 0;
-        margin-bottom: 64px;
-        display: flex;
-        flex-direction: column;
-        gap: 32px;
-
-        h4:first-child{
-            margin: 0;
-            // margin-bottom: 0;
-        }
-        h4 + h4{
-            margin-top: 0;
-        }
-
+        margin-bottom: $padding-2;
         @include tablet{
-            margin-bottom: 16px;
             flex-direction: row;
-            // gap: 24px;
-            gap: 48px;
         }
 
         @include desktop{
-            gap:80px; 
+        }
+    }
+
+    &__contact-item{
+        padding-bottom: 8px;
+        max-width: 232px;
+        @include mixins.common-flex-container-items(column);
+        justify-content: center;
+        align-items: baseline;
+        flex: 1;
+        
+
+        @include tablet{
+            // flex-basis: 237px;
+            // flex-grow: 1;
         }
     }
 
     &__copyright{
-        @extend .label;
+        flex-basis: 100%;
+        width: 100%;
+        font-size: 10px;
+
+        @include tablet{
+            font-size: 14px;
+        }
+        // @extend .label;
 
     }
     
 }
 
 
-.content-container{
-    max-width: $maxWidth;
-    // margin: 16px;
-    // padding: $margins_Mobile;
-    padding-left: $margins_Mobile;
-    padding-right: $margins_Mobile;
-    // margin: auto;
+// .content-container{
+//     max-width: $maxWidth;
+//     // margin: 16px;
+//     // padding: $margins_Mobile;
+//     padding-left: $margins_Mobile;
+//     padding-right: $margins_Mobile;
+//     // margin: auto;
 
-    @include tablet{
-        // margin: 36px;
-        // padding: $margins_Tablet;
-        padding-left: $margins_Tablet;
-        padding-right: $margins_Tablet;
-    }
-    @include desktop{
-        // padding: $margins_Tablet $margins_Tablet;
-        padding-left: $margins_Tablet;
-        padding-right: $margins_Tablet;
-        // padding: 0 36px;
-        margin: 0 $margins_Desktop;
-    }
-}
+//     @include tablet{
+//         // margin: 36px;
+//         // padding: $margins_Tablet;
+//         padding-left: $margins_Tablet;
+//         padding-right: $margins_Tablet;
+//     }
+//     @include desktop{
+//         // padding: $margins_Tablet $margins_Tablet;
+//         padding-left: $margins_Tablet;
+//         padding-right: $margins_Tablet;
+//         // padding: 0 36px;
+//         margin: 0 $margins_Desktop;
+//     }
+// }
 
-@mixin page-content-layout{
-    max-width: $maxWidth;
-    padding-left: $margins_Mobile;
-    padding-right: $margins_Mobile;
+// @mixin page-content-layout{
+//     max-width: $maxWidth;
+//     padding-left: $margins_Mobile;
+//     padding-right: $margins_Mobile;
     
-    @include tablet{
-        padding-left: $margins_Tablet;
-        padding-right: $margins_Tablet;
+//     @include tablet{
+//         padding-left: $margins_Tablet;
+//         padding-right: $margins_Tablet;
         
-    }
-    @include desktop{
-        padding-left: $margins_Tablet;
-        padding-right: $margins_Tablet;
-        // padding: 0 36px;
-        margin-left: $margins_Desktop;
-        margin-right: $margins_Desktop;
-    }
-}
+//     }
+//     @include desktop{
+//         padding-left: $margins_Tablet;
+//         padding-right: $margins_Tablet;
+//         // padding: 0 36px;
+//         margin-left: $margins_Desktop;
+//         margin-right: $margins_Desktop;
+//     }
+// }
