@@ -79,7 +79,7 @@
             padding: 0;
 
             @include tablet{
-                font-size: 23px; ///Default subheader looks slightly too big
+                font-size: 1.4375rem;//23px; ///Default subheader looks slightly too big
             }
         }
 
@@ -134,14 +134,22 @@
 
     .gallery{
         @include mixins.common-flex-container-items;
-        justify-content: space-between;
         flex-wrap: wrap;
+        list-style-type: none;
+
+        &__item{
+            flex: 1 1 100%;
+            @include tablet{
+                flex: 1 1 30%;
+            }
+        }
     
         &__image{
-            width: 100%;
-            @include tablet{
-                width: calc(33% - 14px);
-            }
+            // object-fit: cover;
+            max-width: 100%;
+            // height: auto;
+            display: block;
+            // vertical-align: middle;
         }
     }
 }

@@ -36,12 +36,12 @@ h1{
 //## Section Header
 h2{
     font: fonts.$font-sectionheader-mobile;
-    padding: $pad-before-headlines-adjusted-mobile 0 $pad-after-headlines-h2-adjusted-mobile 0;
+    padding: $pad-before-headlines-mobile 0 $pad-after-headlines-h2-mobile 0;
     width: 100%;
 
     @include tablet{
         font: fonts.$font-sectionheader-tablet;
-        padding: $pad-before-headlines-adjusted-tablet 0 $pad-after-headlines-adjusted-tablet 0;
+        padding: $pad-before-headlines-tablet 0 $pad-after-headlines-tablet 0;
     }
 
     @include desktop{
@@ -51,7 +51,7 @@ h2{
 //## Subheader
 h3, .subheader{
     font: fonts.$font-subheader-mobile;
-    padding: $pad-before-headlines-adjusted-mobile 0 $pad-after-headlines-h3-adjusted-mobile 0;
+    padding: $pad-before-headlines-mobile 0 $pad-after-headlines-h3-mobile 0;
 
     @include tablet{
         font: fonts.$font-subheader-tablet;
@@ -79,14 +79,6 @@ h4{
     line-height: 0; //Workaround for whitespace text within that ends up adding space on the bottom
 }
 
-///Unusedd so far
-// //labels & buttons
-// .label,button{
-//     font-size: 12px;
-//     font-weight: 700;
-//     line-height: 20px;
-// }
-
 //# Setup static components
 
 //## Header
@@ -111,7 +103,6 @@ h4{
         text-align: center;
         flex-grow: 1;
         padding-top: $padding-2;
-        // gap: $padding-1;
 
         @include tablet{
             flex-direction: row;
@@ -128,42 +119,38 @@ h4{
 }
 //## Main Navigation
 .main-nav{
-    &, a{
-        color: colors.$secondary-light;
-    }
+    color: colors.$secondary-gray;
     
-    ul{
+    &__list{
         padding-top: $padding-1;
         list-style-type: none;
         display: flex;
 
         @include tablet{
-            margin-left: 72px;
+            margin-left: 4.5rem; //72px;
             gap: $padding-8;
         }
 
         @include desktop{
-            margin-left: 64px;
+            margin-left: $padding-9;
             gap: $padding-5;
         }
     }
 
     &__item{
-        $border-width: 3px;
-
+        $border-width: 0.1875rem; //3px;
         width: 100%;
-        margin: 0;
         padding-bottom: $padding-2;
         flex-grow: 1;
 
-
         &--active, &:hover{
-            color: colors.$secondary-light;
+            color: colors.$primary-light;
             border-bottom: $border-width solid colors.$primary-light;
         }
 
         &--active{
-            font-weight: bold;
+            // font-weight: bold; ///Style guide says bold dut looks more like demi
+            font-weight: 600;
         }
 
         @include tablet{
@@ -234,7 +221,7 @@ h4{
     }
 
     &__contact-item{
-        padding-bottom: 8px;
+        padding-bottom: $padding-2; //8px;
         max-width: 232px;
         @include mixins.common-flex-container-items(column);
         justify-content: center;
