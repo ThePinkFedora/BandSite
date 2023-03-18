@@ -151,9 +151,7 @@ h4 {
   }
 }
 .main-nav__item {
-  width: 100%;
-  padding-bottom: 0.5rem;
-  flex-grow: 1;
+  flex: 1;
 }
 .main-nav__item--active, .main-nav__item:hover {
   color: #FFFFFF;
@@ -162,15 +160,18 @@ h4 {
 .main-nav__item--active {
   font-weight: 600;
 }
+.main-nav__link {
+  display: block;
+  padding-bottom: 0.5rem;
+}
 @media (min-width: 768px) {
-  .main-nav__item {
-    width: unset;
-    padding: 1.3125rem 0;
+  .main-nav__link {
+    padding: 1.5rem 0;
   }
 }
 @media (min-width: 1280px) {
-  .main-nav__item {
-    padding: 1.8125rem 0;
+  .main-nav__link {
+    padding: 2rem 0;
   }
 }
 

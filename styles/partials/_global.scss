@@ -139,9 +139,7 @@ h4{
 
     &__item{
         $border-width: 0.1875rem; //3px;
-        width: 100%;
-        padding-bottom: $padding-2;
-        flex-grow: 1;
+        flex: 1;
 
         &--active, &:hover{
             color: colors.$primary-light;
@@ -152,14 +150,17 @@ h4{
             // font-weight: bold; ///Style guide says bold dut looks more like demi
             font-weight: 600;
         }
+    }
 
+    &__link{
+        display: block;
+        padding-bottom: $padding-2;
         @include tablet{
-            width: unset;
-            padding: $padding-4 - $border-width 0;
+            padding: $padding-4  0;
         }
 
         @include desktop{
-            padding: $padding-5 - $border-width 0;
+            padding: $padding-5 0; 
         }
     }
 }
