@@ -140,6 +140,7 @@
         &__item{
             flex: 1 1 100%;
             @include tablet{
+                //This is the way to go, the ideal flex strategy. Ideally we should try to do something like this for the footer as well.
                 flex: 1 1 30%;
             }
         }
@@ -150,6 +151,15 @@
             // height: auto;
             display: block;
             // vertical-align: middle;
+
+
+            //Effects
+            filter:grayscale(1);
+            transition: filter 1s ease-out;
+            
+            &:hover{
+                filter: grayscale(0);
+            }
         }
     }
 }

@@ -471,4 +471,9 @@ h4 {
 .photo-gallery .gallery__image {
   max-width: 100%;
   display: block;
+  filter: grayscale(1);
+  transition: filter 1s ease-out;
+}
+.photo-gallery .gallery__image:hover {
+  filter: grayscale(0);
 }/*# sourceMappingURL=bio.css.map */
