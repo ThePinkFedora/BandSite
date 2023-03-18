@@ -7,3 +7,5 @@
 #Ignore scss map files
 *.css.map
 
+#Development planning files
+/_Development

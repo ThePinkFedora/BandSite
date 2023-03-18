@@ -178,7 +178,7 @@ h4 {
   display: flex;
   justify-content: center;
 }
-.footer__header {
+.footer__heading {
   padding-bottom: 0;
   max-width: 220px;
   order: -2;
