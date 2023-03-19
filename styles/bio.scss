@@ -59,14 +59,21 @@
     .about-header{
         @include mixins.common-flex-container(column);
         &__image{
+            //Very cool, though there may be performance considerations
+            @keyframes scrollImage {
+                25%{
+                    object-position: top;
+                }
+                100%{
+                    object-position: bottom;
+                }
+            }
+
             width: 100%;
             aspect-ratio: 1.845;
             object-fit: cover;
             object-position: bottom;
-    
-            @include tablet{
-                object-position: center;
-            }
+            animation: scrollImage 10s ease-in-out 5s infinite;
         }
     
         &__quote{
@@ -74,7 +81,7 @@
             flex-direction: column;
             gap: units.$padding-3;
             max-width: 42rem;
-            
+
             q{
                 @extend .subheader;
                 display: block;

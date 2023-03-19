@@ -349,11 +349,16 @@ h4 {
      object-fit: cover;
   -o-object-position: bottom;
      object-position: bottom;
+  animation: scrollImage 10s ease-in-out 5s infinite;
 }
-@media (min-width: 768px) {
-  .about .about-header__image {
-    -o-object-position: center;
-       object-position: center;
+@keyframes scrollImage {
+  25% {
+    -o-object-position: top;
+       object-position: top;
+  }
+  100% {
+    -o-object-position: bottom;
+       object-position: bottom;
   }
 }
 .about .about-header__quote {
