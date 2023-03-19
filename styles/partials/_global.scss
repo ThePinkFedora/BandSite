@@ -4,6 +4,7 @@
 @use './units' as *;
 @use './fonts';
 @use './mixins';
+@forward './fonts';
 
 
 
@@ -171,19 +172,12 @@ h4{
     display: flex;
     justify-content: center;
 
-    &__heading{
-        padding-bottom: 0;
-        max-width: 13.75rem; //220px;
-        order: -2;
-    }
-
     &__content{
         @include mixins.common-content-container;
         display: flex;
         flex-direction: column;
         width: auto;
         flex: 1;
-
         gap: 1.5rem;
 
         @include tablet{
@@ -196,7 +190,13 @@ h4{
             }
         }
     }
-
+    //## Heading
+    &__heading{
+        padding-bottom: 0;
+        max-width: 13.75rem; //220px;
+        order: -2;
+    }
+    //## Icons
     .logo{
         margin-top: $padding-5;
         
@@ -206,39 +206,40 @@ h4{
             order: -1;
         }
     }
-
-    &__icon-list{
+    ///## Social Icons 
+    .social-icons{
         line-height: 0;
         display: flex;
         gap: $padding-5; //32px
-        order: -2;  
-    }
+        order: -2; 
 
-    &__icon{
-        height: 1.5rem; //24px;
+        &__icon{
+            height: 1.5rem; //24px;
+        }    
     }
-
-    &__contact-list{
+    //## Contacts
+    .contacts{
         @include mixins.common-flex-container-items(column);
         list-style-type: none;
         margin-bottom: $padding-2;
         gap: 1.5rem;
+
         @include tablet{
             flex-basis: 100%;
             flex-direction: row;
         }
-    }
 
-    &__contact-item{
-        max-width: 14.5rem; //232px;
-        @include mixins.common-flex-container-items(column);
-        justify-content: center;
-        align-items: baseline;
-        flex: 1;
+        &__item{
+            max-width: 14.5rem; //232px;
+            @include mixins.common-flex-container-items(column);
+            justify-content: center;
+            align-items: baseline;
+            flex: 1;
+        }
     }
-
+    //## Copyright
     &__copyright{
         flex-basis: 100%;
-        font-size: .925em;
+        font-size: min(3.33vw,1em);
     }
 }

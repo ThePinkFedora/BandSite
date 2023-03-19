@@ -1,59 +1,11 @@
 @use './partials/global' as *;
-
 @use './partials/colors';
 @use './partials/breakpoints' as *;
 @use './partials/units';
 @use './partials/mixins';
 
-
-
-///OLD Intro / Hero let's simplify this
-// .intro{
-//     color: colors.$primary-light; 
-
-//     width: 100%;
-//     max-height: 630px;
-//     aspect-ratio: 1.72;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-
-//     position: relative;   
-//     z-index: 1;
-//     overflow: hidden;
-
-//     &__content{
-//         @include mixins.common-content-container(false);
-//         flex-grow: 1
-//     }
-// }
-
-
-// .hero{
-//     width: 100%;
-//     position: absolute;
-//     inset: auto auto 0 0;
-//     z-index: -1;
-
-//     &__image{
-//         width: 100%;
-//         display: block;
-//     }
-
-//     //Darken overlay
-//     &::after{
-//         content: '.';
-//         background-color: colors.$primary-dark;
-//         opacity: .5;
-//         position: absolute;
-//         inset: 0;
-//         display: block;
-//         z-index: 1;
-//     }
-// }
-
 .hero{
-    height: min(58.5vw, 630px);
+    height: min(58.5vw, 39.375rem /*630px*/);
     padding: 0 units.$margins_Mobile;
     position: relative;
     display: flex;
@@ -87,39 +39,14 @@
     }
 }
 
-
+//# About Section
 .about{
     @include mixins.flex-column-center;
 
+    ///TODO, simplify this layout using a similar design to the intro
     &__content-wrapper{
         @include mixins.common-content-container;
         @include mixins.flex-column-center;
-    }
-    
-    &__header{
-        @include mixins.common-flex-container(column);
-    }
-
-    &__quote{
-        display: flex;
-        flex-direction: column;
-        gap: units.$padding-3;
-        max-width: 680px;
-
-        q{
-            @extend .subheader;
-            display: block;
-            padding: 0;
-
-            @include tablet{
-                font-size: 1.4375rem;//23px; ///Default subheader looks slightly too big
-            }
-        }
-
-        figcaption{
-            font-weight: 600;
-            word-spacing: .2em;
-        }
     }
 
     &__content{
@@ -128,19 +55,48 @@
         }
     }
 
-    ///Currently perfect for mobile
-    &__image{
-        width: 100%;
-        aspect-ratio: 1.845;
-        object-fit: cover;
-        object-position: bottom;
-
-        @include tablet{
-            object-position: center;
+    ///## Header , top help of the about section before the bio
+    .about-header{
+        @include mixins.common-flex-container(column);
+        &__image{
+            width: 100%;
+            aspect-ratio: 1.845;
+            object-fit: cover;
+            object-position: bottom;
+    
+            @include tablet{
+                object-position: center;
+            }
         }
-        
+    
+        &__quote{
+            display: flex;
+            flex-direction: column;
+            gap: units.$padding-3;
+            max-width: 42rem;
+            
+            q{
+                @extend .subheader;
+                display: block;
+                padding: 0;
+    
+                @include tablet{
+                    font-size: 1.4rem;
+                    line-height: 1.9rem;
+                }
+            }
+    
+            figcaption{
+                font-weight: 600;
+                word-spacing: .2em;
+                @include tablet{
+                    font-size: 1.1em;
+                }
+            }
+        }
     }
-
+    
+    //## Bio
     .bio{
         &__title{
             color: colors.$secondark-dark;
@@ -151,11 +107,9 @@
                 flex-direction: row;
             }
         }
-        
-
     }
 }
-
+///# Gallery Section
 .photo-gallery{
     @include mixins.flex-column-center;
     background-color: colors.$secondary-light; 
@@ -164,31 +118,30 @@
         @include mixins.common-content-container;
     }
 
-
-    .gallery{
+    &__list{
+        list-style-type: none;
         @include mixins.common-flex-container-items;
         flex-wrap: wrap;
-        list-style-type: none;
+    }
 
-        &__item{
-            flex: 1 1 100%;
-            @include tablet{
-                //This is the way to go, the ideal flex strategy. Ideally we should try to do something like this for the footer as well.
-                flex: 1 1 30%;
-            }
+    &__item{
+        flex: 1 1 100%;
+        @include tablet{
+            //This is the way to go, the ideal flex strategy. Ideally we should try to do something like this for the footer as well.
+            flex: 1 1 30%;
         }
-    
-        &__image{
-            max-width: 100%;
-            display: block;
+    }
 
-            //Effects
-            filter:grayscale(1);
-            transition: filter 1s ease-out;
-            
-            &:hover{
-                filter: grayscale(0);
-            }
+    &__image{
+        max-width: 100%;
+        display: block;
+
+        //Effects
+        filter:grayscale(1);
+        transition: filter 1s ease-out;
+        
+        &:hover{
+            filter: grayscale(0);
         }
     }
 }
