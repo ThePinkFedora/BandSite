@@ -1,3 +1,12 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: unset;
+  font-style: normal;
+  text-decoration: none;
+}
+
 @font-face {
   font-family: "Avenir Next";
   src: url("../assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype");
@@ -16,15 +25,6 @@
   font-weight: bold;
   font-style: normal;
 }
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  color: unset;
-  font-style: normal;
-  text-decoration: none;
-}
-
 body {
   font: 400 0.8125rem/1.125rem "Avenir Next";
   color: #323232;
@@ -59,6 +59,7 @@ h2 {
     padding-bottom: calc(1rem + 2.5vw);
   }
 }
+
 h3, .subheader, .about__quote q {
   font: 600 0.875rem/1.375rem "Avenir Next";
   padding: 1.5rem 0 1.375rem 0;
@@ -89,50 +90,37 @@ h4 {
   }
 }
 
-.logo {
-  line-height: 0;
+.logo__image {
+  display: block;
 }
 
 .header {
   background-color: #323232;
-}
-@media (min-width: 768px) {
-  .header {
-    display: flex;
-    justify-content: center;
-  }
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 .header .logo {
   padding: 0.5rem 0;
 }
 .header__content {
-  max-width: 1020px;
-  margin: auto;
+  flex: 0 1 1020px;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  text-align: center;
-  flex-grow: 1;
-  padding-top: 0.5rem;
+}
+@media (max-width: 767px) {
+  .header__content {
+    padding-top: 0.5rem;
+  }
 }
 @media (min-width: 768px) {
   .header__content {
     flex-direction: row;
     align-items: center;
-    padding-top: 0;
-    margin-left: 2.25rem;
-    margin-right: 2.25rem;
-  }
-}
-@media (min-width: 1280px) {
-  .header__content {
-    margin: auto;
+    margin: 0 2.25rem;
   }
 }
 
-.main-nav {
-  color: #E1E1E1;
-}
 .main-nav__list {
   padding-top: 0.25rem;
   list-style-type: none;
@@ -151,6 +139,7 @@ h4 {
   }
 }
 .main-nav__item {
+  color: #E1E1E1;
   flex: 1;
 }
 .main-nav__item--active, .main-nav__item:hover {
@@ -223,9 +212,9 @@ h4 {
 }
 @media (min-width: 768px) {
   .footer .logo {
-    margin: 0;
+    margin: 0 0 0 auto;
+    flex: 0;
     order: -1;
-    text-align: right;
   }
 }
 .footer__icon-list {
