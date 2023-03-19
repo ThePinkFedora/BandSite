@@ -1,0 +1,11 @@
+@use './colors';
+
+//# Resets
+*, *::before, *::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: unset;
+    font-style: normal;
+    text-decoration: none;
+}
