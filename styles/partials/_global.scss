@@ -95,6 +95,9 @@ h4{
 
     .logo{
         padding: $padding-2 0;
+        &__image{
+            margin: auto;
+        }
     }
     
     &__content{
