@@ -35,7 +35,6 @@ $font-pageheader-mobile: $weight-pageheader-mobile #{$size-pageheader-mobile}/#{
 //### Section Header
 $size-sectionheader-mobile: 1.5rem; //24px;
 $height-sectionheader-mobile: 2rem; //32px;
-// $weight-sectionheader-mobile: 700; //Style guide says 700, but looks more like 600
 $weight-sectionheader-mobile: 600;
 $font-sectionheader-mobile: $weight-sectionheader-mobile #{$size-sectionheader-mobile}/#{$height-sectionheader-mobile} $font-family;
 
@@ -74,7 +73,6 @@ $font-pageheader-tablet: $weight-pageheader-tablet #{$size-pageheader-tablet}/#{
 //### Section Header
 $size-sectionheader-tablet: 2.25rem; //36px;
 $height-sectionheader-tablet: 2.75rem; //44px;
-// $weight-sectionheader-tablet: 700; //Style guide says 700, but looks more like 600
 $weight-sectionheader-tablet: 600; 
 $font-sectionheader-tablet: $weight-sectionheader-tablet #{$size-sectionheader-tablet}/#{$height-sectionheader-tablet} $font-family;
 
