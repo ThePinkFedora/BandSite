@@ -47,30 +47,29 @@ h1 {
 
 h2 {
   font: 600 1.5rem/2rem "Avenir Next";
-  padding: 1.375rem 0 0.5rem 0;
+  padding: 1.5rem 0 1.125rem 0;
   width: 100%;
+  margin-top: calc(0.5em - 0.5lh);
+  margin-bottom: calc(0.25em - 0.5lh);
 }
 @media (min-width: 768px) {
   h2 {
     font: 600 2.25rem/2.75rem "Avenir Next";
-    padding: 3.125rem 0 1.5rem 0;
+    padding: 3.375rem 0 1.5rem 0;
+    padding-bottom: calc(1rem + 2.5vw);
   }
 }
-@media (min-width: 1280px) {
-  h2 {
-    padding-bottom: 2.25rem;
-  }
-}
-
 h3, .subheader, .about__quote q {
   font: 600 0.875rem/1.375rem "Avenir Next";
-  padding: 1.375rem 0 0.75rem 0;
+  padding: 1.5rem 0 1.375rem 0;
+  margin-top: calc(0.7em - 0.5lh);
+  margin-bottom: calc(0.25em - 0.5lh);
 }
 @media (min-width: 768px) {
   h3, .subheader, .about__quote q {
     font: 600 1.5rem/2rem "Avenir Next";
-    padding-top: 3.125rem;
-    padding-bottom: 20px;
+    padding-top: 3rem;
+    padding-bottom: calc(1.25rem + 1vw);
   }
 }
 
@@ -82,6 +81,7 @@ h4 {
   font: 400 0.8125rem/1.125rem "Avenir Next";
   color: #FFFFFF;
   background-color: #323232;
+  margin: 0;
 }
 @media (min-width: 768px) {
   .footer {
@@ -166,12 +166,12 @@ h4 {
 }
 @media (min-width: 768px) {
   .main-nav__link {
-    padding: 1.5rem 0;
+    padding: 1.3125rem 0;
   }
 }
 @media (min-width: 1280px) {
   .main-nav__link {
-    padding: 2rem 0;
+    padding: 1.8125rem 0;
   }
 }
 
@@ -181,7 +181,7 @@ h4 {
 }
 .footer__heading {
   padding-bottom: 0;
-  max-width: 220px;
+  max-width: 13.75rem;
   order: -2;
 }
 .footer__content {
@@ -191,9 +191,9 @@ h4 {
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   width: auto;
   flex: 1;
+  gap: 1.5rem;
 }
 @media (min-width: 768px) {
   .footer__content {
@@ -210,13 +210,9 @@ h4 {
 }
 @media (min-width: 768px) {
   .footer__content {
-    gap: 2.25rem;
-  }
-}
-@media (min-width: 768px) {
-  .footer__content {
     flex-flow: row wrap;
     align-items: baseline;
+    row-gap: 3rem;
   }
   .footer__content > * {
     flex: 1;
@@ -233,13 +229,13 @@ h4 {
   }
 }
 .footer__icon-list {
-  margin-bottom: 0.5rem;
+  line-height: 0;
   display: flex;
   gap: 2rem;
   order: -2;
 }
 .footer__icon {
-  height: 24px;
+  height: 1.5rem;
 }
 .footer__contact-list {
   display: flex;
@@ -247,6 +243,7 @@ h4 {
   gap: 1rem;
   list-style-type: none;
   margin-bottom: 0.5rem;
+  gap: 1.5rem;
 }
 @media (min-width: 768px) {
   .footer__contact-list {
@@ -255,12 +252,12 @@ h4 {
 }
 @media (min-width: 768px) {
   .footer__contact-list {
+    flex-basis: 100%;
     flex-direction: row;
   }
 }
 .footer__contact-item {
-  padding-bottom: 0.5rem;
-  max-width: 232px;
+  max-width: 14.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -274,7 +271,7 @@ h4 {
   }
 }
 .footer__copyright {
-  flex: 100%;
+  flex-basis: 100%;
   font-size: 0.925em;
 }
 
@@ -312,8 +309,7 @@ h4 {
 .hero {
   width: 100%;
   position: absolute;
-  left: 0;
-  bottom: 0;
+  inset: auto auto 0 0;
   z-index: -1;
 }
 .hero__image {
@@ -370,7 +366,7 @@ h4 {
 .about__quote {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
   max-width: 680px;
 }
 .about__quote q {

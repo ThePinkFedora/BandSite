@@ -36,27 +36,40 @@ h1{
 //## Section Header
 h2{
     font: fonts.$font-sectionheader-mobile;
-    padding: $pad-before-headlines-mobile 0 $pad-after-headlines-h2-mobile 0;
+    padding: $pad-before-headlines-mobile 0 ($pad-after-headlines-mobile + 0.125rem) 0;
     width: 100%;
+
+    //Remove line height spacing before and after
+    margin-top: calc(0.5em - 0.5lh); 
+    margin-bottom: calc(0.25em - 0.5lh); 
 
     @include tablet{
         font: fonts.$font-sectionheader-tablet;
-        padding: $pad-before-headlines-tablet 0 $pad-after-headlines-tablet 0;
+        padding: ($pad-before-headlines-tablet + 0.375rem) 0 $pad-after-headlines-tablet 0;
+        // 36px for tablet 48px for desktop
+        padding-bottom: calc(1rem + 2.5vw);
     }
 
     @include desktop{
-        padding-bottom: $pad-after-headlines-adjusted-desktop;
+        // padding-bottom: $pad-after-headlines-adjusted-desktop;
     }
 }
 //## Subheader
 h3, .subheader{
     font: fonts.$font-subheader-mobile;
-    padding: $pad-before-headlines-mobile 0 $pad-after-headlines-h3-mobile 0;
+    padding: $pad-before-headlines-mobile 0 ($pad-after-headlines-mobile + 0.375rem) 0;
+
+    //Remove line height spacing before and after
+    margin-top: calc(0.7em - 0.5lh); 
+    margin-bottom: calc(0.25em - 0.5lh);
+
 
     @include tablet{
         font: fonts.$font-subheader-tablet;
         padding-top: $pad-before-headlines-tablet;
-        padding-bottom: 20px;
+
+        //~28px for tablet and ~32px for desktop
+        padding-bottom: calc(1.25rem + 1vw);
     }
 }
 //## Subheader variant, 1em just demi-bold
@@ -69,6 +82,7 @@ h4{
     font: fonts.$font-footer-mobile;
     color: colors.$primary-light;
     background-color: colors.$primary-dark;
+    margin: 0;
     @include tablet{
         font: fonts.$font-footer-tablet;
     }
@@ -119,6 +133,7 @@ h4{
 }
 //## Main Navigation
 .main-nav{
+    $border-width: 0.1875rem; //3px;
     color: colors.$secondary-gray;
     
     &__list{
@@ -128,7 +143,7 @@ h4{
 
         @include tablet{
             margin-left: 4.5rem; //72px;
-            gap: $padding-8;
+            gap: $padding-8; //56px
         }
 
         @include desktop{
@@ -138,7 +153,6 @@ h4{
     }
 
     &__item{
-        $border-width: 0.1875rem; //3px;
         flex: 1;
 
         &--active, &:hover{
@@ -156,36 +170,39 @@ h4{
         display: block;
         padding-bottom: $padding-2;
         @include tablet{
-            padding: $padding-4  0;
+            padding: $padding-4 - $border-width 0;
         }
 
         @include desktop{
-            padding: $padding-5 0; 
+            padding: $padding-5 - $border-width 0; 
         }
     }
 }
 //## Footer
 .footer{
-    // color: colors.$primary-light;
-    // background-color: colors.$primary-dark;
     display: flex;
     justify-content: center;
 
     &__heading{
         padding-bottom: 0;
-        max-width: 220px;
+        max-width: 13.75rem; //220px;
         order: -2;
     }
 
     &__content{
         @include mixins.common-content-container;
-        @include mixins.common-flex-container(column);
+        display: flex;
+        flex-direction: column;
         width: auto;
         flex: 1;
+
+        gap: 1.5rem;
 
         @include tablet{
             flex-flow: row wrap;
             align-items: baseline;
+            
+            row-gap: 3rem;
             & > *{
                 flex: 1;
             }
@@ -202,28 +219,29 @@ h4{
     }
 
     &__icon-list{
-        margin-bottom: $padding-2;
+        line-height: 0;
         display: flex;
-        gap: $padding-5;
-        order: -2;        
+        gap: $padding-5; //32px
+        order: -2;  
     }
 
     &__icon{
-        height: 24px;
+        height: 1.5rem; //24px;
     }
 
     &__contact-list{
         @include mixins.common-flex-container-items(column);
         list-style-type: none;
         margin-bottom: $padding-2;
+        gap: 1.5rem;
         @include tablet{
+            flex-basis: 100%;
             flex-direction: row;
         }
     }
 
     &__contact-item{
-        padding-bottom: $padding-2; //8px;
-        max-width: 232px;
+        max-width: 14.5rem; //232px;
         @include mixins.common-flex-container-items(column);
         justify-content: center;
         align-items: baseline;
@@ -231,7 +249,7 @@ h4{
     }
 
     &__copyright{
-        flex: 100%;
+        flex-basis: 100%;
         font-size: .925em;
     }
 }

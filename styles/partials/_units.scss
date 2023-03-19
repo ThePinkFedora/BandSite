@@ -31,18 +31,22 @@ $padding-10: 5rem; //80px;
 
 
 // $pad-before-headlines-mobile: 24px; //Style guide says 24px but looks more like 22px
-$pad-before-headlines-mobile: 1.375rem; //22px;
+$pad-before-headlines-mobile: 1.5rem; //24px //1.375rem; //22px;
 $pad-after-headlines-mobile: 1rem; //16px;
 $pad-between-components-mobile: 1rem; //16px;
 
 
 //Style guided says 16px, but due to line height it's slightly off
-$pad-after-headlines-h2-mobile: .5rem; //8px;
-$pad-after-headlines-h3-mobile: .75rem; //12px;
+// $pad-after-headlines-h2-mobile: .5rem; //8px;
+$pad-after-headlines-h2-mobile: 1.125rem; //18px
+
+// $pad-after-headlines-h3-mobile: .75rem; //12px;
+// $pad-after-headlines-h3-mobile: 1.375rem; //22px
+
 
 
 // $pad-before-headlines-tablet: 3rem; //48px; //Style guide says 48px but looks more like 50px
-$pad-before-headlines-tablet: 3.125rem; //50px;
+$pad-before-headlines-tablet: 3rem; //48px //3.125rem; //50px;
 // $pad-after-headlines-tablet: 2.25rem; //36px; //Style guide says 36px, but due to line height it's slightly off
 $pad-after-headlines-tablet:  1.5rem; //24px;
 $pad-between-components-tablet: 2.25rem; //36px;
