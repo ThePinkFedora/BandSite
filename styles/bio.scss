@@ -152,3 +152,175 @@
         }
     }
 }
+
+
+///There's an opportunity for this type of placeholder class to be implemented universally once we work out the exact rules
+%section{
+    padding: 0 units.$margins_Mobile units.$margins_Mobile units.$margins_Mobile;
+
+    @include tablet{
+        padding: 0 units.$margins_Tablet units.$margins_Tablet units.$margins_Tablet;
+    }
+
+    & > *{
+        max-width: units.$maxWidth; 
+        margin: auto;
+    }
+}
+
+//# Comments Section
+.comments-section{
+    $vertical-gap-mobile: 1rem;
+    $vertical-gap-tablet: 1.5rem;
+
+    @extend %section;
+
+    //## Section Content Container
+    &__container{
+        margin: auto;
+
+        display: flex;
+        flex-direction: column;
+        gap: $vertical-gap-mobile;
+
+        @include tablet{
+            max-width: 576px;
+            gap: $vertical-gap-tablet;
+        }
+    }
+
+    //## Avatars
+    &__avatar{
+        $mobile-size: 2.25rem; //36px
+        $tablet-size: 3rem; //48px
+
+        background-color: gray;
+        border-radius: 50%;
+        flex-shrink: 0;
+        width: $mobile-size;
+        height: $mobile-size;
+        position: relative;
+
+        @include tablet{
+            width: $tablet-size;
+            height: $tablet-size;
+        }
+
+        ///Image placeholder
+        &::before{
+            content: '';
+            background-color: colors.$secondary-gray;
+            position: absolute;
+            inset: 0;
+        }
+    }
+
+    //## Comment Form
+    .comment-form{
+        $horizontal-gap: 1rem;
+
+        display: flex;
+        align-items: flex-start;
+        gap: $horizontal-gap;
+
+        //### Comment Form Content (right)
+        &__content{
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: $vertical-gap-tablet;
+        }
+        
+        ///### Comment Form Field Containers
+        &__field{
+            label{
+                display: block;
+                ///Move to global
+                color: colors.$primary-gray;
+            }
+            input,textarea{
+                $padding-mobile : 0.75rem; //12px
+                $padding-tablet : 1rem; //12px
+
+                width: 100%;
+                padding: $padding-mobile; 
+                border: 1px solid colors.$secondary-gray;
+                border-radius: 4px;
+                resize: none;
+
+                &::placeholder{
+                    color: colors.$primary-dark;
+                }
+
+                &:focus{
+                    border-color: colors.$primary-dark;
+                    outline: none; ///Chrome adds a thick outline by default
+                }
+
+                ///Might have to do this differently
+                &:invalid{
+                    border-color: colors.$error-color;
+                }
+
+                @include tablet{
+                    padding: $padding-tablet;
+                }
+            }
+        }
+
+        //### Submit Button
+        input[type="submit"]{
+            align-self: flex-end;
+
+            ///Make this global:
+            background-color: colors.$primary-dark;
+            color: colors.$primary-light;
+            border-width: 0;
+            border-radius: 4px;
+            width: 100%; ///For mobile
+            height: 40px; ///40px height always
+            padding: 0 32px;
+
+            &:hover{
+                background-color: colors.$secondark-dark;
+            }
+
+            @include tablet{
+                width: auto;
+            }
+        }
+    }
+
+    //## Comment
+    .comment{
+        $horizontal-gap: 1rem;
+        $vertical-gap: 1rem; ///Possibly needs line height tweaking
+        
+        display: flex;
+        align-items: flex-start;
+        gap: $horizontal-gap;
+        
+        ///### Comment Content (right) 
+        &__content{
+            flex-grow: 1;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: $vertical-gap;
+        }
+        
+        &__name{
+            //No style so far
+        }
+
+        ///### Comment timestamp
+        &__timestamp{
+            color: colors.$primary-gray;
+        }
+
+        //### Comment text
+        &__text{
+            flex: 100%;
+        }
+    }
+}

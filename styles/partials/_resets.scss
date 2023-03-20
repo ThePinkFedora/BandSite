@@ -1,5 +1,6 @@
 @use './colors';
 
+
 //# Resets
 *, *::before, *::after{
     box-sizing: border-box;
@@ -7,5 +8,10 @@
     padding: 0;
     color: unset;
     font-style: normal;
+    font-family: unset; ///Textarea overrides by default
     text-decoration: none;
 }
+
+// textarea{
+//     font-family: unset;//'Avenir Next';
+// }

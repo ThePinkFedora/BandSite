@@ -4,6 +4,7 @@
   padding: 0;
   color: unset;
   font-style: normal;
+  font-family: unset;
   text-decoration: none;
 }
 
@@ -458,4 +459,126 @@ h4 {
 }
 .photo-gallery__image:hover {
   filter: grayscale(0);
+}
+
+.comments-section {
+  padding: 0 1rem 1rem 1rem;
+}
+@media (min-width: 768px) {
+  .comments-section {
+    padding: 0 2.25rem 2.25rem 2.25rem;
+  }
+}
+.comments-section > * {
+  max-width: 63.75rem;
+  margin: auto;
+}
+
+.comments-section__container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .comments-section__container {
+    max-width: 576px;
+    gap: 1.5rem;
+  }
+}
+.comments-section__avatar {
+  background-color: gray;
+  border-radius: 50%;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .comments-section__avatar {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+.comments-section__avatar::before {
+  content: "";
+  background-color: #E1E1E1;
+  position: absolute;
+  inset: 0;
+}
+.comments-section .comment-form {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.comments-section .comment-form__content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.comments-section .comment-form__field label {
+  display: block;
+  color: #AFAFAF;
+}
+.comments-section .comment-form__field input, .comments-section .comment-form__field textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #E1E1E1;
+  border-radius: 4px;
+  resize: none;
+}
+.comments-section .comment-form__field input::-moz-placeholder, .comments-section .comment-form__field textarea::-moz-placeholder {
+  color: #323232;
+}
+.comments-section .comment-form__field input::placeholder, .comments-section .comment-form__field textarea::placeholder {
+  color: #323232;
+}
+.comments-section .comment-form__field input:focus, .comments-section .comment-form__field textarea:focus {
+  border-color: #323232;
+  outline: none;
+}
+.comments-section .comment-form__field input:invalid, .comments-section .comment-form__field textarea:invalid {
+  border-color: #D22D2D;
+}
+@media (min-width: 768px) {
+  .comments-section .comment-form__field input, .comments-section .comment-form__field textarea {
+    padding: 1rem;
+  }
+}
+.comments-section .comment-form input[type=submit] {
+  align-self: flex-end;
+  background-color: #323232;
+  color: #FFFFFF;
+  border-width: 0;
+  border-radius: 4px;
+  width: 100%;
+  height: 40px;
+  padding: 0 32px;
+}
+.comments-section .comment-form input[type=submit]:hover {
+  background-color: #000000;
+}
+@media (min-width: 768px) {
+  .comments-section .comment-form input[type=submit] {
+    width: auto;
+  }
+}
+.comments-section .comment {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.comments-section .comment__content {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.comments-section .comment__timestamp {
+  color: #AFAFAF;
+}
+.comments-section .comment__text {
+  flex: 100%;
 }/*# sourceMappingURL=bio.css.map */
