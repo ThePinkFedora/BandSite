@@ -243,3 +243,43 @@ h4{
         font-size: min(3.33vw,1em);
     }
 }
+
+
+
+//# Generic Components
+.hero{
+    height: min(58.5vw, 39.375rem /*630px*/);
+    padding: 0 $margins_Mobile;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    
+
+    @include tablet{
+        padding: 0 $margins_Tablet;
+    }
+
+    &__image{
+        width: 100%;
+        position: absolute;
+        inset: auto auto 0 0;
+        z-index: -1;
+    }
+
+    &__content{
+        color: colors.$primary-light;
+        flex: 0 1 $maxWidth;
+    }
+
+    //Darken overlay
+    &::after{
+        content: '';
+        background-color: colors.$primary-dark;
+        opacity: .5;
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+    }
+}

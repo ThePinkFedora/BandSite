@@ -72,6 +72,11 @@ function displayComment(comment){
     commentSectionContainer.appendChild(document.createElement("hr"));
 }
 
+/* TODO:
+    -Use event.target.reset() to reset the form
+    -Look into accessing form elements using event.target.fieldName
+*/
+
 ///Register comment submissions event
 commentForm.addEventListener('submit',(e) =>{
     e.preventDefault(); ///Prevent submission reload
@@ -97,7 +102,6 @@ commentForm.addEventListener('submit',(e) =>{
             timestamp: new Date().toLocaleDateString("en-US",{ month: "2-digit",day: "2-digit",year:"numeric" })
         };
 
-        
         ///Display the comment
         displayComment(comment);
 

@@ -29,7 +29,7 @@ $font-family: 'Avenir Next';
 //### Page Header
 $size-pageheader-mobile: 1.5rem; //24px;
 $height-pageheader-mobile: 2rem; //32px;
-$weight-pageheader-mobile: 700;
+$weight-pageheader-mobile: 600; ///(Previous: 700) 600 Looks more accurate
 $font-pageheader-mobile: $weight-pageheader-mobile #{$size-pageheader-mobile}/#{$height-pageheader-mobile} $font-family;
 
 //### Section Header
@@ -67,7 +67,7 @@ $font-labelsbuttons-mobile: $weight-labelsbuttons-mobile #{$size-labelsbuttons-m
 //### Page Header
 $size-pageheader-tablet: 3.75rem; //60px;
 $height-pageheader-tablet: 4.25rem; //68px;
-$weight-pageheader-tablet: 700;
+$weight-pageheader-tablet: 600; ///(Previous: 700) 600 Looks more accurate
 $font-pageheader-tablet: $weight-pageheader-tablet #{$size-pageheader-tablet}/#{$height-pageheader-tablet} $font-family;
 
 //### Section Header

@@ -38,11 +38,11 @@ body {
 }
 
 h1 {
-  font: 700 1.5rem/2rem "Avenir Next";
+  font: 600 1.5rem/2rem "Avenir Next";
 }
 @media (min-width: 768px) {
   h1 {
-    font: 700 3.75rem/4.25rem "Avenir Next";
+    font: 600 3.75rem/4.25rem "Avenir Next";
   }
 }
 
@@ -288,6 +288,10 @@ h4 {
   inset: auto auto 0 0;
   z-index: -1;
 }
+.hero__content {
+  color: #FFFFFF;
+  flex: 0 1 63.75rem;
+}
 .hero::after {
   content: "";
   background-color: #323232;
@@ -295,10 +299,6 @@ h4 {
   position: absolute;
   inset: 0;
   z-index: -1;
-}
-.hero__title {
-  color: #FFFFFF;
-  flex: 0 1 63.75rem;
 }
 
 .about {

@@ -4,40 +4,41 @@
 @use './partials/units';
 @use './partials/mixins';
 
-.hero{
-    height: min(58.5vw, 39.375rem /*630px*/);
-    padding: 0 units.$margins_Mobile;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+///Moving to global
+// .hero{
+//     height: min(58.5vw, 39.375rem /*630px*/);
+//     padding: 0 units.$margins_Mobile;
+//     position: relative;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     overflow: hidden;
     
 
-    @include tablet{
-        padding: 0 units.$margins_Tablet;
-    }
+//     @include tablet{
+//         padding: 0 units.$margins_Tablet;
+//     }
 
-    &__image{
-        width: 100%;
-        position: absolute;
-        inset: auto auto 0 0;
-        z-index: -1;
-    }
-    //Darken overlay
-    &::after{
-        content: '';
-        background-color: colors.$primary-dark;
-        opacity: .5;
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-    }
-    &__title{
-        color: colors.$primary-light;
-        flex: 0 1 units.$maxWidth;
-    }
-}
+//     &__image{
+//         width: 100%;
+//         position: absolute;
+//         inset: auto auto 0 0;
+//         z-index: -1;
+//     }
+//     //Darken overlay
+//     &::after{
+//         content: '';
+//         background-color: colors.$primary-dark;
+//         opacity: .5;
+//         position: absolute;
+//         inset: 0;
+//         z-index: -1;
+//     }
+//     &__title{
+//         color: colors.$primary-light;
+//         flex: 0 1 units.$maxWidth;
+//     }
+// }
 
 //# About Section
 .about{

@@ -1,0 +1,52 @@
+@use './partials/global';
+@use './partials/breakpoints' as *;
+
+.hero{
+    ///Sassify all this better
+    &--shows{
+        $padding-block-mobile: 2rem; //32px
+        $padding-block-tablet: 3.75rem; //60px
+        $padding-block-desktop: 15.125rem; //60px
+        $gap-mobile: 1rem; //16px
+        $gap-tablet: 3.75rem; //60px
+
+        height: unset;
+
+        h3{
+            ///This element might be a candidate for our height reset fix
+            padding-top: 0;
+        }
+        
+
+        & .hero__content{
+            padding-block: $padding-block-mobile;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 1rem;
+            
+            .hero__text-container{
+                flex: 0 1 min(75%, 520px);
+            }
+
+            .hero__song-container{
+                flex: 0 1 max(40%,420px);
+                aspect-ratio: 3;
+                
+                iframe{
+                    display: block; ///Removes whitespace
+                }
+            }
+            
+            @include tablet{
+                padding-block: $padding-block-tablet;
+                gap: $gap-tablet;
+            }
+    
+            @include desktop{
+                padding-block: $padding-block-desktop;
+            }
+        }
+    }
+}
