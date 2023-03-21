@@ -190,7 +190,7 @@
     }
 
     //## Avatars
-    &__avatar{
+    .avatar{
         $mobile-size: 2.25rem; //36px
         $tablet-size: 3rem; //48px
 
@@ -258,7 +258,7 @@
                 }
 
                 ///Might have to do this differently
-                &:invalid{
+                &.invalid{
                     border-color: colors.$error-color;
                 }
 
@@ -310,12 +310,13 @@
         }
         
         &__name{
-            //No style so far
+            height: 1em; ///My latest genius fix for the line height problem
         }
 
         ///### Comment timestamp
         &__timestamp{
             color: colors.$primary-gray;
+            height: 1em; ///My latest genius fix for the line height problem
         }
 
         //### Comment text

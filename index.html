@@ -99,9 +99,9 @@
 
       <section class="comments-section">
         <h2>Join the Conversation</h2>
-        <div class="comments-section__container">
-          <form class="comment-form">
-            <img class="comments-section__avatar" id="commentFormAvatar" src="./assets/images/Mohan-muruge.jpg" alt="Mohan-muruge" />
+        <div class="comments-section__container" id="commentSectionContainer">
+          <form class="comment-form" id="commentForm">
+            <img class="avatar" id="commentFormAvatar" src="./assets/images/Mohan-muruge.jpg" alt="Mohan-muruge" />
             <div class="comment-form__content">
               <div class="comment-form__field">
                 <label for="name"> NAME </label>
@@ -110,15 +110,16 @@
 
               <div class="comment-form__field">
                 <label for="comment"> COMMENT </label>
-                <textarea name="commentText" id="commentText" placeholder="Add a new comment"></textarea>
+                <textarea id="commentText" name="comment" placeholder="Add a new comment"></textarea>
               </div>
 
-              <input type="submit" value="COMMENT" />
+              <input type="submit" value="COMMENT" id="commentSubmit" />
             </div>
           </form>
           <hr />
-          <article class="comment">
-            <img class="comments-section__avatar" src="" />
+          <!-- Moving to be added in code -->
+          <!-- <article class="comment">
+            <img class="avatar" src="" />
             <div class="comment__content">
               <h4 class="comment__name">Connor Walton</h4>
               <span class="comment__timestamp">02/17/2021</span>
@@ -130,7 +131,7 @@
           </article>
           <hr />
           <article class="comment">
-            <img class="comments-section__avatar" src="" />
+            <img class="avatar" src="" />
             <div class="comment__content">
               <h4 class="comment__name">Emilie Beach</h4>
               <span class="comment__timestamp">01/09/2021</span>
@@ -142,7 +143,7 @@
           </article>
           <hr />
           <article class="comment">
-            <img class="comments-section__avatar" src="" />
+            <img class="avatar" src="" />
             <div class="comment__content">
               <h4 class="comment__name">Miles Acosta</h4>
               <span class="comment__timestamp">12/20/2020</span>
@@ -152,7 +153,7 @@
               </p>
             </div>
           </article>
-          <hr />
+          <hr /> -->
         </div>
       </section>
     </main>
@@ -218,5 +219,6 @@
         <p class="footer__copyright">Copyright The Bees Knees © 2021 All Rights Reserved</p>
       </div>
     </footer>
+    <script src="./scripts/index-page.js"></script>
   </body>
 </html>
