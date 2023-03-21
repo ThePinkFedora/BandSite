@@ -1,5 +1,7 @@
 @use './partials/global';
 @use './partials/breakpoints' as *;
+@use './partials/units';
+@use './partials/colors';
 
 .hero{
     ///Sassify all this better
@@ -48,5 +50,110 @@
                 padding-block: $padding-block-desktop;
             }
         }
+    }
+}
+
+
+
+
+
+.shows-section{
+    // padding-inline: units.$margins_Mobile;
+    padding: 0 units.$margins_Mobile units.$margins_Mobile units.$margins_Mobile;
+    h2{
+        width: auto;
+    }
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    
+
+    @include tablet{
+        padding: 0 units.$margins_Tablet units.$margins_Tablet units.$margins_Tablet;
+    }
+    max-width: units.$maxWidth;
+    margin: auto;
+
+    // > * {
+    //     margin: auto;
+    //     max-width: units.$maxWidth;
+    // }
+
+    // @include desktop{
+        
+    // }
+    
+}
+
+
+
+
+
+
+
+.shows-table{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 758px;
+
+    .divider{
+        ///There dividers are wider than their container
+        position: relative;
+        width: calc(100% + 32px);
+        left: 50%;
+        transform: translate(-50%,0%);
+    }
+
+    &__column-header,&__cell-header{
+        color: colors.$primary-gray;
+    }
+
+    &__head,&__row{
+        gap: 16px;
+        > * {
+            flex: 100%;
+        }
+    }
+
+    &__head{
+        display: none;
+        @include tablet{
+            display: flex;
+        }
+    }
+
+    &__body{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    &__row{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        @include tablet{
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+
+    &__cell{
+        &:first-child{
+            font-weight: 600;
+        }
+    }
+
+    &__cell-header{
+        @include tablet{
+            display: none;
+        }
+    }
+
+    &__button{
+        @extend .primary-cta;
     }
 }

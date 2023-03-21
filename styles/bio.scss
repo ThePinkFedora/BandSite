@@ -273,22 +273,23 @@
         input[type="submit"]{
             align-self: flex-end;
 
-            ///Make this global:
-            background-color: colors.$primary-dark;
-            color: colors.$primary-light;
-            border-width: 0;
-            border-radius: 4px;
-            width: 100%; ///For mobile
-            height: 40px; ///40px height always
-            padding: 0 32px;
+            @extend .primary-cta;
+            // Moved to global
+            // background-color: colors.$primary-dark;
+            // color: colors.$primary-light;
+            // border-width: 0;
+            // border-radius: 4px;
+            // width: 100%; ///For mobile
+            // height: 40px; ///40px height always
+            // padding: 0 32px;
 
-            &:hover{
-                background-color: colors.$secondark-dark;
-            }
+            // &:hover{
+            //     background-color: colors.$secondark-dark;
+            // }
 
-            @include tablet{
-                width: auto;
-            }
+            // @include tablet{
+            //     width: auto;
+            // }
         }
     }
 
