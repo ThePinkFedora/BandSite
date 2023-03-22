@@ -58,32 +58,48 @@
 
 
 .shows-section{
-    // padding-inline: units.$margins_Mobile;
-    padding: 0 units.$margins_Mobile units.$margins_Mobile units.$margins_Mobile;
-    h2{
-        width: auto;
-    }
+    // padding: 0 units.$margins_Mobile units.$margins_Mobile units.$margins_Mobile;
+    // h2{
+    //     width: auto;
+    // }
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: baseline;
+    // flex-wrap: wrap;
+    
+
+    // @include tablet{
+    //     padding: 0 units.$margins_Tablet units.$margins_Tablet units.$margins_Tablet;
+    // }
+    // max-width: units.$maxWidth;
+    // margin: auto;
+
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     flex-wrap: wrap;
-    
-
-    @include tablet{
-        padding: 0 units.$margins_Tablet units.$margins_Tablet units.$margins_Tablet;
-    }
     max-width: units.$maxWidth;
-    margin: auto;
-
-    // > * {
-    //     margin: auto;
-    //     max-width: units.$maxWidth;
-    // }
-
-    // @include desktop{
-        
-    // }
     
+
+    h2{
+        width: auto;
+        margin-left: units.$margins_Mobile;
+
+        @include tablet{
+            margin-left: units.$margins_Tablet - 1.125rem; // ( - 18px)
+        }
+        @include desktop{
+            margin-left: 0;
+        }
+    }
+
+    margin-bottom: 1rem;
+    @include tablet{
+        margin: 0 1.125rem 1.125rem 1.125rem; ///18px
+    }
+    @include desktop{
+        margin-inline: auto;
+    }
 }
 
 
@@ -95,16 +111,17 @@
 .shows-table{
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    // gap: 16px;
     width: 100%;
-    max-width: 758px;
+    max-width: 807px;
 
     .divider{
-        ///There dividers are wider than their container
-        position: relative;
-        width: calc(100% + 32px);
-        left: 50%;
-        transform: translate(-50%,0%);
+        ///Update on that, actually the rows just have padding (confirmed with hover effect demo)
+        // ///There dividers are wider than their container
+        // position: relative;
+        // width: calc(100% + 32px);
+        // left: 50%;
+        // transform: translate(-50%,0%);
     }
 
     &__column-header,&__cell-header{
@@ -112,6 +129,7 @@
     }
 
     &__head,&__row{
+        padding: 16px;
         gap: 16px;
         > * {
             flex: 100%;
@@ -128,13 +146,23 @@
     &__body{
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        // gap: 16px; ///It's not gap, the rows have padding
     }
 
     &__row{
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
+
+        padding: 16px;
+        &--selected{
+            background-color: colors.$secondary-gray;
+        }
+        &:hover:not(&--selected){
+            background-color: colors.$secondary-light;
+        }
+        
+
         @include tablet{
             flex-direction: row;
             align-items: center;
@@ -155,5 +183,14 @@
 
     &__button{
         @extend .primary-cta;
+    }
+
+
+
+    @include tablet{
+        // &__head,&__row{
+        //     padding: 36px;
+        // }
+        // margin-inline: 18px;
     }
 }
