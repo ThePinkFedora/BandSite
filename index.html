@@ -33,7 +33,7 @@
       <section class="hero hero--bio">
         <img class="hero__image" src="./assets/images/hero-bio.jpg" alt="hero-bio" />
         <div class="hero__content">
-          <h1 class="hero__title">The Bees Knees</h1>
+          <h1 class="page-header hero__title">The Bees Knees</h1>
         </div>
       </section>
 
@@ -41,24 +41,27 @@
       <section class="about">
         <div class="about__content-wrapper">
           <!-- Section Header -->
-          <h2 class="about__title">About the Musicians</h2>
+          <h2 class="about__title section-header">About the Musicians</h2>
 
           <div class="about__content">
             <!-- About Header -->
             <header class="about-header">
               <img class="about-header__image" src="./assets/images/band.jpg" alt="band" />
-              <!-- Quote -->
-              <figure class="about-header__quote">
-                <q>We push each other to be the best. It’s not uncommon for one of us to say ‘this needs to be better, back to the drawing board’</q>
-                <!-- Cite -->
-                <figcaption>- <cite>Bryan Teddy</cite>, lead vocalist of The Bees Knees</figcaption>
+              <!-- Quote Container -->
+              <figure class="about-header__quote-container">
+                <!-- Quote Text -->
+                <q class="about-header__quote-text"
+                  >We push each other to be the best. It’s not uncommon for one of us to say ‘this needs to be better, back to the drawing board’</q
+                >
+                <!-- Quote Cite -->
+                <figcaption class="about-header__quote-cite">- <cite>Bryan Teddy</cite>, lead vocalist of The Bees Knees</figcaption>
               </figure>
             </header>
 
             <!-- Bio -->
             <article class="bio">
               <!-- Bio Title -->
-              <h3 class="bio__title">The Bees Knees</h3>
+              <h3 class="bio__title subheader">The Bees Knees</h3>
               <!-- Bio Content -->
               <div class="bio__content">
                 <p class="bio__copy">
@@ -84,7 +87,7 @@
       <section class="photo-gallery">
         <div class="photo-gallery__content">
           <!-- Section Header -->
-          <h2>Photo Gallery</h2>
+          <h2 class="section-header">Photo Gallery</h2>
           <ul class="photo-gallery__list">
             <li class="photo-gallery__item"><img class="photo-gallery__image" src="./assets/images/Photo-gallery-1.jpg" alt="gallery image 1" /></li>
             <li class="photo-gallery__item"><img class="photo-gallery__image" src="./assets/images/Photo-gallery-2.jpg" alt="gallery image 2" /></li>
@@ -100,22 +103,22 @@
       </section>
 
       <section class="comments-section">
-        <h2>Join the Conversation</h2>
+        <h2 class="section-header">Join the Conversation</h2>
         <div class="comments-section__container" id="commentSectionContainer">
           <form class="comment-form" id="commentForm">
             <img class="avatar" id="commentFormAvatar" src="./assets/images/Mohan-muruge.jpg" alt="Mohan-muruge" />
             <div class="comment-form__content">
-              <div class="comment-form__field">
-                <label for="name"> NAME </label>
-                <input type="text" id="commentName" name="name" placeholder="Enter your name" />
+              <div class="form-field">
+                <label class="form-field__label" for="name"> NAME </label>
+                <input class="form-field__field" type="text" id="commentName" name="name" placeholder="Enter your name" />
               </div>
 
-              <div class="comment-form__field">
-                <label for="comment"> COMMENT </label>
-                <textarea id="commentText" name="comment" placeholder="Add a new comment"></textarea>
+              <div class="comment-form__form-field form-field">
+                <label class="form-field__label" for="comment"> COMMENT </label>
+                <textarea class="form-field__field" id="commentText" name="comment" placeholder="Add a new comment"></textarea>
               </div>
 
-              <input type="submit" value="COMMENT" id="commentSubmit" />
+              <button class="comment-form__form-submit form-submit" type="submit" id="commentSubmit">COMMENT</button>
             </div>
           </form>
           <hr />
@@ -164,7 +167,7 @@
     <footer class="footer">
       <div class="footer__content">
         <!-- Section/Footer Heading -->
-        <h2 class="footer__heading">Get in Touch</h2>
+        <h2 class="footer__heading section-header">Get in Touch</h2>
         <!-- Social Icons List -->
         <div class="social-icons">
           <a href="https://instagram.com/" target="_blank"><img class="social-icons__icon" src="./assets/icons/icon-instagram.svg" alt="instagram" /></a>
@@ -176,7 +179,7 @@
         <ul class="contacts">
           <!-- Contact Item -->
           <li class="contacts__item">
-            <h4>
+            <h4 class="smallheader">
               Cam Adams<br />
               The Bees Knees Management
             </h4>
@@ -188,7 +191,7 @@
             <a href="mailto: info@thebeesknees.com">info@thebeesknees.com</a>
           </li>
           <li class="contacts__item">
-            <h4>
+            <h4 class="smallheader">
               Pearl Gregg<br />
               Limitless Artist Group
             </h4>
@@ -200,7 +203,7 @@
             <a href="mailto: pearl.gregg@limitlessag.com">pearl.gregg@limitlessag.com</a>
           </li>
           <li class="contacts__item">
-            <h4>
+            <h4 class="smallheader">
               Carson Whyte<br />
               ARCH Entertainment
             </h4>

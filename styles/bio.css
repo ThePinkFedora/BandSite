@@ -10,19 +10,19 @@
 
 @font-face {
   font-family: "Avenir Next";
-  src: url("../assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype"), url("../assets/fonts/AvenirNextLTPro-Regular.ttf") format("truetype");
+  src: url("../assets/fonts/avenir-next-ltpro-regular.otf") format("opentype"), url("../assets/fonts/avenir-next-ltpro-regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "Avenir Next";
-  src: url("../assets/fonts/AvenirNextLTPro-Demi.otf") format("opentype"), url("../assets/fonts/AvenirNextLTPro-Demi.ttf") format("truetype");
+  src: url("../assets/fonts/avenir-next-ltpro-demi.otf") format("opentype"), url("../assets/fonts/avenir-next-ltpro-demi.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
 }
 @font-face {
   font-family: "Avenir Next";
-  src: url("../assets/fonts/AvenirNextLTPro-Bold.otf") format("opentype"), url("../assets/fonts/AvenirNextLTPro-Bold.ttf") format("truetype");
+  src: url("../assets/fonts/avenir-next-ltpro-bold.otf") format("opentype"), url("../assets/fonts/avenir-next-ltpro-bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
 }
@@ -37,16 +37,16 @@ body {
   }
 }
 
-h1 {
+.page-header {
   font: 600 1.5rem/2rem "Avenir Next";
 }
 @media (min-width: 768px) {
-  h1 {
+  .page-header {
     font: 600 3.75rem/4.25rem "Avenir Next";
   }
 }
 
-h2 {
+.section-header {
   font: 600 1.5rem/2rem "Avenir Next";
   padding: 1.5rem 0 1.125rem 0;
   width: 100%;
@@ -54,28 +54,28 @@ h2 {
   margin-bottom: calc(0.25em - 0.5lh);
 }
 @media (min-width: 768px) {
-  h2 {
+  .section-header {
     font: 600 2.25rem/2.75rem "Avenir Next";
     padding: 3.375rem 0 1.5rem 0;
     padding-bottom: calc(1rem + 2.5vw);
   }
 }
 
-h3, .subheader, .about .about-header__quote q {
+.subheader, .about-header__quote-text {
   font: 600 0.875rem/1.375rem "Avenir Next";
   padding: 1.5rem 0 1.375rem 0;
   margin-top: calc(0.7em - 0.5lh);
   margin-bottom: calc(0.25em - 0.5lh);
 }
 @media (min-width: 768px) {
-  h3, .subheader, .about .about-header__quote q {
+  .subheader, .about-header__quote-text {
     font: 600 1.5rem/2rem "Avenir Next";
     padding-top: 3rem;
     padding-bottom: calc(1.25rem + 1vw);
   }
 }
 
-h4 {
+.smallheader {
   font-weight: 600;
 }
 
@@ -269,7 +269,6 @@ h4 {
 }
 
 .hero {
-  height: min(58.5vw, 39.375rem);
   padding: 0 1rem;
   position: relative;
   display: flex;
@@ -308,7 +307,7 @@ h4 {
   height: 1px;
 }
 
-.primary-cta, .comments-section .comment-form input[type=submit] {
+.primary-cta, .form-submit {
   background-color: #323232;
   color: #FFFFFF;
   border-width: 0;
@@ -318,13 +317,68 @@ h4 {
   height: 40px;
   padding: 0 32px;
 }
-.primary-cta:hover, .comments-section .comment-form input[type=submit]:hover {
+.primary-cta:hover, .form-submit:hover {
   background-color: #000000;
 }
 @media (min-width: 768px) {
-  .primary-cta, .comments-section .comment-form input[type=submit] {
+  .primary-cta, .form-submit {
     width: auto;
   }
+}
+
+.avatar {
+  background-color: gray;
+  border-radius: 50%;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .avatar {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+.avatar::before {
+  content: "";
+  background-color: #E1E1E1;
+  position: absolute;
+  inset: 0;
+}
+
+.form-field__label {
+  display: block;
+  color: #AFAFAF;
+}
+.form-field__field:where([type=text], textarea) {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #E1E1E1;
+  border-radius: 4px;
+  resize: none;
+}
+.form-field__field:where([type=text], textarea)::-moz-placeholder {
+  color: #323232;
+}
+.form-field__field:where([type=text], textarea)::placeholder {
+  color: #323232;
+}
+.form-field__field:where([type=text], textarea):focus {
+  border-color: #323232;
+  outline: none;
+}
+.form-field__field:where([type=text], textarea).invalid {
+  border-color: #D22D2D;
+}
+@media (min-width: 768px) {
+  .form-field__field:where([type=text], textarea) {
+    padding: 1rem;
+  }
+}
+
+.hero--bio {
+  height: min(58.5vw, 39.375rem);
 }
 
 .about {
@@ -359,17 +413,18 @@ h4 {
     max-width: 83%;
   }
 }
-.about .about-header {
+
+.about-header {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 @media (min-width: 768px) {
-  .about .about-header {
+  .about-header {
     gap: 2.25rem;
   }
 }
-.about .about-header__image {
+.about-header__image {
   width: 100%;
   aspect-ratio: 1.845;
   -o-object-fit: cover;
@@ -388,46 +443,47 @@ h4 {
        object-position: bottom;
   }
 }
-.about .about-header__quote {
+.about-header__quote-container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   max-width: 42rem;
 }
-.about .about-header__quote q {
+.about-header__quote-text {
   display: block;
   padding: 0;
 }
 @media (min-width: 768px) {
-  .about .about-header__quote q {
+  .about-header__quote-text {
     font-size: 1.4rem;
     line-height: 1.9rem;
   }
 }
-.about .about-header__quote figcaption {
+.about-header__quote-cite {
   font-weight: 600;
   word-spacing: 0.2em;
 }
 @media (min-width: 768px) {
-  .about .about-header__quote figcaption {
+  .about-header__quote-cite {
     font-size: 1.1em;
   }
 }
-.about .bio__title {
+
+.bio__title {
   color: #000000;
 }
-.about .bio__content {
+.bio__content {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 @media (min-width: 768px) {
-  .about .bio__content {
+  .bio__content {
     gap: 1.5rem;
   }
 }
 @media (min-width: 768px) {
-  .about .bio__content {
+  .bio__content {
     flex-direction: row;
   }
 }
@@ -512,26 +568,6 @@ h4 {
     gap: 1.5rem;
   }
 }
-.comments-section .avatar {
-  background-color: gray;
-  border-radius: 50%;
-  flex-shrink: 0;
-  width: 2.25rem;
-  height: 2.25rem;
-  position: relative;
-}
-@media (min-width: 768px) {
-  .comments-section .avatar {
-    width: 3rem;
-    height: 3rem;
-  }
-}
-.comments-section .avatar::before {
-  content: "";
-  background-color: #E1E1E1;
-  position: absolute;
-  inset: 0;
-}
 .comments-section .comment-form {
   display: flex;
   align-items: flex-start;
@@ -543,36 +579,7 @@ h4 {
   flex-direction: column;
   gap: 1.5rem;
 }
-.comments-section .comment-form__field label {
-  display: block;
-  color: #AFAFAF;
-}
-.comments-section .comment-form__field input, .comments-section .comment-form__field textarea {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #E1E1E1;
-  border-radius: 4px;
-  resize: none;
-}
-.comments-section .comment-form__field input::-moz-placeholder, .comments-section .comment-form__field textarea::-moz-placeholder {
-  color: #323232;
-}
-.comments-section .comment-form__field input::placeholder, .comments-section .comment-form__field textarea::placeholder {
-  color: #323232;
-}
-.comments-section .comment-form__field input:focus, .comments-section .comment-form__field textarea:focus {
-  border-color: #323232;
-  outline: none;
-}
-.comments-section .comment-form__field input.invalid, .comments-section .comment-form__field textarea.invalid {
-  border-color: #D22D2D;
-}
-@media (min-width: 768px) {
-  .comments-section .comment-form__field input, .comments-section .comment-form__field textarea {
-    padding: 1rem;
-  }
-}
-.comments-section .comment-form input[type=submit] {
+.comments-section .comment-form__form-submit {
   align-self: flex-end;
 }
 .comments-section .comment {

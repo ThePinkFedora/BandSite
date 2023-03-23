@@ -10,19 +10,19 @@
 
 @font-face {
   font-family: "Avenir Next";
-  src: url("../assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype"), url("../assets/fonts/AvenirNextLTPro-Regular.ttf") format("truetype");
+  src: url("../assets/fonts/avenir-next-ltpro-regular.otf") format("opentype"), url("../assets/fonts/avenir-next-ltpro-regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "Avenir Next";
-  src: url("../assets/fonts/AvenirNextLTPro-Demi.otf") format("opentype"), url("../assets/fonts/AvenirNextLTPro-Demi.ttf") format("truetype");
+  src: url("../assets/fonts/avenir-next-ltpro-demi.otf") format("opentype"), url("../assets/fonts/avenir-next-ltpro-demi.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
 }
 @font-face {
   font-family: "Avenir Next";
-  src: url("../assets/fonts/AvenirNextLTPro-Bold.otf") format("opentype"), url("../assets/fonts/AvenirNextLTPro-Bold.ttf") format("truetype");
+  src: url("../assets/fonts/avenir-next-ltpro-bold.otf") format("opentype"), url("../assets/fonts/avenir-next-ltpro-bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
 }
@@ -37,16 +37,16 @@ body {
   }
 }
 
-h1 {
+.page-header {
   font: 600 1.5rem/2rem "Avenir Next";
 }
 @media (min-width: 768px) {
-  h1 {
+  .page-header {
     font: 600 3.75rem/4.25rem "Avenir Next";
   }
 }
 
-h2 {
+.section-header {
   font: 600 1.5rem/2rem "Avenir Next";
   padding: 1.5rem 0 1.125rem 0;
   width: 100%;
@@ -54,28 +54,28 @@ h2 {
   margin-bottom: calc(0.25em - 0.5lh);
 }
 @media (min-width: 768px) {
-  h2 {
+  .section-header {
     font: 600 2.25rem/2.75rem "Avenir Next";
     padding: 3.375rem 0 1.5rem 0;
     padding-bottom: calc(1rem + 2.5vw);
   }
 }
 
-h3, .subheader {
+.subheader {
   font: 600 0.875rem/1.375rem "Avenir Next";
   padding: 1.5rem 0 1.375rem 0;
   margin-top: calc(0.7em - 0.5lh);
   margin-bottom: calc(0.25em - 0.5lh);
 }
 @media (min-width: 768px) {
-  h3, .subheader {
+  .subheader {
     font: 600 1.5rem/2rem "Avenir Next";
     padding-top: 3rem;
     padding-bottom: calc(1.25rem + 1vw);
   }
 }
 
-h4 {
+.smallheader, .shows-table__column-header, .shows-table__cell-header {
   font-weight: 600;
 }
 
@@ -269,7 +269,6 @@ h4 {
 }
 
 .hero {
-  height: min(58.5vw, 39.375rem);
   padding: 0 1rem;
   position: relative;
   display: flex;
@@ -327,13 +326,10 @@ h4 {
   }
 }
 
-.hero--shows {
-  height: unset;
-}
-.hero--shows h3 {
+.hero--shows__subheader {
   padding-top: 0;
 }
-.hero--shows .hero__content {
+.hero__content--shows {
   padding-block: 2rem;
   display: flex;
   justify-content: space-between;
@@ -341,58 +337,59 @@ h4 {
   flex-wrap: wrap;
   gap: 1rem;
 }
-.hero--shows .hero__content .hero__text-container {
+.hero__content--shows .hero__text-container {
   flex: 0 1 min(75%, 520px);
 }
-.hero--shows .hero__content .hero__song-container {
+.hero__content--shows .hero__song-container {
   flex: 0 1 max(40%, 420px);
   aspect-ratio: 3;
 }
-.hero--shows .hero__content .hero__song-container iframe {
+.hero__content--shows .hero__song-container iframe {
   display: block;
 }
 @media (min-width: 768px) {
-  .hero--shows .hero__content {
+  .hero__content--shows {
     padding-block: 3.75rem;
     gap: 3.75rem;
   }
 }
 @media (min-width: 1280px) {
-  .hero--shows .hero__content {
+  .hero__content--shows {
     padding-block: 15.125rem;
   }
 }
 
 .shows-section {
   display: flex;
+  justify-content: center;
+}
+.shows-section__content-container {
+  flex: 0 1 63.75rem;
+  display: flex;
   justify-content: space-between;
   align-items: baseline;
   flex-wrap: wrap;
-  max-width: 63.75rem;
   margin-bottom: 1rem;
 }
-.shows-section h2 {
+.shows-section__content-container .section-header {
   width: auto;
+  padding-top: 32px;
+  padding-bottom: 8px;
   margin-left: 1rem;
 }
 @media (min-width: 768px) {
-  .shows-section h2 {
+  .shows-section__content-container .section-header {
     margin-left: 1.125rem;
   }
 }
 @media (min-width: 1280px) {
-  .shows-section h2 {
+  .shows-section__content-container .section-header {
     margin-left: 0;
   }
 }
 @media (min-width: 768px) {
-  .shows-section {
+  .shows-section__content-container {
     margin: 0 1.125rem 1.125rem 1.125rem;
-  }
-}
-@media (min-width: 1280px) {
-  .shows-section {
-    margin-inline: auto;
   }
 }
 
@@ -401,6 +398,7 @@ h4 {
   flex-direction: column;
   width: 100%;
   max-width: 807px;
+  margin-right: -1rem;
 }
 .shows-table__column-header, .shows-table__cell-header {
   color: #AFAFAF;
@@ -410,7 +408,12 @@ h4 {
   gap: 16px;
 }
 .shows-table__head > *, .shows-table__row > * {
-  flex: 100%;
+  flex: 1;
+}
+@media (min-width: 768px) {
+  .shows-table__head > *:last-child, .shows-table__row > *:last-child {
+    flex: 0 1 150px;
+  }
 }
 .shows-table__head {
   display: none;

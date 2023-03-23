@@ -4,41 +4,13 @@
 @use './partials/units';
 @use './partials/mixins';
 
-///Moving to global
-// .hero{
-//     height: min(58.5vw, 39.375rem /*630px*/);
-//     padding: 0 units.$margins_Mobile;
-//     position: relative;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     overflow: hidden;
-    
+@use './partials/forms';
 
-//     @include tablet{
-//         padding: 0 units.$margins_Tablet;
-//     }
-
-//     &__image{
-//         width: 100%;
-//         position: absolute;
-//         inset: auto auto 0 0;
-//         z-index: -1;
-//     }
-//     //Darken overlay
-//     &::after{
-//         content: '';
-//         background-color: colors.$primary-dark;
-//         opacity: .5;
-//         position: absolute;
-//         inset: 0;
-//         z-index: -1;
-//     }
-//     &__title{
-//         color: colors.$primary-light;
-//         flex: 0 1 units.$maxWidth;
-//     }
-// }
+.hero{
+    &--bio{
+        height: min(58.5vw, 39.375rem /*630px*/);
+    }
+}
 
 //# About Section
 .about{
@@ -55,68 +27,71 @@
             max-width: 83%;
         }
     }
+}
 
-    ///## Header , top help of the about section before the bio
-    .about-header{
-        @include mixins.common-flex-container(column);
-        &__image{
-            //Very cool, though there may be performance considerations
-            @keyframes scrollImage {
-                25%{
-                    object-position: top;
-                }
-                100%{
-                    object-position: bottom;
-                }
+///# About Header , top help of the about section before the bio
+.about-header{
+    @include mixins.common-flex-container(column);
+    &__image{
+        //Very cool, though there may be performance considerations
+        @keyframes scrollImage {
+            25%{
+                object-position: top;
             }
-
-            width: 100%;
-            aspect-ratio: 1.845;
-            object-fit: cover;
-            object-position: bottom;
-            animation: scrollImage 10s ease-in-out 5s infinite;
+            100%{
+                object-position: bottom;
+            }
         }
-    
-        &__quote{
-            display: flex;
-            flex-direction: column;
-            gap: units.$padding-3;
-            max-width: 42rem;
 
-            q{
-                @extend .subheader;
-                display: block;
-                padding: 0;
-    
-                @include tablet{
-                    font-size: 1.4rem;
-                    line-height: 1.9rem;
-                }
-            }
-    
-            figcaption{
-                font-weight: 600;
-                word-spacing: .2em;
-                @include tablet{
-                    font-size: 1.1em;
-                }
-            }
+        width: 100%;
+        aspect-ratio: 1.845;
+        object-fit: cover;
+        object-position: bottom;
+        animation: scrollImage 10s ease-in-out 5s infinite;
+    }
+
+    &__quote-container{
+        display: flex;
+        flex-direction: column;
+        gap: units.$padding-3;
+        max-width: 42rem;
+    }
+
+    &__quote-text{
+        @extend .subheader;
+        display: block;
+        padding: 0;
+
+        @include tablet{
+            font-size: 1.4rem;
+            line-height: 1.9rem;
         }
     }
-    
-    //## Bio
-    .bio{
-        &__title{
-            color: colors.$secondark-dark;
-        }
-        &__content{
-            @include mixins.common-flex-container-items(column);
-            @include tablet{
-                flex-direction: row;
-            }
+
+    &__quote-cite{
+        font-weight: 600;
+        word-spacing: .2em;
+        @include tablet{
+            font-size: 1.1em;
         }
     }
 }
+
+
+//# About Bio
+.bio{
+    &__title{
+        color: colors.$secondark-dark;
+    }
+    &__content{
+        @include mixins.common-flex-container-items(column);
+        @include tablet{
+            flex-direction: row;
+        }
+    }
+}
+
+
 ///# Gallery Section
 .photo-gallery{
     @include mixins.flex-column-center;
@@ -169,6 +144,32 @@
     }
 }
 
+
+
+
+// FORM FIELD HEIGHT
+// The form field height will be no less than 48px on
+// desktop & tablet, and no less than 36px on mobile.
+// FORM FIELD WIDTH
+// The form field should span the entire width of the
+// container for all screen sizes.
+// FORM FIELD RADIUS
+// For radius treatment, default to 4px on all corners.
+// FORM FIELD PADDING
+// For desktop & tablet screen sizes, default to 16px of
+// padding on all sides. For mobile, default to 12px of
+// padding on all sides.
+// FORM FIELD LABELS
+// The space between the form field label and the form
+// field itself will be 4px on all screen sizes.
+// FORM FIELD BORDER
+// The form fields will have a 1px border using the color
+// Mercury for the default state, BandSite-Black for the
+// active state, and #D22D2D for the error state.
+
+
+
+
 //# Comments Section
 .comments-section{
     $vertical-gap-mobile: 1rem;
@@ -190,32 +191,6 @@
         }
     }
 
-    //## Avatars
-    .avatar{
-        $mobile-size: 2.25rem; //36px
-        $tablet-size: 3rem; //48px
-
-        background-color: gray;
-        border-radius: 50%;
-        flex-shrink: 0;
-        width: $mobile-size;
-        height: $mobile-size;
-        position: relative;
-
-        @include tablet{
-            width: $tablet-size;
-            height: $tablet-size;
-        }
-
-        ///Image placeholder
-        &::before{
-            content: '';
-            background-color: colors.$secondary-gray;
-            position: absolute;
-            inset: 0;
-        }
-    }
-
     //## Comment Form
     .comment-form{
         $horizontal-gap: 1rem;
@@ -231,65 +206,10 @@
             flex-direction: column;
             gap: $vertical-gap-tablet;
         }
-        
-        ///### Comment Form Field Containers
-        &__field{
-            label{
-                display: block;
-                ///Move to global
-                color: colors.$primary-gray;
-            }
-            input,textarea{
-                $padding-mobile : 0.75rem; //12px
-                $padding-tablet : 1rem; //12px
+    
 
-                width: 100%;
-                padding: $padding-mobile; 
-                border: 1px solid colors.$secondary-gray;
-                border-radius: 4px;
-                resize: none;
-
-                &::placeholder{
-                    color: colors.$primary-dark;
-                }
-
-                &:focus{
-                    border-color: colors.$primary-dark;
-                    outline: none; ///Chrome adds a thick outline by default
-                }
-
-                ///Might have to do this differently
-                &.invalid{
-                    border-color: colors.$error-color;
-                }
-
-                @include tablet{
-                    padding: $padding-tablet;
-                }
-            }
-        }
-
-        //### Submit Button
-        input[type="submit"]{
+        &__form-submit{
             align-self: flex-end;
-
-            @extend .primary-cta;
-            // Moved to global
-            // background-color: colors.$primary-dark;
-            // color: colors.$primary-light;
-            // border-width: 0;
-            // border-radius: 4px;
-            // width: 100%; ///For mobile
-            // height: 40px; ///40px height always
-            // padding: 0 32px;
-
-            // &:hover{
-            //     background-color: colors.$secondark-dark;
-            // }
-
-            // @include tablet{
-            //     width: auto;
-            // }
         }
     }
 

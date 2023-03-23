@@ -1,0 +1,75 @@
+@use './breakpoints' as *;
+@use './colors';
+@use './global'; 
+
+// Generic forms components
+
+
+//## Avatars
+.avatar{
+    $mobile-size: 2.25rem; //36px
+    $tablet-size: 3rem; //48px
+
+    background-color: gray;
+    border-radius: 50%;
+    flex-shrink: 0;
+    width: $mobile-size;
+    height: $mobile-size;
+    position: relative;
+
+    @include tablet{
+        width: $tablet-size;
+        height: $tablet-size;
+    }
+
+    ///Image placeholder
+    &::before{
+        content: '';
+        background-color: colors.$secondary-gray;
+        position: absolute;
+        inset: 0;
+    }
+}
+
+
+
+
+.form-field{
+    &__label{
+        display: block;
+        color: colors.$primary-gray;
+    }
+
+    &__field:where([type="text"],textarea){
+        $padding-mobile : 0.75rem; //12px
+        $padding-tablet : 1rem; //12px
+
+        width: 100%;
+        padding: $padding-mobile; 
+        border: 1px solid colors.$secondary-gray;
+        border-radius: 4px;
+        resize: none;
+
+        &::placeholder{
+            color: colors.$primary-dark;
+        }
+
+        &:focus{
+            border-color: colors.$primary-dark;
+            outline: none; ///Chrome adds a thick outline by default
+        }
+
+        ///Might have to do this differently
+        &.invalid{
+            border-color: colors.$error-color;
+        }
+
+        @include tablet{
+            padding: $padding-tablet;
+        }
+    }
+}
+
+.form-submit{
+    @extend .primary-cta;
+}

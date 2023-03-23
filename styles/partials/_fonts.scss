@@ -4,19 +4,19 @@ $font-family: 'Avenir Next';
 
 @font-face {
     font-family: $font-family;
-    src: url("../assets/fonts/AvenirNextLTPro-Regular.otf") format('opentype'), url("../assets/fonts/AvenirNextLTPro-Regular.ttf") format("truetype");
+    src: url("../assets/fonts/avenir-next-ltpro-regular.otf") format('opentype'), url("../assets/fonts/avenir-next-ltpro-regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: $font-family;
-    src: url("../assets/fonts/AvenirNextLTPro-Demi.otf") format('opentype'), url("../assets/fonts/AvenirNextLTPro-Demi.ttf") format("truetype");
+    src: url("../assets/fonts/avenir-next-ltpro-demi.otf") format('opentype'), url("../assets/fonts/avenir-next-ltpro-demi.ttf") format("truetype");
     font-weight: 600;
     font-style: normal;
 }
 @font-face {
     font-family: $font-family;
-    src: url("../assets/fonts/AvenirNextLTPro-Bold.otf") format('opentype'), url("../assets/fonts/AvenirNextLTPro-Bold.ttf") format("truetype");
+    src: url("../assets/fonts/avenir-next-ltpro-bold.otf") format('opentype'), url("../assets/fonts/avenir-next-ltpro-bold.ttf") format("truetype");
     font-weight: 700;
     font-style: normal;
 }

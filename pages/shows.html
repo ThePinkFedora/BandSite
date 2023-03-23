@@ -31,10 +31,10 @@
     <main>
       <section class="hero hero--shows">
         <img class="hero__image" src="../assets/images/hero-shows.jpg" alt="hero-shows" />
-        <div class="hero__content">
+        <div class="hero__content hero__content--shows">
           <div class="hero__text-container">
-            <h3>Beautiful Beasts Album</h3>
-            <h1>Queen of Yellow x For The Stings</h1>
+            <h3 class="hero--shows__subheader subheader">Beautiful Beasts Album</h3>
+            <h1 class="page-header">Queen of Yellow x For The Stings</h1>
           </div>
           <div class="hero__song-container">
             <iframe
@@ -63,21 +63,22 @@
       </section>
 
       <section class="shows-section">
-        <h2>Shows</h2>
+        <div class="shows-section__content-container">
+          <h2 class="section-header">Shows</h2>
 
-        <div class="shows-table">
-          <!-- Table Head -->
-          <div class="shows-table__head">
-            <h4 class="shows-table__column-header">DATE</h4>
-            <h4 class="shows-table__column-header">VENUE</h4>
-            <h4 class="shows-table__column-header">LOCATION</h4>
-            <div class="shows-table__column-header"><!-- There's nothing in this one--></div>
-          </div>
-          <!-- <hr class="divider" /> -->
-          <!-- Table Body -->
-          <div class="shows-table__body" id="showsTableBody">
-            <!-- Moving to be added in code -->
-            <!-- <div class="shows-table__row">
+          <div class="shows-table">
+            <!-- Table Head -->
+            <div class="shows-table__head">
+              <h4 class="shows-table__column-header">DATE</h4>
+              <h4 class="shows-table__column-header">VENUE</h4>
+              <h4 class="shows-table__column-header">LOCATION</h4>
+              <div class="shows-table__column-header"><!-- There's nothing in this one--></div>
+            </div>
+            <!-- <hr class="divider" /> -->
+            <!-- Table Body -->
+            <div class="shows-table__body" id="showsTableBody">
+              <!-- Moving to be added in code -->
+              <!-- <div class="shows-table__row">
               <div class="shows-table__cell">
                 <h4 class="shows-table__cell-header">DATE</h4>
                 Mon Sept 06 2021
@@ -131,6 +132,7 @@
               </div>
             </div>
             <hr class="divider" /> -->
+            </div>
           </div>
         </div>
       </section>
@@ -140,7 +142,7 @@
     <footer class="footer">
       <div class="footer__content">
         <!-- Section/Footer Heading -->
-        <h2 class="footer__heading">Get in Touch</h2>
+        <h2 class="footer__heading section-header">Get in Touch</h2>
         <!-- Social Icons List -->
         <div class="social-icons">
           <a href="https://instagram.com/" target="_blank"><img class="social-icons__icon" src="../assets/icons/icon-instagram.svg" alt="instagram" /></a>

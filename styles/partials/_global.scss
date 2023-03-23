@@ -4,7 +4,7 @@
 @use './units' as *;
 @use './fonts';
 @use './mixins';
-@forward './fonts';
+// @forward './fonts';
 
 
 
@@ -20,7 +20,8 @@ body{
     }
 }
 //## Page Header
-h1{
+// h1{
+.page-header{
     font: fonts.$font-pageheader-mobile;
     @include tablet{
         font: fonts.$font-pageheader-tablet;
@@ -28,7 +29,8 @@ h1{
 
 }
 //## Section Header
-h2{
+// h2{
+.section-header{
     font: fonts.$font-sectionheader-mobile;
     padding: $pad-before-headlines-mobile 0 ($pad-after-headlines-mobile + 0.125rem) 0;
     width: 100%;
@@ -45,7 +47,8 @@ h2{
     }
 }
 //## Subheader
-h3, .subheader{
+// h3
+.subheader{
     font: fonts.$font-subheader-mobile;
     padding: $pad-before-headlines-mobile 0 ($pad-after-headlines-mobile + 0.375rem) 0;
 
@@ -61,9 +64,13 @@ h3, .subheader{
         //~28px for tablet and ~32px for desktop
         padding-bottom: calc(1.25rem + 1vw);
     }
+
+    
 }
-//## Subheader variant, 1em just demi-bold
-h4{
+
+// //## Subheader variant, 1em just demi-bold
+// // h4{
+.smallheader{
     font-weight: 600;
 }
 
@@ -248,7 +255,7 @@ h4{
 
 //# Generic Components
 .hero{
-    height: min(58.5vw, 39.375rem /*630px*/);
+    // height: min(58.5vw, 39.375rem /*630px*/);
     padding: 0 $margins_Mobile;
     position: relative;
     display: flex;
@@ -317,4 +324,3 @@ h4{
         width: auto;
     }
 }
-

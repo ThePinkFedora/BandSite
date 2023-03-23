@@ -19,6 +19,7 @@
     }
 }
 
+///OLD/ We're going to redesign our strategy
 @mixin common-content-container($use-bottom-margin: true){
     max-width: units.$maxWidth;
     margin-left: units.$margins_Mobile;
@@ -47,3 +48,28 @@
     flex-direction: column;
     align-items: center;
 }
+
+
+
+
+
+
+///New potentional section content rules
+
+@mixin common-section-layout($padding-inline-mobile: units.$margins_Mobile , $padding-inline-tablet: units.$margins_Tablet){
+    padding-inline: $padding-inline-mobile;
+
+    @include tablet{
+        padding-inline: $padding-inline-tablet;
+    }
+
+    > *{
+        max-width: units.$maxWidth;
+        margin-inline: auto;
+    }
+}
+
+// @mixin common-content-container(){
+//     maxWidth: units.$maxWidth;
+//     margin: auto;
+// }

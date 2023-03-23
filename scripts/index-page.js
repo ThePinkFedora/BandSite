@@ -81,6 +81,8 @@ function displayComment(comment){
 commentForm.addEventListener('submit',(e) =>{
     e.preventDefault(); ///Prevent submission reload
 
+    console.log(e.target);
+
     ///Collect form elements
     const nameElement = commentForm.elements["commentName"];
     const textElement =  commentForm.elements["commentText"];

@@ -47,6 +47,7 @@ function createCell(content,header){
         ///Create header element
         const headerElement = document.createElement("h4");
         headerElement.classList.add("shows-table__cell-header");
+        headerElement.textContent = header;
 
         ///Append it
         cellElement.appendChild(headerElement);
@@ -64,7 +65,11 @@ function createCell(content,header){
     return cellElement;
 }
 
-
+/**
+ * TODO
+ * @param {*} textContent 
+ * @returns 
+ */
 function createButton(textContent){
     const buyButton = document.createElement("button");
     buyButton.classList.add("shows-table__button");
@@ -74,6 +79,10 @@ function createButton(textContent){
     return buyButton;
 }
 
+/**
+ * TODO 
+ * @returns 
+ */
 function createDivider(){
     const divider = document.createElement("hr");
     divider.classList.add("divider");
@@ -81,7 +90,10 @@ function createDivider(){
     return divider;
 }
 
-
+/**
+ * TODO
+ * @param {*} show 
+ */
 function addShow(show){
     const rowElement = document.createElement("div");
     rowElement.classList.add("shows-table__row");
