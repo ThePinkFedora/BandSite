@@ -14,17 +14,30 @@
 
 //# About Section
 .about{
-    @include mixins.flex-column-center;
+    // @include mixins.flex-column-center;
 
-    ///TODO, simplify this layout using a similar design to the intro
-    &__content-wrapper{
-        @include mixins.common-content-container;
+    ///Renamed to about__section-container and also section-container is it's own class on the element now now
+    // &__content-wrapper{
+    //     // @include mixins.common-content-container;
+    //     // 
+    //     // @include mixins.common-content-container-padding;
+    //     @extend .section-content-container;
+    //     @include mixins.flex-column-center;
+    // }
+    &__section-header{
+        @include desktop{
+            padding-bottom: 2.25rem;
+            // padding-bottom: 2.5rem;
+        }
+    }
+
+    &__section-container{
         @include mixins.flex-column-center;
     }
 
     &__content{
         @include tablet{
-            max-width: 83%;
+            max-width: 83%; 
         }
     }
 }
@@ -32,6 +45,9 @@
 ///# About Header , top help of the about section before the bio
 .about-header{
     @include mixins.common-flex-container(column);
+    
+    
+
     &__image{
         //Very cool, though there may be performance considerations
         @keyframes scrollImage {
@@ -94,11 +110,12 @@
 
 ///# Gallery Section
 .photo-gallery{
-    @include mixins.flex-column-center;
     background-color: colors.$secondary-light; 
 
-    &__content{
-        @include mixins.common-content-container;
+    &__section-header{
+        @include desktop{
+            padding-bottom: 2.5rem;
+        }
     }
 
     &__list{
@@ -130,52 +147,15 @@
 }
 
 
-///There's an opportunity for this type of placeholder class to be implemented universally once we work out the exact rules
-%section{
-    padding: 0 units.$margins_Mobile units.$margins_Mobile units.$margins_Mobile;
-
-    @include tablet{
-        padding: 0 units.$margins_Tablet units.$margins_Tablet units.$margins_Tablet;
-    }
-
-    & > *{
-        max-width: units.$maxWidth; 
-        margin: auto;
-    }
-}
-
-
-
-
-// FORM FIELD HEIGHT
-// The form field height will be no less than 48px on
-// desktop & tablet, and no less than 36px on mobile.
-// FORM FIELD WIDTH
-// The form field should span the entire width of the
-// container for all screen sizes.
-// FORM FIELD RADIUS
-// For radius treatment, default to 4px on all corners.
-// FORM FIELD PADDING
-// For desktop & tablet screen sizes, default to 16px of
-// padding on all sides. For mobile, default to 12px of
-// padding on all sides.
-// FORM FIELD LABELS
-// The space between the form field label and the form
-// field itself will be 4px on all screen sizes.
-// FORM FIELD BORDER
-// The form fields will have a 1px border using the color
-// Mercury for the default state, BandSite-Black for the
-// active state, and #D22D2D for the error state.
-
-
-
 
 //# Comments Section
 .comments-section{
-    $vertical-gap-mobile: 1rem;
-    $vertical-gap-tablet: 1.5rem;
 
-    @extend %section;
+    &__section-header{
+        @include desktop{
+            padding-bottom: 2.25rem;
+        }
+    }
 
     //## Section Content Container
     &__container{
@@ -183,67 +163,109 @@
 
         display: flex;
         flex-direction: column;
-        gap: $vertical-gap-mobile;
+        // gap: $vertical-gap-mobile;
 
         @include tablet{
-            max-width: 576px;
-            gap: $vertical-gap-tablet;
+            max-width: 36rem;//576px;
+        }
+        @include desktop{
+            max-width: 31rem;//496px; ///It actually gets thinner on desktop
+        }
+        
+    }
+    hr{
+        margin-top: 0.625rem;//10px;
+        margin-bottom: 1rem;//16px;
+
+        @include tablet{
+            margin-top: 1.125rem;//18px;
+            margin-bottom: 1.625rem;//26px;
+        }
+
+        ///Except no bottom margin for the last one
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+}
+
+ //## Comment Form
+ .comment-form{
+    $horizontal-gap: 1rem;
+    // $vertical-gap-tablet: 1.5rem;
+    margin-bottom: .25rem;
+
+    display: flex;
+    align-items: flex-start;
+    gap: $horizontal-gap;
+
+    > *:first-child{
+        margin-top: 1.5em;
+    }
+
+    //### Comment Form Content (right)
+    &__content{
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+
+        
+        // gap: $vertical-gap-tablet;
+
+        // > *:first-child{
+        //     margin-bottom: $vertical-gap-tablet;
+        // }
+        // @include tablet{
+        //     > *{
+        //         margin-bottom: $vertical-gap-tablet;
+        //     }
+        // }
+    }
+
+    &__comment-field{
+        padding-top: 1.25rem;//$vertical-gap-tablet;
+        padding-bottom: .8rem;
+        @include tablet{
+            padding-bottom: 1rem;//$vertical-gap-tablet;
         }
     }
 
-    //## Comment Form
-    .comment-form{
-        $horizontal-gap: 1rem;
 
-        display: flex;
-        align-items: flex-start;
-        gap: $horizontal-gap;
+    &__form-submit{
+        align-self: flex-end;
+    }
+}
 
-        //### Comment Form Content (right)
-        &__content{
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            gap: $vertical-gap-tablet;
-        }
+//## Comment
+.comment{
+    $horizontal-gap: 1rem;
+    $vertical-gap: 1rem; ///Possibly needs line height tweaking
     
-
-        &__form-submit{
-            align-self: flex-end;
-        }
+    display: flex;
+    align-items: flex-start;
+    gap: $horizontal-gap;
+    
+    ///### Comment Content (right) 
+    &__content{
+        flex-grow: 1;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: $vertical-gap;
+    }
+    
+    &__name{
+        height: 1em; ///My latest genius fix for the line height problem
     }
 
-    //## Comment
-    .comment{
-        $horizontal-gap: 1rem;
-        $vertical-gap: 1rem; ///Possibly needs line height tweaking
-        
-        display: flex;
-        align-items: flex-start;
-        gap: $horizontal-gap;
-        
-        ///### Comment Content (right) 
-        &__content{
-            flex-grow: 1;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: $vertical-gap;
-        }
-        
-        &__name{
-            height: 1em; ///My latest genius fix for the line height problem
-        }
+    ///### Comment timestamp
+    &__timestamp{
+        color: colors.$primary-gray;
+        height: 1em; ///My latest genius fix for the line height problem
+    }
 
-        ///### Comment timestamp
-        &__timestamp{
-            color: colors.$primary-gray;
-            height: 1em; ///My latest genius fix for the line height problem
-        }
-
-        //### Comment text
-        &__text{
-            flex: 100%;
-        }
+    //### Comment text
+    &__text{
+        flex: 100%;
     }
 }

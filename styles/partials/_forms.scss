@@ -40,6 +40,8 @@
         color: colors.$primary-gray;
     }
 
+    
+
     &__field:where([type="text"],textarea){
         $padding-mobile : 0.75rem; //12px
         $padding-tablet : 1rem; //12px
@@ -68,7 +70,20 @@
             padding: $padding-tablet;
         }
     }
+
+    &__field:where([type="text"]){
+        height: 2.25rem;
+        @include tablet{
+            height: 3rem;
+        }
+    }
+
+    &__field:where(textarea){
+        min-height: 6lh;
+    }
 }
+
+
 
 .form-submit{
     @extend .primary-cta;

@@ -13,8 +13,8 @@
     <header class="header">
       <div class="header__content">
         <!-- Logo -->
-        <a class="logo" href="./">
-          <img class="logo__image" src="./assets/logos/Logo-bandsite.svg" alt="bandsite logo" />
+        <a class="header__logo-link" href="./">
+          <img class="header__logo-image" src="./assets/logos/Logo-bandsite.svg" alt="bandsite logo" />
         </a>
         <!-- Navbar -->
         <nav class="main-nav">
@@ -39,9 +39,9 @@
 
       <!-- About -->
       <section class="about">
-        <div class="about__content-wrapper">
+        <div class="about__section-container section-container">
           <!-- Section Header -->
-          <h2 class="about__title section-header">About the Musicians</h2>
+          <h2 class="about__section-header section-header">About the Musicians</h2>
 
           <div class="about__content">
             <!-- About Header -->
@@ -85,9 +85,9 @@
 
       <!-- Photo Galley -->
       <section class="photo-gallery">
-        <div class="photo-gallery__content">
+        <div class="photo-gallery__section-container section-container">
           <!-- Section Header -->
-          <h2 class="section-header">Photo Gallery</h2>
+          <h2 class="photo-gallery__section-header section-header">Photo Gallery</h2>
           <ul class="photo-gallery__list">
             <li class="photo-gallery__item"><img class="photo-gallery__image" src="./assets/images/Photo-gallery-1.jpg" alt="gallery image 1" /></li>
             <li class="photo-gallery__item"><img class="photo-gallery__image" src="./assets/images/Photo-gallery-2.jpg" alt="gallery image 2" /></li>
@@ -103,27 +103,28 @@
       </section>
 
       <section class="comments-section">
-        <h2 class="section-header">Join the Conversation</h2>
-        <div class="comments-section__container" id="commentSectionContainer">
-          <form class="comment-form" id="commentForm">
-            <img class="avatar" id="commentFormAvatar" src="./assets/images/Mohan-muruge.jpg" alt="Mohan-muruge" />
-            <div class="comment-form__content">
-              <div class="form-field">
-                <label class="form-field__label" for="name"> NAME </label>
-                <input class="form-field__field" type="text" id="commentName" name="name" placeholder="Enter your name" />
-              </div>
+        <div class="comments-section__section-container section-container">
+          <h2 class="section-header comments-section__section-header">Join the Conversation</h2>
+          <div class="comments-section__container" id="commentSectionContainer">
+            <form class="comment-form" id="commentForm">
+              <img class="avatar" id="commentFormAvatar" src="./assets/images/Mohan-muruge.jpg" alt="Mohan-muruge" />
+              <div class="comment-form__content">
+                <div class="form-field">
+                  <label class="form-field__label label" for="name"> NAME </label>
+                  <input class="form-field__field" type="text" id="commentName" name="name" placeholder="Enter your name" />
+                </div>
 
-              <div class="comment-form__form-field form-field">
-                <label class="form-field__label" for="comment"> COMMENT </label>
-                <textarea class="form-field__field" id="commentText" name="comment" placeholder="Add a new comment"></textarea>
-              </div>
+                <div class="comment-form__comment-field comment-form__form-field form-field">
+                  <label class="form-field__label label" for="comment"> COMMENT </label>
+                  <textarea class="form-field__field" id="commentText" name="comment" placeholder="Add a new comment"></textarea>
+                </div>
 
-              <button class="comment-form__form-submit form-submit" type="submit" id="commentSubmit">COMMENT</button>
-            </div>
-          </form>
-          <hr />
-          <!-- Moving to be added in code -->
-          <!-- <article class="comment">
+                <button class="comment-form__form-submit form-submit" type="submit" id="commentSubmit">COMMENT</button>
+              </div>
+            </form>
+            <hr />
+            <!-- Moving to be added in code -->
+            <!-- <article class="comment">
             <img class="avatar" src="" />
             <div class="comment__content">
               <h4 class="comment__name">Connor Walton</h4>
@@ -159,26 +160,27 @@
             </div>
           </article>
           <hr /> -->
+          </div>
         </div>
       </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-      <div class="footer__content">
+      <div class="footer__section-container section-container">
         <!-- Section/Footer Heading -->
         <h2 class="footer__heading section-header">Get in Touch</h2>
         <!-- Social Icons List -->
-        <div class="social-icons">
-          <a href="https://instagram.com/" target="_blank"><img class="social-icons__icon" src="./assets/icons/icon-instagram.svg" alt="instagram" /></a>
-          <a href="https://facebook.com/" target="_blank"><img class="social-icons__icon" src="./assets/icons/icon-facebook.svg" alt="facebook" /></a>
-          <a href="https://twitter.com/" target="_blank"><img class="social-icons__icon" src="./assets/icons/icon-twitter.svg" alt="twitter" /></a>
+        <div class="footer__social-icons">
+          <a href="https://instagram.com/" target="_blank"><img class="footer__icon" src="./assets/icons/icon-instagram.svg" alt="instagram" /></a>
+          <a href="https://facebook.com/" target="_blank"><img class="footer__icon" src="./assets/icons/icon-facebook.svg" alt="facebook" /></a>
+          <a href="https://twitter.com/" target="_blank"><img class="footer__icon" src="./assets/icons/icon-twitter.svg" alt="twitter" /></a>
         </div>
 
         <!-- Contacts-List -->
-        <ul class="contacts">
+        <ul class="footer__contact-list">
           <!-- Contact Item -->
-          <li class="contacts__item">
+          <li class="footer__contact-item">
             <h4 class="smallheader">
               Cam Adams<br />
               The Bees Knees Management
@@ -190,7 +192,7 @@
             </p>
             <a href="mailto: info@thebeesknees.com">info@thebeesknees.com</a>
           </li>
-          <li class="contacts__item">
+          <li class="footer__contact-item">
             <h4 class="smallheader">
               Pearl Gregg<br />
               Limitless Artist Group
@@ -202,7 +204,7 @@
             </p>
             <a href="mailto: pearl.gregg@limitlessag.com">pearl.gregg@limitlessag.com</a>
           </li>
-          <li class="contacts__item">
+          <li class="footer__contact-item">
             <h4 class="smallheader">
               Carson Whyte<br />
               ARCH Entertainment
@@ -216,8 +218,8 @@
           </li>
         </ul>
 
-        <a class="logo" href="./">
-          <img class="logo__image" src="./assets/logos/Logo-bandsite.svg" alt="bandsite logo" />
+        <a class="footer__logo-link" href="./">
+          <img class="footer__logo-image" src="./assets/logos/Logo-bandsite.svg" alt="bandsite logo" />
         </a>
 
         <!-- Copyright -->
