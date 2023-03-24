@@ -173,7 +173,8 @@
         }
         
     }
-    hr{
+    &__divider{
+        @extend .divider;
         margin-top: 0.625rem;//10px;
         margin-bottom: 1rem;//16px;
 
@@ -208,18 +209,6 @@
         flex-grow: 1;
         display: flex;
         flex-direction: column;
-
-        
-        // gap: $vertical-gap-tablet;
-
-        // > *:first-child{
-        //     margin-bottom: $vertical-gap-tablet;
-        // }
-        // @include tablet{
-        //     > *{
-        //         margin-bottom: $vertical-gap-tablet;
-        //     }
-        // }
     }
 
     &__comment-field{

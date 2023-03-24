@@ -8,7 +8,9 @@
 .hero{
     $padding-block-mobile: 2rem; //32px
     $padding-block-tablet: 3.75rem; //60px
-    $padding-block-desktop: 15.125rem; //60px
+    $padding-top-desktop: 12.5rem; 
+    $padding-bottom-desktop: 14.75rem; 
+
     $gap-mobile: 1rem; //16px
     $gap-tablet: 3.75rem; //60px
 
@@ -31,7 +33,10 @@
             gap: 1rem;
             
             .hero__text-container{
-                flex: 0 1 min(75%, 520px);
+                flex: 0 1 32rem;
+                @include desktop{
+                    flex: 0 1 30rem;
+                }
             }
 
             .hero__song-container{
@@ -49,7 +54,10 @@
             }
     
             @include desktop{
-                padding-block: $padding-block-desktop;
+                // padding-block: $padding-block-desktop;
+                padding-top: $padding-top-desktop;
+                padding-bottom: $padding-bottom-desktop;
+                
             }
         }
     }
@@ -64,6 +72,20 @@
     display: flex;
     justify-content: center;
 
+    &__section-header{
+        width: auto;
+        // padding-top: 32px;
+        padding-bottom: 8px;
+        margin-left: units.$margins_Mobile;
+
+        @include tablet{
+            margin-left: units.$margins_Tablet - 1.125rem; // ( - 18px)
+        }
+        @include desktop{
+            margin-left: 0;
+        }
+    }
+
     &__content-container{
         flex: 0 1 units.$maxWidth;// + 2.25rem;
 
@@ -72,24 +94,12 @@
         align-items: baseline;
         flex-wrap: wrap;
         
-        ///TODO, don't nest this
-        .section-header{
-            width: auto;
-            padding-top: 32px;
-            padding-bottom: 8px;
-            margin-left: units.$margins_Mobile;
-
-            @include tablet{
-                margin-left: units.$margins_Tablet - 1.125rem; // ( - 18px)
-            }
-            @include desktop{
-                margin-left: 0;
-            }
-        }
-
         margin-bottom: 1rem;
         @include tablet{
             margin: 0 1.125rem 1.125rem 1.125rem; ///18px
+        }
+        @include desktop{
+            margin-bottom: 2.25rem;
         }
     }
 }
@@ -114,14 +124,30 @@
 
     &__head,&__row{
         padding: 16px;
-        gap: 16px;
+        // gap: 16px;
+        gap: 8px;
+
         > * {
             flex: 1;
 
             @include tablet{
-                &:last-child{
-                    flex: 0 1 150px;
+                flex: 1 1 150px;
+                // &:last-child{
+                //     flex: 0 1 150px;
+                // }
+            }
+
+            &:first-child{
+                @include desktop{
+                    flex:1.5 0 30%;
                 }
+            }
+            &:last-child{
+                flex-grow: 0;
+            }
+
+            @include desktop{
+                // &:
             }
         }
     }
@@ -164,6 +190,9 @@
     }
 
     &__cell-header{
+        // @extend .smallheader;
+        @extend .label;
+        padding-bottom: .25rem;
         @include tablet{
             display: none;
         }
@@ -171,5 +200,12 @@
 
     &__button{
         @extend .primary-cta;
+        white-space: nowrap;
+        line-height: 1;
+
+        margin-top: .5rem;
+        @include tablet{
+            margin-top: 0;
+        }
     }
 }

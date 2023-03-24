@@ -68,8 +68,10 @@ function displayComment(comment){
 
 
 
-    ///Also append an <hr> until we get a better system going
-    commentSectionContainer.appendChild(document.createElement("hr"));
+    ///Create and append divider
+    let dividerElement = document.createElement("hr");
+    dividerElement.classList.add("comments-section__divider");
+    commentSectionContainer.appendChild(dividerElement);
 }
 
 /* TODO:

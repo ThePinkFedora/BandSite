@@ -315,7 +315,7 @@ body {
   z-index: -1;
 }
 
-.divider {
+.divider, .comments-section__divider {
   background-color: #E1E1E1;
   border: none;
   width: 100%;
@@ -556,17 +556,17 @@ body {
     max-width: 31rem;
   }
 }
-.comments-section hr {
+.comments-section__divider {
   margin-top: 0.625rem;
   margin-bottom: 1rem;
 }
 @media (min-width: 768px) {
-  .comments-section hr {
+  .comments-section__divider {
     margin-top: 1.125rem;
     margin-bottom: 1.625rem;
   }
 }
-.comments-section hr:last-child {
+.comments-section__divider:last-child {
   margin-bottom: 0;
 }
 
