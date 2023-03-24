@@ -14,20 +14,9 @@
 
 //# About Section
 .about{
-    // @include mixins.flex-column-center;
-
-    ///Renamed to about__section-container and also section-container is it's own class on the element now now
-    // &__content-wrapper{
-    //     // @include mixins.common-content-container;
-    //     // 
-    //     // @include mixins.common-content-container-padding;
-    //     @extend .section-content-container;
-    //     @include mixins.flex-column-center;
-    // }
     &__section-header{
         @include desktop{
             padding-bottom: 2.25rem;
-            // padding-bottom: 2.5rem;
         }
     }
 
@@ -46,8 +35,6 @@
 .about-header{
     @include mixins.common-flex-container(column);
     
-    
-
     &__image{
         //Very cool, though there may be performance considerations
         @keyframes scrollImage {
@@ -127,7 +114,6 @@
     &__item{
         flex: 1 1 100%;
         @include tablet{
-            //This is the way to go, the ideal flex strategy. Ideally we should try to do something like this for the footer as well.
             flex: 1 1 30%;
         }
     }
@@ -160,10 +146,8 @@
     //## Section Content Container
     &__container{
         margin: auto;
-
         display: flex;
         flex-direction: column;
-        // gap: $vertical-gap-mobile;
 
         @include tablet{
             max-width: 36rem;//576px;
@@ -193,7 +177,6 @@
  //## Comment Form
  .comment-form{
     $horizontal-gap: 1rem;
-    // $vertical-gap-tablet: 1.5rem;
     margin-bottom: .25rem;
 
     display: flex;
