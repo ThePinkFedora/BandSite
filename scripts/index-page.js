@@ -1,4 +1,20 @@
 /**
+ * Configuration settings for the comments section.
+ */
+const config = {
+    /**
+     * If true timestamps will be displayed relative. E.g. 3 years ago.
+     * Otherwise they will be displayed as dates.
+     */
+    useRelativeTimestamps: true,
+    /**
+     * The time -in seconds- between comments section reloads. 0 indicates never.
+     */
+    refreshRate: 7.5,
+};
+
+
+/**
  * @typedef {object} CommentObject
  * @property {string} displayName - The name of the commenter
  * @property {string} text - The text content
@@ -18,24 +34,26 @@ const commentForm = document.getElementById("commentForm");
 
 // You must have an array in JavaScript with 3 default comment objects to start. Comments must have a name, a timestamp, and the comment text.
 /**
+ * The page comments
+ * (Ordered chronology so the oldest comments are at the start)
  * @type {CommentObject[]}
  */
 let comments = [
     {
-        displayName: "Connor Walton",
-        text: "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.",    
-        timestamp: "02/17/2021",
+        displayName: "Miles Acosta",
+        text: "I can t stop listening. Every time I hear one of their songs the vocals it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can t get enough.",
+        timestamp: "12/20/2020, 12:00:00 PM",
     },
     {
         displayName: "Emilie Beach",
         text: "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.",    
-        timestamp: "01/09/2021",
+        timestamp: "01/09/2021, 12:00:00 PM",
     },
     {
-        displayName: "Miles Acosta",
-        text: "I can t stop listening. Every time I hear one of their songs the vocals it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can t get enough.",
-        timestamp: "12/20/2020",
-    }
+        displayName: "Connor Walton",
+        text: "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.",    
+        timestamp: "02/17/2021, 12:00:00 PM",
+    },
 ];
 
 
@@ -47,12 +65,12 @@ function displayComment(comment){
     let commentElement = document.createElement("article");
     commentElement.classList.add("comment");
 
-    ///Avatar / Left
+    //Avatar / Left
     
     let avatarElement = document.createElement("img");
     avatarElement.classList.add("avatar");
 
-    ///Content / Right
+    //Content / Right
 
     let contentElement = document.createElement("div");
     contentElement.classList.add("comment__content");
@@ -63,7 +81,11 @@ function displayComment(comment){
 
     let timestampElement = document.createElement("span");
     timestampElement.classList.add("comment__timestamp");
-    timestampElement.innerText = comment.timestamp;
+    if(config.useRelativeTimestamps){
+        timestampElement.innerText = getRelativeTimestamp(comment.timestamp);
+    }else{
+        timestampElement.innerText = comment.timestamp.substring(0,comment.timestamp.indexOf(","));
+    }
 
     let textElement = document.createElement("p");
     textElement.classList.add("comment__text");
@@ -76,7 +98,7 @@ function displayComment(comment){
     //Append the comment to the list
     commentSectionContainer.append(commentElement);
 
-    ///Create and append divider
+    //Create and append divider
     generateDivider();
 }
 
@@ -89,6 +111,44 @@ function generateDivider(){
     dividerElement.classList.add("comments-section__divider");
     commentSectionContainer.appendChild(dividerElement);
     return dividerElement;
+}
+
+/**
+ * Converts a date to a human-readable relative formated string.
+ * @param {(string|Date)} date - The date to be compared to now
+ * @returns {string} The relative date string. E.g. 2 seconds ago, 3 minutes ago, or 1 year ago
+ */
+function getRelativeTimestamp(date){
+    const toAgoString = (unit,number) => `${Math.ceil(number)} ${unit}${Math.ceil(number)!==1?"s":""} ago`;
+    
+    if(typeof date === 'string'){
+        date = new Date(date);
+    }
+    let now = new Date();
+
+    let difference = now - date; ///In milliseconds
+
+    let seconds = difference/1000;
+    if(seconds < 60)return toAgoString("second",seconds);
+
+    let minutes = seconds / 60;
+    if(minutes < 60)return toAgoString("minute",seconds);
+    
+    let hours = minutes / 60;
+    if(hours < 24)return toAgoString("hour",seconds);
+    
+    let days = hours / 24;
+    if(days < 7)return toAgoString("day",days);
+
+    let weeks = days / 7;
+    if(days < 30)return toAgoString("week",weeks);
+
+    let months = days / 30;
+    if(months < 12)return toAgoString("month",months);
+
+    let years = months / 12;
+    return toAgoString("year",years);
+    
 }
 
 /**
@@ -105,13 +165,13 @@ function clearComments(){
  * Invokes {@link displayComment} for all {@link comments}
  */
 function loadComments(){
-    for(let comment of comments){
-        displayComment(comment);
+    //Iterate through comments in reverse (newest -> oldest)
+    for(let i=comments.length-1;i>=0;i--){
+        displayComment(comments[i]);
     }
 }
 
-
-///Register comment submissions event
+//Register comment submissions event
 commentForm.addEventListener('submit',(e) =>{
     e.preventDefault(); ///Prevent submission reload
 
@@ -119,7 +179,7 @@ commentForm.addEventListener('submit',(e) =>{
     let name = e.target.commentName.value;
     let text = e.target.commentText.value;
     
-    //#region Validation 
+    //Validation 
     //Reset valid state for inputs
     [...e.target.elements].forEach(formElement => formElement.classList.remove("invalid"));
 
@@ -136,14 +196,13 @@ commentForm.addEventListener('submit',(e) =>{
     if( !validInput ){
         return;
     }
-    //#endregion
-
+    
     //Build comment object
     let comment = {
-        avatarUrl: "",
         displayName: commentForm.elements["commentName"].value,
         text: commentForm.elements["commentText"].value,
-        timestamp: new Date().toLocaleDateString("en-US",{ month: "2-digit",day: "2-digit",year:"numeric" })
+        timestamp: new Date().toLocaleDateString("en-US",{ month: "2-digit",day: "2-digit",year:"numeric", hour: "2-digit",minute:"2-digit",second:"2-digit" })
+        // new Date().toLocaleDateString("en-US",{ month: "2-digit",day: "2-digit",year:"numeric" })
     };
     //Push comment to the array
     comments.push(comment);
@@ -158,3 +217,11 @@ commentForm.addEventListener('submit',(e) =>{
 
 
 loadComments();
+
+//Setup refresh inverval if enabled
+if(config.refreshRate){
+    setInterval(()=>{
+        clearComments();
+        loadComments();
+    }, config.refreshRate * 1000);
+}
