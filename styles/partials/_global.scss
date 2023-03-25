@@ -122,9 +122,11 @@ body{
     
     &__content{
         flex: 0 1 $maxWidth;
-        display: flex;
-        flex-direction: column;
         padding-top: $padding-2;
+        @include mixins.flexbox($direction: column);
+        // display: flex;
+        // flex-direction: column;
+        
 
         @include tablet{
             padding: 0;
@@ -164,7 +166,6 @@ body{
         }
 
         &--active{
-            // font-weight: bold; ///Style guide says bold dut looks more like demi
             font-weight: 600;
         }
     }
@@ -185,18 +186,19 @@ body{
 .footer{
     //## Section-Container
     &__section-container{
-        display: flex;
-        flex-direction: column;
         width: auto;
         flex: 1;
+        @include mixins.flexbox($direction: column);
         gap: 1.5rem;
 
         @include tablet{
             flex-flow: row wrap;
             align-items: baseline;
-            
             row-gap: 3rem;
-            & > *{
+        }
+
+        & > *{
+            @include tablet{
                 flex: 1;
             }
         }
@@ -205,9 +207,9 @@ body{
     //## Heading
     &__heading{
         line-height: .7;
-        padding-top: min(10vw,3.25rem);
+        padding-top: min(10vw,3.25rem); //52px
         padding-bottom: 0;
-        max-width: 13.75rem; //220px;
+        max-width: 13.75rem; //220px
         order: -2;
     }
 
@@ -224,9 +226,10 @@ body{
 
     //## Footer Contacts
     &__contact-list{
+        margin-bottom: $padding-2;
         @include mixins.common-flex-container-items(column);
         list-style-type: none;
-        margin-bottom: $padding-2;
+        
         gap: 1.5rem;
 
         @include tablet{
@@ -236,11 +239,11 @@ body{
     }
 
     &__contact-item{
-        max-width: 14.5rem; //232px;
+        max-width: 14.5rem; //232px
+        flex: 1;
         @include mixins.common-flex-container-items(column);
         justify-content: center;
         align-items: baseline;
-        flex: 1;
     }
     
     ///## Social Icons 
@@ -252,9 +255,8 @@ body{
     }
 
     &__icon{
-        height: 1.5rem; //24px;
-    }    
-    
+        height: 1.5rem; //24px
+    }
 
     //## Copyright
     &__copyright{
@@ -262,11 +264,6 @@ body{
         font-size: min(3.33vw,1em);
     }
 }
-
-
-
-
-
 
 
 //# Generic Components
@@ -280,7 +277,6 @@ body{
     padding-right: $margins_Mobile;
     padding-bottom: $margins_Mobile;
     
-    
     @include tablet{
         padding-left: $margins_Tablet;
         padding-right: $margins_Tablet;
@@ -291,55 +287,31 @@ body{
 
 
 .hero{
-    // height: min(58.5vw, 39.375rem /*630px*/);
+    background-position: bottom;
+    background-size: cover;
     padding: 0 $margins_Mobile;
-    // max-height: 39.375rem;
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include mixins.flexbox(center,center);
     overflow: hidden;
     
-
     @include tablet{
         padding: 0 $margins_Tablet;
-    }
-
-    &__image{
-        width: 100%;
-        position: absolute;
-        inset: auto auto 0 0;
-        z-index: -1;
     }
 
     &__content{
         color: colors.$primary-light;
         flex: 0 1 $maxWidth;
     }
-
-    //Darken overlay
-    &::after{
-        content: '';
-        background-color: colors.$primary-dark;
-        opacity: .5;
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-    }
 }
-
-
-
 
 ///Divider line
 .divider{
     background-color: colors.$secondary-gray;
     border: none;
     width: 100%;
-    height: 1px;
+    height: 0.0625rem;//1px
     
 }
-
 
 ///CTA Button
 .primary-cta{
@@ -349,16 +321,15 @@ body{
     border-width: 0;
     border-radius: 4px;
     width: 100%; ///For mobile
-    min-width: 150px;
-    height: 40px; ///40px height always
-    padding: 0 32px;
+    min-width: 9.375rem;//150px
+    height: 2.5rem; ///40px
+    padding: 0 2rem;//32px
     
+    @include tablet{
+        width: auto;
+    }
 
     &:hover{
         background-color: colors.$secondark-dark;
-    }
-
-    @include tablet{
-        width: auto;
     }
 }

@@ -8,6 +8,7 @@
 
 .hero{
     &--bio{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../assets/images/hero-bio.jpg");
         height: min(58.5vw, 39.375rem /*630px*/);
     }
 }
@@ -147,21 +148,21 @@
         flex-direction: column;
 
         @include tablet{
-            max-width: 36rem;//576px;
+            max-width: 36rem;//576px
         }
         @include desktop{
-            max-width: 31rem;//496px; ///It actually gets thinner on desktop
+            max-width: 31rem;//496px ///It actually gets thinner on desktop
         }
         
     }
     &__divider{
         @extend .divider;
-        margin-top: 0.625rem;//10px;
-        margin-bottom: 1rem;//16px;
+        margin-top: 0.625rem;//10px
+        margin-bottom: 1rem;//16px
 
         @include tablet{
-            margin-top: 1.125rem;//18px;
-            margin-bottom: 1.625rem;//26px;
+            margin-top: 1.125rem;//18px
+            margin-bottom: 1.625rem;//26px
         }
 
         ///Except no bottom margin for the last one
@@ -199,7 +200,6 @@
         }
     }
 
-
     &__form-submit{
         align-self: flex-end;
     }
@@ -223,6 +223,7 @@
         gap: $vertical-gap;
     }
     
+    ///### Commentname
     &__name{
         height: 1em; ///My latest genius fix for the line height problem
     }

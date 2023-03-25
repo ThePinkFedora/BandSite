@@ -4,26 +4,14 @@
 @use './partials/colors';
 @use './partials/mixins';
 
-
+//# Hero
 .hero{
-    $padding-block-mobile: 2rem; //32px
-    $padding-block-tablet: 3.75rem; //60px
-    $padding-top-desktop: 12.5rem; 
-    $padding-bottom-desktop: 14.75rem; 
-
-    $gap-mobile: 1rem; //16px
-    $gap-tablet: 3.75rem; //60px
-
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../assets/images/hero-shows.jpg");
-    background-position: bottom;
-    background-size: cover;
-    min-height: 40vw;
-
-    
     ///Sassify all this better
     &--shows{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../assets/images/hero-shows.jpg");
+        min-height: 40vw;
+
         &__subheader{
-            ///This element might be a candidate for our height reset fix
             padding-top: 0;
         }
 
@@ -45,32 +33,27 @@
 
     &__content{
         &--shows{
-            padding-block: $padding-block-mobile;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            flex-wrap: wrap;
-            gap: 1rem;
+            padding-top: 2rem; //32px
+            padding-bottom: 2rem; //32px
+            @include mixins.flexbox(space-between,flex-end,$wrap: wrap);
+            gap: 1rem; //16px
             
             @include tablet{
-                padding-block: $padding-block-tablet;
-                gap: $gap-tablet;
+                padding-top: 3.75rem;
+                padding-bottom: 3.75rem;
+                gap: 3.75rem; //60px
             }
     
             @include desktop{
-                // padding-block: $padding-block-desktop;
-                padding-top: $padding-top-desktop;
-                padding-bottom: $padding-bottom-desktop;
+                padding-top: 12.5rem; //200px
+                padding-bottom: 14.75rem; //236px
                 
             }
         }
     }
 }
 
-
-
-
-
+//# Shows Section
 .shows-section{
     @include mixins.flexbox(center);
 
@@ -88,11 +71,10 @@
     }
 
     &__content-container{
-        flex: 0 1 units.$maxWidth;// + 2.25rem;
+        flex: 0 1 units.$maxWidth;
         margin-bottom: 1rem; //16px
 
         @include mixins.flexbox(space-between,baseline,$wrap:wrap);
-        
         
         @include tablet{
             margin: 0 1.125rem 1.125rem 1.125rem; ///18px
@@ -103,11 +85,13 @@
     }
 }
 
+//# Shows Table
 .shows-table{
-    @include mixins.flexbox($direction: column);
     width: 100%;
-    max-width: 50.4375rem;
-    margin-right: -1rem;
+    max-width: 50.4375rem; //807px
+    margin-right: -1rem; //-16px
+    @include mixins.flexbox($direction: column);
+    
 
     &__column-header,&__cell-header{
         @extend .smallheader;
@@ -144,39 +128,36 @@
     }
 
     &__body{
-        display: flex;
-        flex-direction: column;
+        @include mixins.flexbox($direction: column);
     }
 
     &__row{
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-
-        padding: 1rem;
-        &--selected{
-            background-color: colors.$secondary-gray;
-        }
-        &:hover:not(&--selected){
-            background-color: colors.$secondary-light;
-        }
+        @include mixins.flexbox($direction: column);
 
         @include tablet{
             flex-direction: row;
             align-items: center;
         }
+
+        &--selected{
+            background-color: colors.$secondary-gray;
+        }
+
+        &:hover:not(&--selected){
+            background-color: colors.$secondary-light;
+        }
     }
 
     &__cell{
-        &:first-child{
+        &--weight-demi{
             font-weight: 600;
         }
     }
 
     &__cell-header{
-        // @extend .smallheader;
         @extend .label;
         padding-bottom: .25rem;
+        
         @include tablet{
             display: none;
         }
@@ -186,8 +167,8 @@
         @extend .primary-cta;
         white-space: nowrap;
         line-height: 1;
-
         margin-top: .5rem;
+
         @include tablet{
             margin-top: 0;
         }
