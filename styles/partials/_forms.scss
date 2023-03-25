@@ -40,47 +40,50 @@
         color: colors.$primary-gray;
     }
 
+    &__field{
+
+        &:where([type="text"],textarea){
+            $padding-mobile : 0.75rem; //12px
+            $padding-tablet : 1rem; //12px
     
-
-    &__field:where([type="text"],textarea){
-        $padding-mobile : 0.75rem; //12px
-        $padding-tablet : 1rem; //12px
-
-        width: 100%;
-        padding: $padding-mobile; 
-        border: 1px solid colors.$secondary-gray;
-        border-radius: 4px;
-        resize: none;
-
-        &::placeholder{
-            color: colors.$primary-dark;
+            width: 100%;
+            padding: $padding-mobile; 
+            border: 1px solid colors.$secondary-gray;
+            border-radius: 4px;
+            resize: none;
+    
+            &::placeholder{
+                color: colors.$primary-dark;
+            }
+    
+            &:focus{
+                border-color: colors.$primary-dark;
+                outline: none; ///Chrome adds a thick outline by default
+            }
+            
+            @include tablet{
+                padding: $padding-tablet;
+            }
         }
 
-        &:focus{
-            border-color: colors.$primary-dark;
-            outline: none; ///Chrome adds a thick outline by default
+        &:where([type="text"]){
+            height: 2.25rem;
+            @include tablet{
+                height: 3rem;
+            }
         }
 
-        ///Might have to do this differently
-        &.invalid{
+        &:where(textarea){
+            min-height: 6lh;
+        }
+
+        &--invalid{
             border-color: colors.$error-color;
         }
-
-        @include tablet{
-            padding: $padding-tablet;
-        }
     }
 
-    &__field:where([type="text"]){
-        height: 2.25rem;
-        @include tablet{
-            height: 3rem;
-        }
-    }
 
-    &__field:where(textarea){
-        min-height: 6lh;
-    }
+    
 }
 
 

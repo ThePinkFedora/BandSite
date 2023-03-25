@@ -18,7 +18,7 @@ const config = {
  * @typedef {object} CommentObject
  * @property {string} displayName - The name of the commenter
  * @property {string} text - The text content
- * @property {timestamp} timestamp - The date posted
+ * @property {string} timestamp - The date posted
  */
 
 /**
@@ -181,15 +181,15 @@ commentForm.addEventListener('submit',(e) =>{
     
     //Validation 
     //Reset valid state for inputs
-    [...e.target.elements].forEach(formElement => formElement.classList.remove("invalid"));
+    [...e.target.elements].forEach(formElement => formElement.classList.remove("form-field__field--invalid"));
 
     let validInput = true;
     if(name.length === 0){
-        e.target.commentName.classList.add("invalid");
+        e.target.commentName.classList.add("form-field__field--invalid");
         validInput=false;
     }
     if(text.length === 0){
-        e.target.commentText.classList.add("invalid");
+        e.target.commentText.classList.add("form-field__field--invalid");
         validInput=false;
     }
     //If any fields were invalid, return

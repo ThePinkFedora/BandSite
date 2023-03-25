@@ -1,6 +1,19 @@
 @use './breakpoints' as *;
 @use './units';
 
+
+@mixin flexbox($justify-content:null,$align-items:null,$direction: null, $wrap:null,$flex:null){
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+    * > {
+        flex: $flex;
+    }
+}
+
+
 @mixin common-flex-container($rowOrColumn: row){
     display: flex;
     flex-direction: $rowOrColumn;
@@ -10,86 +23,19 @@
     }
 }
 
-@mixin common-flex-container-items($rowOrColumn: row){
+/// @param {type} $rowOrColumn-tablet [null] - Alternate tablet flex-direction (if change is required)
+@mixin common-flex-container-items($rowOrColumn: row, $rowOrColumn-tablet: null){
     display: flex;
     flex-direction: $rowOrColumn;
     gap: units.$gutters_Mobile;
     @include tablet{
+        flex-direction: $rowOrColumn-tablet;
         gap: units.$gutters_Tablet;
     }
 }
-
-///OLD/ We're going to redesign our strategy
-@mixin common-content-container(){
-    max-width: units.$maxWidth;
-    margin-left: units.$margins_Mobile;
-    margin-right: units.$margins_Mobile;
-    margin-bottom: units.$margins_Mobile;
-    
-    
-    @include tablet{
-        margin-left: units.$margins_Tablet;
-        margin-right: units.$margins_Tablet;
-        margin-bottom: units.$margins_Tablet;
-    }
-
-    @include desktop{
-        margin-left: units.$margins_Desktop;
-        margin-right: units.$margins_Desktop;
-    }
-}
-
-
-
-///I /think/ if done right, this will be the simpliest approach for section content layout
-@mixin common-content-container-padding{
-    max-width: units.$maxWidth + units.$margins_Tablet*2;
-    margin: 0 auto;
-    
-    padding-left: units.$margins_Mobile;
-    padding-right: units.$margins_Mobile;
-    padding-bottom: units.$margins_Mobile;
-    
-    
-    @include tablet{
-        padding-left: units.$margins_Tablet;
-        padding-right: units.$margins_Tablet;
-        padding-bottom: units.$margins_Tablet;
-    }
-
-    // @include desktop{
-    //     padding-left: units.$margins_Desktop;
-    //     padding-right: units.$margins_Desktop;
-    // }
-}
-
 
 @mixin flex-column-center{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
-
-
-
-
-///New potentional section content rules
-
-@mixin common-section-layout($padding-inline-mobile: units.$margins_Mobile , $padding-inline-tablet: units.$margins_Tablet){
-    padding-inline: $padding-inline-mobile;
-
-    @include tablet{
-        padding-inline: $padding-inline-tablet;
-    }
-
-    > *{
-        max-width: units.$maxWidth;
-        margin-inline: auto;
-    }
-}
-
-// @mixin common-content-container(){
-//     maxWidth: units.$maxWidth;
-//     margin: auto;
-// }

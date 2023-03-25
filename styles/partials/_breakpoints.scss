@@ -12,9 +12,3 @@ $desktop-size: 1280px;
         @content;
     }
 }
-
-@mixin mobile{
-    @media (max-width: calc($tablet-size - 1px)){
-        @content;
-    }
-}

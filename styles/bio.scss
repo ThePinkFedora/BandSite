@@ -87,10 +87,7 @@
         color: colors.$secondark-dark;
     }
     &__content{
-        @include mixins.common-flex-container-items(column);
-        @include tablet{
-            flex-direction: row;
-        }
+        @include mixins.common-flex-container-items(column,$rowOrColumn-tablet: row);
     }
 }
 

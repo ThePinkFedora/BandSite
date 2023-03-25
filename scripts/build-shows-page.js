@@ -1,40 +1,85 @@
+/**
+ * @typedef {object} Concert
+ * @property {string} date - The date of the concert
+ * @property {string} venue - The concert venue
+ * @property {string} location - The city where the concert is located
+ */
+
+/**
+ * The shows table body, which is the parent of the rows in the table
+ * @type {HTMLDivElement}
+ */
 const showsTableBody = document.getElementById("showsTableBody");
 
-let shows = [
+/**
+ * The list of concerts (aka shows)
+ * @type {Concert[]}
+ */
+let concerts = [
     {
-        date: "Mon Sept 06 2021", ///TODO, maybe convert format
+        date: "Mon Sept 06 2021",
         venue: "Ronald Lane",
         location: "San Francisco, CA"
     },
     {
-        date: "Tue Sept 21 2021 ", ///TODO, maybe convert format
+        date: "Tue Sept 21 2021 ",
         venue: "Pier 3 East ",
         location: "San Francisco, CA"
     },
     {
-        date: "Fri Oct 15 2021 ", ///TODO, maybe convert format
+        date: "Fri Oct 15 2021 ",
         venue: "View Lounge",
         location: "San Francisco, CA"
     },
     {
-        date: "Sat Nov 06 2021 ", ///TODO, maybe convert format
+        date: "Sat Nov 06 2021 ", 
         venue: "Hyatt Agency",
         location: "San Francisco, CA"
     },
     {
-        date: "Fri Nov 26 2021", ///TODO, maybe convert format
+        date: "Fri Nov 26 2021",
         venue: "Moscow Center",
         location: "San Francisco, CA"
     },
     {
-        date: "Wed Dec 15 2021 ", ///TODO, maybe convert format
+        date: "Wed Dec 15 2021 ", 
         venue: "Press Club",
         location: "San Francisco, CA"
     },
 ];
 
 /**
- * @summary Creates a table cell with specified content and optional header
+ * The currently selected row, if any
+ * @type {HTMLElement|null}
+ */
+let selectedRow = null;
+
+/**
+ * Selects the given row element. If null is given selection is set to none.
+ * @param {HTMLElement|null} rowElement 
+ */
+function setSelectedRow(rowElement){
+    //If this is already the selectedRow, return
+    if(rowElement === selectedRow){
+        return;
+    }
+
+    //if there is currently a row selected, remove the selected class from it
+    if(selectedRow !== null){
+        selectedRow.classList.remove("shows-table__row--selected");
+    }
+
+    //Assign this as the new selectedRow
+    selectedRow = rowElement;
+
+    //If the new selectedRow is not null, add the selected class to it
+    if(selectedRow !== null){
+        selectedRow.classList.add("shows-table__row--selected");
+    }
+}
+
+/**
+ * Creates a table cell with specified content and optional header
  * @param {string|HTMLElement} content - The text or element in the cell
  * @param {string} [header] - The header text, if a header is to be included
  * @returns {HTMLElement}
@@ -44,20 +89,20 @@ function createCell(content,header){
     cellElement.classList.add("shows-table__cell");
 
     if(header !== undefined){
-        ///Create header element
+        //Create header element
         const headerElement = document.createElement("h4");
         headerElement.classList.add("shows-table__cell-header");
         headerElement.textContent = header;
 
-        ///Append it
+        //Append it
         cellElement.appendChild(headerElement);
     }
 
-    ///if content is a string:  create and append a text node for that content
+    //if content is a string:  create and append a text node for that content
     if(typeof content === 'string'){
         cellElement.appendChild(document.createTextNode(content));
     }
-    ///Else:    we'll assume it's an HTML Element.  (We could type check with instanceof HTMLElement if we needed additional validation)
+    //Else:    we'll assume it's an HTML Element.  (We could type check with instanceof HTMLElement if we needed additional validation)
     else{
         cellElement.appendChild(content);
     }
@@ -66,9 +111,9 @@ function createCell(content,header){
 }
 
 /**
- * TODO
- * @param {*} textContent 
- * @returns 
+ * Creates a button element
+ * @param {string} textContent - The text content for the button
+ * @returns {HTMLButtonElement} - The created button element
  */
 function createButton(textContent){
     const buyButton = document.createElement("button");
@@ -80,8 +125,8 @@ function createButton(textContent){
 }
 
 /**
- * TODO 
- * @returns 
+ * Creates an hr.divider element
+ * @returns {HTMLHRElement} - The created divider element.
  */
 function createDivider(){
     const divider = document.createElement("hr");
@@ -91,30 +136,39 @@ function createDivider(){
 }
 
 /**
- * TODO
- * @param {*} show 
+ * Creates a show row element for the show and appends it to the table
+ * @param {Concert} show - The show to create the row for.
  */
 function addShow(show){
     const rowElement = document.createElement("div");
     rowElement.classList.add("shows-table__row");
 
-    ///Create Cells
+    //Create Cells
     let dateCell = createCell(show.date,"DATE");
     let venueCell = createCell(show.venue,"VENUE");
     let locationCell = createCell(show.location,"LOCATION");
     let buttonCell = createCell(createButton("BUY TICKETS"));
 
-    ///Append cells to row
+    //Append cells to row
     rowElement.append(dateCell,venueCell,locationCell,buttonCell);
 
-    ///Append row to table body
+    //Append row to table body
     showsTableBody.appendChild(rowElement);
 
-    ///Create and append an hr.divider
+    //Add the click event listener for selecting the row
+    rowElement.addEventListener("click",() => setSelectedRow(rowElement));
+
+    //Create and append an hr.divider
     showsTableBody.appendChild(createDivider());
 }
 
-
-for(let show of shows){
-    addShow(show);
+/**
+ * Invokes {@link addShow} for all {@link concerts}.
+ */
+function loadShows(){
+    for(let show of concerts){
+        addShow(show);
+    }
 }
+
+loadShows();

@@ -14,12 +14,32 @@
     $gap-mobile: 1rem; //16px
     $gap-tablet: 3.75rem; //60px
 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../assets/images/hero-shows.jpg");
+    background-position: bottom;
+    background-size: cover;
+    min-height: 40vw;
+
+    
     ///Sassify all this better
     &--shows{
-
         &__subheader{
             ///This element might be a candidate for our height reset fix
             padding-top: 0;
+        }
+
+        &__text-container{
+            flex: 0 1 min(75%,32rem);
+            @include desktop{
+                flex: 0 1 30rem;
+            }
+        }
+
+        &__song-container{
+            flex: 0 1 max(40%,26.25);
+            aspect-ratio: 3;
+        }
+        &__song-frame{
+            display: block; ///Removes whitespace
         }
     }
 
@@ -31,22 +51,6 @@
             align-items: flex-end;
             flex-wrap: wrap;
             gap: 1rem;
-            
-            .hero__text-container{
-                flex: 0 1 32rem;
-                @include desktop{
-                    flex: 0 1 30rem;
-                }
-            }
-
-            .hero__song-container{
-                flex: 0 1 max(40%,420px);
-                aspect-ratio: 3;
-                
-                iframe{
-                    display: block; ///Removes whitespace
-                }
-            }
             
             @include tablet{
                 padding-block: $padding-block-tablet;
@@ -68,14 +72,11 @@
 
 
 .shows-section{
-
-    display: flex;
-    justify-content: center;
+    @include mixins.flexbox(center);
 
     &__section-header{
         width: auto;
-        // padding-top: 32px;
-        padding-bottom: 8px;
+        padding-bottom: .5rem;
         margin-left: units.$margins_Mobile;
 
         @include tablet{
@@ -88,33 +89,24 @@
 
     &__content-container{
         flex: 0 1 units.$maxWidth;// + 2.25rem;
+        margin-bottom: 1rem; //16px
 
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        flex-wrap: wrap;
+        @include mixins.flexbox(space-between,baseline,$wrap:wrap);
         
-        margin-bottom: 1rem;
+        
         @include tablet{
             margin: 0 1.125rem 1.125rem 1.125rem; ///18px
         }
         @include desktop{
-            margin-bottom: 2.25rem;
+            margin-bottom: 2.25rem; //36 px
         }
     }
 }
 
-
-
-
-
-
-
 .shows-table{
-    display: flex;
-    flex-direction: column;
+    @include mixins.flexbox($direction: column);
     width: 100%;
-    max-width: 807px;
+    max-width: 50.4375rem;
     margin-right: -1rem;
 
     &__column-header,&__cell-header{
@@ -123,18 +115,14 @@
     }
 
     &__head,&__row{
-        padding: 16px;
-        // gap: 16px;
-        gap: 8px;
+        padding: 1rem;
+        gap: 0.5rem;
 
         > * {
             flex: 1;
 
             @include tablet{
-                flex: 1 1 150px;
-                // &:last-child{
-                //     flex: 0 1 150px;
-                // }
+                flex: 1 1 9.375rem; //150px
             }
 
             &:first-child{
@@ -144,10 +132,6 @@
             }
             &:last-child{
                 flex-grow: 0;
-            }
-
-            @include desktop{
-                // &:
             }
         }
     }
@@ -169,7 +153,7 @@
         flex-direction: column;
         align-items: stretch;
 
-        padding: 16px;
+        padding: 1rem;
         &--selected{
             background-color: colors.$secondary-gray;
         }
