@@ -36,8 +36,8 @@
 
 .form-field{
     &__label{
-        display: block;
         color: colors.$primary-gray;
+        display: block;
     }
 
     &__field{
@@ -81,9 +81,6 @@
             border-color: colors.$error-color;
         }
     }
-
-
-    
 }
 
 

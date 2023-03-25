@@ -16,13 +16,14 @@
 //# About Section
 .about{
     &__section-header{
+        align-self: flex-start;
         @include desktop{
             padding-bottom: 2.25rem;
         }
     }
 
     &__section-container{
-        @include mixins.flex-column-center;
+        @include mixins.flexbox($align-items:center,$direction:column);
     }
 
     &__content{
@@ -144,8 +145,7 @@
     //## Section Content Container
     &__container{
         margin: auto;
-        display: flex;
-        flex-direction: column;
+        @include mixins.flexbox($direction: column);
 
         @include tablet{
             max-width: 36rem;//576px
@@ -174,22 +174,18 @@
 
  //## Comment Form
  .comment-form{
-    $horizontal-gap: 1rem;
     margin-bottom: .25rem;
+    @include mixins.flexbox($align-items:flex-start);
+    gap: 1rem;
 
-    display: flex;
-    align-items: flex-start;
-    gap: $horizontal-gap;
-
-    > *:first-child{
+    &__avatar{
         margin-top: 1.5em;
     }
 
     //### Comment Form Content (right)
     &__content{
         flex-grow: 1;
-        display: flex;
-        flex-direction: column;
+        @include mixins.flexbox($direction: column);
     }
 
     &__comment-field{
@@ -207,31 +203,25 @@
 
 //## Comment
 .comment{
-    $horizontal-gap: 1rem;
-    $vertical-gap: 1rem; ///Possibly needs line height tweaking
-    
-    display: flex;
-    align-items: flex-start;
-    gap: $horizontal-gap;
+    @include mixins.flexbox($align-items: flex-start);
+    gap: 1rem;
     
     ///### Comment Content (right) 
     &__content{
         flex-grow: 1;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: $vertical-gap;
+        @include mixins.flexbox(space-between,$wrap:wrap);
+        gap: 1rem;
     }
     
     ///### Commentname
     &__name{
-        height: 1em; ///My latest genius fix for the line height problem
+        height: 1em; 
     }
 
     ///### Comment timestamp
     &__timestamp{
         color: colors.$primary-gray;
-        height: 1em; ///My latest genius fix for the line height problem
+        height: 1em; 
     }
 
     //### Comment text

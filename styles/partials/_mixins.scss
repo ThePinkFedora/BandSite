@@ -2,15 +2,12 @@
 @use './units';
 
 
-@mixin flexbox($justify-content:null,$align-items:null,$direction: null, $wrap:null,$flex:null){
+@mixin flexbox($justify-content:null,$align-items:null,$direction: null, $wrap:null){
     display: flex;
     justify-content: $justify-content;
     align-items: $align-items;
     flex-direction: $direction;
     flex-wrap: $wrap;
-    * > {
-        flex: $flex;
-    }
 }
 
 
@@ -33,10 +30,3 @@
         gap: units.$gutters_Tablet;
     }
 }
-
-@mixin flex-column-center{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-

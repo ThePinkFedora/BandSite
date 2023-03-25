@@ -49,22 +49,20 @@ body {
 .section-header {
   font: 600 1.5rem/2rem "Avenir Next";
   line-height: 1;
-  padding-top: 24px;
-  padding-bottom: 16px;
-  width: 100%;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
 }
 @media (min-width: 768px) {
   .section-header {
     font: 600 2.25rem/2.75rem "Avenir Next";
     line-height: 1;
-    padding-top: 48px;
-    padding-bottom: 36px;
+    padding-top: 3rem;
+    padding-bottom: 2.25rem;
   }
 }
 @media (min-width: 1280px) {
   .section-header {
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding-bottom: 3rem;
   }
 }
 
@@ -351,8 +349,8 @@ body {
 }
 
 .form-field__label {
-  display: block;
   color: #AFAFAF;
+  display: block;
 }
 .form-field__field:where([type=text], textarea) {
   width: 100%;
@@ -396,6 +394,9 @@ body {
   height: min(58.5vw, 39.375rem);
 }
 
+.about__section-header {
+  align-self: flex-start;
+}
 @media (min-width: 1280px) {
   .about__section-header {
     padding-bottom: 2.25rem;
@@ -403,8 +404,8 @@ body {
 }
 .about__section-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
 }
 @media (min-width: 768px) {
   .about__content {
@@ -560,7 +561,7 @@ body {
   align-items: flex-start;
   gap: 1rem;
 }
-.comment-form > *:first-child {
+.comment-form__avatar {
   margin-top: 1.5em;
 }
 .comment-form__content {

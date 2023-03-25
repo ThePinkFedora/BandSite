@@ -29,22 +29,21 @@ body{
 .section-header{
     font: fonts.$font-sectionheader-mobile;
     line-height: 1; ///No more extra line height for section headings
-    padding-top: 24px;
-    padding-bottom: 16px;
+    padding-top: 1.5rem;//24px
+    padding-bottom: 1rem;//16px
 
-    width: 100%;
+    
 
     @include tablet{
         font: fonts.$font-sectionheader-tablet;
         line-height: 1;
 
-        padding-top: 48px;
-        padding-bottom: 36px;
+        padding-top: 3rem;//48px
+        padding-bottom: 2.25rem;//36px
     }
 
     @include desktop{
-        padding-top: 48px;
-        padding-bottom: 48px;
+        padding-bottom: 3rem;//48px
     }
 }
 //## Subheader
@@ -124,9 +123,6 @@ body{
         flex: 0 1 $maxWidth;
         padding-top: $padding-2;
         @include mixins.flexbox($direction: column);
-        // display: flex;
-        // flex-direction: column;
-        
 
         @include tablet{
             padding: 0;
