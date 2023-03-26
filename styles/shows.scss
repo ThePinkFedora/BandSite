@@ -11,8 +11,10 @@
         background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../assets/images/hero-shows.jpg");
         min-height: 40vw;
 
-        &__subheader{
+        &__superheader{
+            @include fonts.subheader;
             padding-top: 0;
+            padding-bottom: 1rem;
         }
 
         &__text-container{
@@ -26,7 +28,7 @@
             flex: 0 1 max(40%,26.25rem);
             aspect-ratio: 3;
         }
-        &__song-frame{
+        &__song-iframe{
             display: block; ///Removes whitespace
         }
     }
@@ -41,7 +43,7 @@
             @include tablet{
                 padding-top: 3.75rem;
                 padding-bottom: 3.75rem;
-                gap: 3.75rem; //60px
+                gap: 2.75rem; //60px
             }
     
             @include desktop{
@@ -59,6 +61,7 @@
 
     &__section-header{
         @include fonts.sectionheader;
+        color: colors.$secondark-dark; //Pure black for mobile/tablet
         width: auto;
         padding-top: 2.25rem;//24px
         padding-bottom: .5rem;
@@ -70,6 +73,7 @@
             margin-left: units.$margins_Tablet - 1.125rem; // ( - 18px)
         }
         @include desktop{
+            color: colors.$primary-dark;
             padding-bottom: 3rem;//48px
             margin-left: 0;
         }
@@ -82,7 +86,7 @@
         @include mixins.flexbox(space-between,baseline,$wrap:wrap);
         
         @include tablet{
-            margin: 0 1.125rem 1.125rem 1.125rem; ///18px
+            margin: 0 1.125rem 2.125rem 1.125rem; ///18px
         }
         @include desktop{
             margin-bottom: 2.25rem; //36 px
@@ -151,12 +155,17 @@
     }
 
     &__cell{
+        color: colors.$secondark-dark; ///Pure black for mobile/tablet
         flex: 1;
         @include tablet{
             flex: 1 1 9.375rem; //150px
         }
-        &--weight-demi{
+        @include desktop{
+            color: colors.$primary-dark;
+        }
+        &--strong{
             font-weight: 600;
+            color: colors.$primary-dark;
         }
         &:first-child{
             @include desktop{
@@ -169,7 +178,7 @@
     }
 
     &__cell-header{
-        @extend .label;
+        @include fonts.labelsbuttons;
         color: colors.$primary-gray;
         padding-bottom: .25rem;
         

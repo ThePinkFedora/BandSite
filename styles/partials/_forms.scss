@@ -1,6 +1,7 @@
 @use './breakpoints' as *;
 @use './colors';
 @use './global'; 
+@use './fonts';
 
 // Generic forms components
 
@@ -10,7 +11,9 @@
     $mobile-size: 2.25rem; //36px
     $tablet-size: 3rem; //48px
 
-    background-color: gray;
+    background-color: colors.$secondary-gray;
+    object-fit: cover;
+    object-position: 20%;
     border-radius: 50%;
     flex-shrink: 0;
     width: $mobile-size;
@@ -36,34 +39,21 @@
 
 .form-field{
     &__label{
+        @include fonts.labelsbuttons;
         color: colors.$primary-gray;
         display: block;
     }
 
     &__field{
+        background-color: colors.$secondary-light;
+        width: 100%;
+        padding: 0.75rem; //12px
+        border: 1px solid colors.$secondary-gray;
+        border-radius: 4px;
+        resize: none;
 
-        &:where([type="text"],textarea){
-            $padding-mobile : 0.75rem; //12px
-            $padding-tablet : 1rem; //12px
-    
-            width: 100%;
-            padding: $padding-mobile; 
-            border: 1px solid colors.$secondary-gray;
-            border-radius: 4px;
-            resize: none;
-    
-            &::placeholder{
-                color: colors.$primary-dark;
-            }
-    
-            &:focus{
-                border-color: colors.$primary-dark;
-                outline: none; ///Chrome adds a thick outline by default
-            }
-            
-            @include tablet{
-                padding: $padding-tablet;
-            }
+        @include tablet{
+            padding: 1rem; //16px
         }
 
         &:where([type="text"]){
@@ -77,6 +67,15 @@
             min-height: 6lh;
         }
 
+        &::placeholder{
+            color: colors.$primary-dark;
+        }
+
+        &:focus{
+            border-color: colors.$primary-dark;
+            outline: none; ///Chrome adds a thick outline by default
+        }
+        
         &--invalid{
             border-color: colors.$error-color;
         }

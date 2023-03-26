@@ -145,7 +145,7 @@ function addShow(show){
 
     //Create Cells
     let dateCell = createCell(show.date,"DATE");
-    dateCell.classList.add("shows-table__cell--weight-demi");
+    dateCell.classList.add("shows-table__cell--strong");
     let venueCell = createCell(show.venue,"VENUE");
     let locationCell = createCell(show.location,"LOCATION");
     let buttonCell = createCell(createButton("BUY TICKETS"));

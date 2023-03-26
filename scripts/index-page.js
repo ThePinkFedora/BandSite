@@ -132,10 +132,10 @@ function getRelativeTimestamp(date){
     if(seconds < 60)return toAgoString("second",seconds);
 
     let minutes = seconds / 60;
-    if(minutes < 60)return toAgoString("minute",seconds);
+    if(minutes < 60)return toAgoString("minute",minutes);
     
     let hours = minutes / 60;
-    if(hours < 24)return toAgoString("hour",seconds);
+    if(hours < 24)return toAgoString("hour",hours);
     
     let days = hours / 24;
     if(days < 7)return toAgoString("day",days);
