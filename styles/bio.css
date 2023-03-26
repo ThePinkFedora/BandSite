@@ -285,7 +285,6 @@ h4 {
 }
 
 .avatar {
-  background-color: #E1E1E1;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: 20%;
@@ -295,6 +294,8 @@ h4 {
   width: 2.25rem;
   height: 2.25rem;
   position: relative;
+  border-width: 0;
+  border-color: transparent;
 }
 @media (min-width: 768px) {
   .avatar {
@@ -304,6 +305,7 @@ h4 {
 }
 .avatar::before {
   content: "";
+  display: block;
   background-color: #E1E1E1;
   position: absolute;
   inset: 0;

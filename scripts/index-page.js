@@ -10,7 +10,7 @@ const config = {
     /**
      * The time -in seconds- between comments section reloads. 0 indicates never.
      */
-    refreshRate: 7.5,
+    refreshRate: 0,
 };
 
 
@@ -69,6 +69,9 @@ function displayComment(comment){
     
     let avatarElement = document.createElement("img");
     avatarElement.classList.add("avatar");
+    avatarElement.setAttribute("alt","");
+    avatarElement.setAttribute("src","");
+    
 
     //Content / Right
 

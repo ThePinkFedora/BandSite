@@ -11,7 +11,6 @@
     $mobile-size: 2.25rem; //36px
     $tablet-size: 3rem; //48px
 
-    background-color: colors.$secondary-gray;
     object-fit: cover;
     object-position: 20%;
     border-radius: 50%;
@@ -19,15 +18,18 @@
     width: $mobile-size;
     height: $mobile-size;
     position: relative;
+    border-width: 0;
+    border-color: transparent;
 
     @include tablet{
         width: $tablet-size;
         height: $tablet-size;
     }
 
-    ///Image placeholder
+    ///Image placeholder (Covers missing image icon)
     &::before{
         content: '';
+        display: block;
         background-color: colors.$secondary-gray;
         position: absolute;
         inset: 0;
