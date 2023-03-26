@@ -9,7 +9,7 @@
  * The shows table body, which is the parent of the rows in the table
  * @type {HTMLDivElement}
  */
-const showsTableBody = document.getElementById("showsTableBody");
+let showsTableBody;
 
 /**
  * The list of concerts (aka shows)
@@ -54,28 +54,49 @@ let concerts = [
  */
 let selectedRow = null;
 
+
 /**
- * Selects the given row element. If null is given selection is set to none.
- * @param {HTMLElement|null} rowElement 
+ * Builds the shows section and appends it to <main>
  */
-function setSelectedRow(rowElement){
-    //If this is already the selectedRow, return
-    if(rowElement === selectedRow){
-        return;
+function buildShowsSection(){
+    let sectionElement = document.createElement("section");
+    sectionElement.classList.add("shows-section");
+    
+    let contentContainer = document.createElement("div");
+    contentContainer.classList.add("shows-section__content-container");
+
+    let showsHeader = document.createElement("h2");
+    showsHeader.classList.add("shows-section__section-header");
+    showsHeader.textContent = "Shows";
+
+    let showsTable = document.createElement("div");
+    showsTable.classList.add("shows-table");
+
+    let tableHead = document.createElement("div");
+    tableHead.classList.add("shows-table__head");
+    
+    for(columnName of ["DATE","VENUE","LOCATION",""]){
+        let header = document.createElement("h4");
+        header.classList.add("shows-table__column-header");
+        header.textContent = columnName;
+        tableHead.appendChild(header);
     }
 
-    //if there is currently a row selected, remove the selected class from it
-    if(selectedRow !== null){
-        selectedRow.classList.remove("shows-table__row--selected");
-    }
+    let tableBody = document.createElement("div");
+    tableBody.classList.add("shows-table__body");
 
-    //Assign this as the new selectedRow
-    selectedRow = rowElement;
 
-    //If the new selectedRow is not null, add the selected class to it
-    if(selectedRow !== null){
-        selectedRow.classList.add("shows-table__row--selected");
-    }
+    //Append tableHead and body to showsTable
+    showsTable.append(tableHead,tableBody);
+
+    //Append shows header and table to content container
+    contentContainer.append(showsHeader,showsTable);
+
+    //Append contentContainer to section, and section to main
+    sectionElement.append(contentContainer);
+    document.querySelector("main").append(sectionElement);
+
+    showsTableBody = tableBody;
 }
 
 /**
@@ -164,6 +185,30 @@ function addShow(show){
 }
 
 /**
+ * Selects the given row element. If null is given selection is set to none.
+ * @param {HTMLElement|null} rowElement 
+ */
+function setSelectedRow(rowElement){
+    //If this is already the selectedRow, return
+    if(rowElement === selectedRow){
+        return;
+    }
+
+    //if there is currently a row selected, remove the selected class from it
+    if(selectedRow !== null){
+        selectedRow.classList.remove("shows-table__row--selected");
+    }
+
+    //Assign this as the new selectedRow
+    selectedRow = rowElement;
+
+    //If the new selectedRow is not null, add the selected class to it
+    if(selectedRow !== null){
+        selectedRow.classList.add("shows-table__row--selected");
+    }
+}
+
+/**
  * Invokes {@link addShow} for all {@link concerts}.
  */
 function loadShows(){
@@ -171,5 +216,7 @@ function loadShows(){
         addShow(show);
     }
 }
+
+buildShowsSection();
 
 loadShows();
