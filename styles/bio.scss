@@ -41,9 +41,7 @@
 
 ///# About Header , top help of the about section before the bio
 .about-header{
-    // @include mixins.common-flex-container(column);
-    
-    
+
     &__image{
         //Very cool, though there may be performance considerations
         @keyframes scrollImage {
@@ -222,10 +220,10 @@
     }
 
     &__comment-field{
-        padding-top: 1.25rem;//$vertical-gap-tablet;
+        padding-top: 1.25rem;
         padding-bottom: .8rem;
         @include tablet{
-            padding-bottom: 1rem;//$vertical-gap-tablet;
+            padding-bottom: 1rem;
         }
     }
 
