@@ -202,7 +202,6 @@ commentForm.addEventListener('submit',(e) =>{
         displayName: commentForm.elements["commentName"].value,
         text: commentForm.elements["commentText"].value,
         timestamp: new Date().toLocaleDateString("en-US",{ month: "2-digit",day: "2-digit",year:"numeric", hour: "2-digit",minute:"2-digit",second:"2-digit" })
-        // new Date().toLocaleDateString("en-US",{ month: "2-digit",day: "2-digit",year:"numeric" })
     };
     //Push comment to the array
     comments.push(comment);

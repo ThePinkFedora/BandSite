@@ -17,35 +17,34 @@ body{
         font: fonts.$font-body-tablet;
     }
 }
-//## Page Header
-.page-header{
-    font: fonts.$font-pageheader-mobile;
-    @include tablet{
-        font: fonts.$font-pageheader-tablet;
-    }
-
-}
+// //## Page Header
+// .page-header{
+//     font: fonts.$font-pageheader-mobile;
+//     @include tablet{
+//         font: fonts.$font-pageheader-tablet;
+//     }
+// }
 //## Section Header
-.section-header{
-    font: fonts.$font-sectionheader-mobile;
-    line-height: 1; ///No more extra line height for section headings
-    padding-top: 1.5rem;//24px
-    padding-bottom: 1rem;//16px
+// .section-header{
+//     font: fonts.$font-sectionheader-mobile;
+//     line-height: 1; ///No more extra line height for section headings
+//     padding-top: 1.5rem;//24px
+//     padding-bottom: 1rem;//16px
 
     
 
-    @include tablet{
-        font: fonts.$font-sectionheader-tablet;
-        line-height: 1;
+//     @include tablet{
+//         font: fonts.$font-sectionheader-tablet;
+//         line-height: 1;
 
-        padding-top: 3rem;//48px
-        padding-bottom: 2.25rem;//36px
-    }
+//         padding-top: 3rem;//48px
+//         padding-bottom: 2.25rem;//36px
+//     }
 
-    @include desktop{
-        padding-bottom: 3rem;//48px
-    }
-}
+//     @include desktop{
+//         padding-bottom: 3rem;//48px
+//     }
+// }
 //## Subheader
 .subheader{
     font: fonts.$font-subheader-mobile;
@@ -148,13 +147,18 @@ body{
 
         @include desktop{
             margin-left: $padding-9;
-            gap: $padding-5;
+            gap: $padding-4;
         }
     }
 
     &__item{
         color: colors.$secondary-gray;
+        // flex: 1 0 3.9375rem /*63px*/;
         flex: 1;
+
+        @include desktop{
+            flex: 1 0 3.9375rem /*63px*/;
+        }
 
         &--active, &:hover{
             color: colors.$primary-light;
@@ -164,6 +168,8 @@ body{
         &--active{
             font-weight: 600;
         }
+
+
     }
 
     &__link{
@@ -185,37 +191,31 @@ body{
         width: auto;
         flex: 1;
         @include mixins.flexbox($direction: column);
-        gap: 1.5rem;
 
         @include tablet{
             flex-flow: row wrap;
             align-items: baseline;
-            row-gap: 3rem;
-        }
-
-        & > *{
-            @include tablet{
-                flex: 1;
-            }
         }
     }
 
     //## Heading
     &__heading{
-        line-height: .7;
-        padding-top: min(10vw,3.25rem); //52px
-        padding-bottom: 0;
-        max-width: 13.75rem; //220px
+        @include fonts.sectionheader;
+        padding: 2rem 0rem 1rem 0;
         order: -2;
+        
+        @include tablet{
+            flex: 1;
+            max-width: min(16.25rem,33%);
+            padding-top: 3.25rem;
+        }
     }
 
     //## Heading
     &__logo-link{
-        margin-top: $padding-5;
+        margin-top: 2rem;
         
         @include tablet{
-            margin: 0 0 0 auto;
-            flex:0;
             order: -1;
         }
     }
@@ -223,41 +223,46 @@ body{
     //## Footer Contacts
     &__contact-list{
         margin-bottom: $padding-2;
-        @include mixins.common-flex-container-items(column);
+        padding-top: 1.5rem;
+        @include mixins.flexbox($direction: column);
         list-style-type: none;
         
-        gap: 1.5rem;
-
         @include tablet{
-            flex-basis: 100%;
+            flex: 0 1 48.5rem;
             flex-direction: row;
         }
     }
 
     &__contact-item{
-        max-width: 14.5rem; //232px
-        flex: 1;
+        padding-bottom: 1.5rem;
         @include mixins.common-flex-container-items(column);
-        justify-content: center;
         align-items: baseline;
+
+        @include tablet{
+            flex: 1 0 28%;
+            margin-right: 5.5%;
+            
+        }
     }
     
     ///## Social Icons 
     &__social-icons{
         line-height: 0;
-        display: flex;
-        gap: $padding-5; //32px
+        flex: 1;
         order: -2; 
+        display: flex;
     }
 
     &__icon{
         height: 1.5rem; //24px
+        padding-right: 2rem;
     }
 
     //## Copyright
     &__copyright{
         flex-basis: 100%;
         font-size: min(3.33vw,1em);
+        padding-top: .75rem;
     }
 }
 
@@ -292,6 +297,10 @@ body{
     
     @include tablet{
         padding: 0 $margins_Tablet;
+    }
+
+    &__title{
+        @include fonts.pageheader;
     }
 
     &__content{

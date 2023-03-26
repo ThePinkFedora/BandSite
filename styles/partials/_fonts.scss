@@ -28,7 +28,7 @@ $font-family: 'Avenir Next';
 //Page Header
 $font-pageheader-mobile: 600 #{1.5rem}/#{2rem} $font-family;
 //Section Header
-$font-sectionheader-mobile: 600 #{1.5rem}/#{2rem} $font-family;
+$font-sectionheader-mobile: 600 #{1.5rem}/#{1} $font-family;
 //Subheader
 $font-subheader-mobile: 600 #{0.875rem}/#{1.375rem} $font-family;
 //Body
@@ -43,7 +43,7 @@ $font-labelsbuttons-mobile: 700 #{0.625rem}/#{1.25rem} $font-family;
 //Page Header
 $font-pageheader-tablet: 600 #{3.75rem}/#{4.25rem} $font-family;
 //Section Header
-$font-sectionheader-tablet: 600 #{2.25rem}/#{2.75rem} $font-family;
+$font-sectionheader-tablet: 600 #{2.25rem}/#{1} $font-family;
 //Subheadder
 $font-subheader-tablet: 600 #{1.5rem}/#{2rem} $font-family;
 //Body
@@ -51,4 +51,54 @@ $font-body-tablet: 400 #{0.875rem}/#{1.375rem} $font-family;
 //Footer
 $font-footer-tablet: 400 #{0.875rem}/#{1.25rem} $font-family;
 //Labels/Buttons
-$font-labelsbuttons-tablet: 700 #{0.75rem}/#{1.25rem} $font-family;;
+$font-labelsbuttons-tablet: 700 #{0.75rem}/#{1.25rem} $font-family;
+
+
+
+
+
+
+
+
+//# Typography Mixins
+@mixin pageheader{
+    font: $font-pageheader-mobile;
+    @include tablet{
+        font: $font-pageheader-tablet;
+    }
+}
+
+@mixin sectionheader{
+    font: $font-sectionheader-mobile;
+    @include tablet{
+        font: $font-sectionheader-tablet;
+    }
+}
+
+@mixin subheader{
+    font: $font-subheader-mobile;
+    @include tablet{
+        font: $font-subheader-tablet;
+    }
+}
+
+@mixin body{
+    font: $font-body-mobile;
+    @include tablet{
+        font: $font-body-tablet;
+    }
+}
+
+@mixin footer{
+    font: $font-footer-mobile;
+    @include tablet{
+        font: $font-footer-tablet;
+    }
+}
+
+@mixin labelsbuttons{
+    font: $font-labelsbuttons-mobile;
+    @include tablet{
+        font: $font-labelsbuttons-tablet;
+    }
+}

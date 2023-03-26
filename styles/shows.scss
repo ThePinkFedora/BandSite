@@ -3,10 +3,10 @@
 @use './partials/units';
 @use './partials/colors';
 @use './partials/mixins';
+@use './partials/fonts';
 
 //# Hero
 .hero{
-    ///Sassify all this better
     &--shows{
         background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../assets/images/hero-shows.jpg");
         min-height: 40vw;
@@ -58,14 +58,19 @@
     @include mixins.flexbox(center);
 
     &__section-header{
+        @include fonts.sectionheader;
         width: auto;
+        padding-top: 2.25rem;//24px
         padding-bottom: .5rem;
         margin-left: units.$margins_Mobile;
 
         @include tablet{
+            padding-top: 3.375rem;//54px
+            padding-bottom: 2.25rem;//36px
             margin-left: units.$margins_Tablet - 1.125rem; // ( - 18px)
         }
         @include desktop{
+            padding-bottom: 3rem;//48px
             margin-left: 0;
         }
     }
@@ -88,7 +93,7 @@
 //# Shows Table
 .shows-table{
     width: 100%;
-    max-width: 50.4375rem; //807px
+    max-width: 49.5rem; //792px
     margin-right: -1rem; //-16px
     @include mixins.flexbox($direction: column);
 
@@ -97,13 +102,18 @@
         
         @include tablet{
             display: flex;
-            padding: 1rem;
+            padding: 0.125rem 1rem;
             gap: 0.5rem;
+        }
+
+        @include desktop{
+            padding-bottom: 1rem;
         }
     }
 
     &__column-header{
-        @extend .smallheader;
+        font-weight: 600;
+        font-size: 0.75rem;
         color: colors.$primary-gray;
         flex: 1 1 9.375rem; //150px
 

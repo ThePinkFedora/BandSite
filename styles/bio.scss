@@ -3,8 +3,8 @@
 @use './partials/breakpoints' as *;
 @use './partials/units';
 @use './partials/mixins';
-
 @use './partials/forms';
+@use './partials/fonts';
 
 .hero{
     &--bio{
@@ -16,7 +16,13 @@
 //# About Section
 .about{
     &__section-header{
+        @include fonts.sectionheader;
         align-self: flex-start;
+        padding: 1.5rem 0 1rem;
+
+        @include tablet{
+            padding: 3.25rem 0 1.75rem;
+        }
         @include desktop{
             padding-bottom: 2.25rem;
         }
@@ -58,18 +64,19 @@
     &__quote-container{
         display: flex;
         flex-direction: column;
-        gap: units.$padding-3;
+        // gap: units.$padding-2;
         max-width: 42rem;
     }
 
     &__quote-text{
-        @extend .subheader;
+        font: fonts.$font-subheader-mobile;
         display: block;
-        padding: 0;
+        padding-bottom: 1rem;
 
         @include tablet{
             font-size: 1.4rem;
             line-height: 1.9rem;
+            padding-bottom: 0.5rem;
         }
     }
 
@@ -86,7 +93,17 @@
 //# About Bio
 .bio{
     &__title{
+        @include fonts.subheader;
         color: colors.$secondark-dark;
+        padding: 1.5rem 0 0.8125rem;
+
+        @include tablet{
+            padding: 3rem 0 1.25rem; //48px 0 20px
+        }
+
+        @include desktop{
+            padding-bottom: 2rem;;
+        }
     }
     &__content{
         @include mixins.common-flex-container-items(column,$rowOrColumn-tablet: row);
@@ -99,6 +116,13 @@
     background-color: colors.$secondary-light; 
 
     &__section-header{
+        @include fonts.sectionheader;
+        padding: 1.5rem 0 1rem;
+
+        @include tablet{
+            padding: 3rem 0 2.25rem;
+        }
+
         @include desktop{
             padding-bottom: 2.5rem;
         }
@@ -137,8 +161,13 @@
 .comments-section{
 
     &__section-header{
-        @include desktop{
-            padding-bottom: 2.25rem;
+        @include fonts.sectionheader;
+
+        padding-top: 1.5rem;//24px
+        padding-bottom: 1rem;//16px
+
+        @include tablet{
+            padding: 3rem 0 2.25rem;
         }
     }
 
