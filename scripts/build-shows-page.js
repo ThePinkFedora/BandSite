@@ -1,8 +1,24 @@
 /**
+ * Configuration settings for the comments section.
+ */
+const config = {
+    /**
+     * The api key used with the server api
+     */
+    api_key: "2c2bfd22-7094-4674-9868-739f6fe3979b",
+    /**
+     * The url of the server api endpoint 
+     */
+    endpointUrl: "https://project-1-api.herokuapp.com/showdates/",
+};
+
+
+/**
  * @typedef {object} Concert
- * @property {string} date - The date of the concert
- * @property {string} venue - The concert venue
- * @property {string} location - The city where the concert is located
+ * @property {number} id - A unique identifier for this concert
+ * @property {number} date - The date of the concert (in ms since epoch)
+ * @property {string} place - The concert venue
+ * @property {string} location - The geographic location of the concert
  */
 
 /**
@@ -15,38 +31,7 @@ let showsTableBody;
  * The list of concerts (aka shows)
  * @type {Concert[]}
  */
-let concerts = [
-    {
-        date: "Mon Sept 06 2021",
-        venue: "Ronald Lane",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Tue Sept 21 2021 ",
-        venue: "Pier 3 East ",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Fri Oct 15 2021 ",
-        venue: "View Lounge",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Sat Nov 06 2021 ", 
-        venue: "Hyatt Agency",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Fri Nov 26 2021",
-        venue: "Moscow Center",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Wed Dec 15 2021 ", 
-        venue: "Press Club",
-        location: "San Francisco, CA"
-    },
-];
+let concerts = [];
 
 /**
  * The currently selected row, if any
@@ -160,14 +145,14 @@ function createDivider(){
  * Creates a show row element for the show and appends it to the table
  * @param {Concert} show - The show to create the row for.
  */
-function addShow(show){
+function displayShow(show){
     const rowElement = document.createElement("div");
     rowElement.classList.add("shows-table__row");
 
     //Create Cells
-    let dateCell = createCell(show.date,"DATE");
+    let dateCell = createCell(new Date(show.date).toDateString(),"DATE");
     dateCell.classList.add("shows-table__cell--strong");
-    let venueCell = createCell(show.venue,"VENUE");
+    let venueCell = createCell(show.place,"VENUE");
     let locationCell = createCell(show.location,"LOCATION");
     let buttonCell = createCell(createButton("BUY TICKETS"));
 
@@ -182,6 +167,15 @@ function addShow(show){
 
     //Create and append an hr.divider
     showsTableBody.appendChild(createDivider());
+}
+
+/**
+ * Invokes {@link displayShow} for all {@link concerts}.
+ */
+function displayAllShows(){
+    for(let show of concerts){
+        displayShow(show);
+    }
 }
 
 /**
@@ -209,14 +203,18 @@ function setSelectedRow(rowElement){
 }
 
 /**
- * Invokes {@link addShow} for all {@link concerts}.
+ * Download shows from ${@link config.endpointUrl} , then invoke {@link}
  */
-function loadShows(){
-    for(let show of concerts){
-        addShow(show);
-    }
+function downloadShows(){
+    axios.get(`${config.endpointUrl}?api_key=${config.api_key}`).then(response => {
+        concerts = response.data;
+        displayAllShows();
+    });
 }
+
+
 
 buildShowsSection();
 
-loadShows();
+
+downloadShows();
