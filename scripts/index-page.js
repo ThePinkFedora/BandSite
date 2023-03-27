@@ -10,7 +10,7 @@ const config = {
     /**
      * The time -in seconds- between comments section reloads. 0 indicates never.
      */
-    refreshRate: 0,
+    refreshRate: 10,
 };
 
 
