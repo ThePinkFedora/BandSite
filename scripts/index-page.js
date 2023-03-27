@@ -8,17 +8,29 @@ const config = {
      */
     useRelativeTimestamps: true,
     /**
-     * The time -in seconds- between comments section reloads. 0 indicates never.
+     * The time -in seconds- between timestamp refreshes. 0 indicates never.
      */
-    refreshRate: 10,
+    timestampRefreshRate: 5,
+    /**
+     * The api key used with the server api
+     */
+    api_key: "2c2bfd22-7094-4674-9868-739f6fe3979b",
+    /**
+     * The url of the server api endpoint 
+     */
+    endpointUrl: "https://project-1-api.herokuapp.com/comments/",
 };
+
+const api_key = "2c2bfd22-7094-4674-9868-739f6fe3979b";
 
 
 /**
  * @typedef {object} CommentObject
- * @property {string} displayName - The name of the commenter
- * @property {string} text - The text content
- * @property {string} timestamp - The date posted
+ * @property {string} name - The name of the commenter
+ * @property {string} comment - The text content
+ * @property {number} id - A unique identifier for this comment
+ * @property {number} likes - like count for this comment
+ * @property {number} timestamp - The date posted (in ms since epoch)
  */
 
 /**
@@ -38,24 +50,7 @@ const commentForm = document.getElementById("commentForm");
  * (Ordered chronology so the oldest comments are at the start)
  * @type {CommentObject[]}
  */
-let comments = [
-    {
-        displayName: "Miles Acosta",
-        text: "I can t stop listening. Every time I hear one of their songs the vocals it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can t get enough.",
-        timestamp: "12/20/2020, 12:00:00 PM",
-    },
-    {
-        displayName: "Emilie Beach",
-        text: "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.",    
-        timestamp: "01/09/2021, 12:00:00 PM",
-    },
-    {
-        displayName: "Connor Walton",
-        text: "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.",    
-        timestamp: "02/17/2021, 12:00:00 PM",
-    },
-];
-
+let comments = [];
 
 /**
  * Create and append a comment element to the comments section
@@ -64,12 +59,13 @@ let comments = [
 function displayComment(comment){
     let commentElement = document.createElement("article");
     commentElement.classList.add("comment");
+    commentElement.dataset.commentId = comment.id;
 
     //Avatar / Left
     
     let avatarElement = document.createElement("img");
     avatarElement.classList.add("avatar");
-    avatarElement.setAttribute("alt","");
+    avatarElement.setAttribute("alt","avatar");
     avatarElement.setAttribute("src","");
     
 
@@ -80,22 +76,37 @@ function displayComment(comment){
 
     let nameElement = document.createElement("h4");
     nameElement.classList.add("comment__name");
-    nameElement.innerText = comment.displayName;
+    nameElement.innerText = comment.name;
 
     let timestampElement = document.createElement("span");
     timestampElement.classList.add("comment__timestamp");
-    if(config.useRelativeTimestamps){
-        timestampElement.innerText = getRelativeTimestamp(comment.timestamp);
-    }else{
-        timestampElement.innerText = comment.timestamp.substring(0,comment.timestamp.indexOf(","));
-    }
+    timestampElement.dataset.timestamp = String(comment.timestamp);
+    updateTimestamp(timestampElement);
 
+    //Create icons and likes label
+    let deleteElement = document.createElement("img");
+    deleteElement.src = "./assets/icons/icon-delete.svg";
+    deleteElement.alt = "delete";
+    deleteElement.classList.add("comment__icon-button","comment__icon-button--delete");
+    deleteElement.addEventListener('click',()=>deleteComment(comment.id));
+
+    let likeElement = document.createElement("img");
+    likeElement.src = "./assets/icons/icon-like.svg";
+    likeElement.alt = "like";
+    likeElement.classList.add("comment__icon-button","comment__icon-button--like");
+    likeElement.addEventListener('click',()=>putLike(comment.id));
+
+    let likesLabelElement = document.createElement("span");
+    likesLabelElement.classList.add("comment__likes");
+    likesLabelElement.innerText = `${comment.likes} like${comment.likes!==1?"s":""}`;
+
+    //Create text element
     let textElement = document.createElement("p");
     textElement.classList.add("comment__text");
-    textElement.innerText = comment.text;
+    textElement.innerText = comment.comment;
     
     //Append content's children
-    contentElement.append(nameElement,timestampElement,textElement);
+    contentElement.append(nameElement,timestampElement,deleteElement,likeElement,likesLabelElement,textElement);
     //Append avatar and content to the comment
     commentElement.append(avatarElement,contentElement);
     //Append the comment to the list
@@ -104,6 +115,40 @@ function displayComment(comment){
     //Create and append divider
     generateDivider();
 }
+
+/**
+ * Invokes {@link displayComment} for all {@link comments}
+ */
+function displayAllComments(){
+    clearAllComments();
+    //Iterate through comments in reverse (newest -> oldest)
+    for(let i=comments.length-1;i>=0;i--){
+        displayComment(comments[i]);
+    }
+}
+
+/**
+ * Updates the timestamp text for an element based on it's {@link HTMLElement.dataset.timestamp}
+ * @param {HTMLElement} timestampElement 
+ */
+function updateTimestamp(timestampElement){
+    let time = Number(timestampElement.dataset.timestamp);
+
+    if(config.useRelativeTimestamps){
+        timestampElement.innerText = getRelativeTimestamp(time);
+    }else{
+        timestampElement.innerText = new Date(time).toLocaleDateString("en-US",{ month: "2-digit",day: "2-digit",year:"numeric"});
+    }
+}
+
+/**
+ * Invokes {@link updateTimestamp} for all .comment__timestamp elements
+ */
+function updateAllTimestamps(){
+    document.querySelectorAll('.comment__timestamp').forEach(element => updateTimestamp(element));
+}
+
+
 
 /**
  * Creates and appends a divider to the comment form
@@ -116,17 +161,15 @@ function generateDivider(){
     return dividerElement;
 }
 
+
 /**
  * Converts a date to a human-readable relative formated string.
- * @param {(string|Date)} date - The date to be compared to now
+ * @param {(number|Date)} date - The date to be compared to now
  * @returns {string} The relative date string. E.g. 2 seconds ago, 3 minutes ago, or 1 year ago
  */
 function getRelativeTimestamp(date){
     const toAgoString = (unit,number) => `${Math.ceil(number)} ${unit}${Math.ceil(number)!==1?"s":""} ago`;
     
-    if(typeof date === 'string'){
-        date = new Date(date);
-    }
     let now = new Date();
 
     let difference = now - date; ///In milliseconds
@@ -157,7 +200,7 @@ function getRelativeTimestamp(date){
 /**
  * Clears the comment form
  */
-function clearComments(){
+function clearAllComments(){
     //Clear comments and dividers
     commentSectionContainer.querySelectorAll(".comment, .comments-section__divider").forEach(element => element.remove());
     //Create and append a divider
@@ -165,13 +208,54 @@ function clearComments(){
 }
 
 /**
- * Invokes {@link displayComment} for all {@link comments}
+ * Download comments from ${@link config.endpointUrl} , then invoke {@link displayAllComments}
  */
-function loadComments(){
-    //Iterate through comments in reverse (newest -> oldest)
-    for(let i=comments.length-1;i>=0;i--){
-        displayComment(comments[i]);
-    }
+function downloadComments(){
+    axios.get(config.endpointUrl + "?api_key=" + config.api_key)
+        .then(response => {
+            console.log(response.data);
+            comments = response.data;
+            displayAllComments();
+        })
+}
+
+/**
+ * Sends a POST request with {@link comment} to {@link config.endpointUrl}, then invokes {@link downloadComments}.
+ * @summary Posts a comment
+ * @param {*} comment 
+ */
+function postComment(comment){
+    axios.post(config.endpointUrl + "?api_key=" + config.api_key, comment).then(response =>{
+        console.log("Received response from POST /comment");
+        console.log(response);
+        downloadComments();
+    });
+}
+
+/**
+ * Sends a PUT request to {@link config.endpointUrl}/:id/like (where :id is the {@link commentId} specified), then invokes {@link downloadComments}.
+ * @summary Likes a comment
+ * @param {number} commentId - The id of the comment to like
+ */
+function putLike(commentId){
+    axios.put(`${config.endpointUrl}${commentId}/like?api_key=${config.api_key}`).then(response =>{
+        console.log("Received response from PUT /comments/:id/like");
+        console.log(response);
+        downloadComments();
+    });
+}
+
+/**
+ * Sends a DELETE request to {@link config.endpointUrl}/:id (where :id is the {@link commentId} specified), then invokes {@link downloadComments}.
+ * @summary Deletes a comment
+ * @param {number} commentId - The id of the comment to like
+ */
+function deleteComment(commentId){
+    axios.delete(`${config.endpointUrl}${commentId}?api_key=${config.api_key}`).then(response =>{
+        console.log("Received response from DELETE /comments/:id");
+        console.log(response);
+        downloadComments();
+    });
 }
 
 //Register comment submissions event
@@ -202,28 +286,21 @@ commentForm.addEventListener('submit',(e) =>{
     
     //Build comment object
     let comment = {
-        displayName: commentForm.elements["commentName"].value,
-        text: commentForm.elements["commentText"].value,
-        timestamp: new Date().toLocaleDateString("en-US",{ month: "2-digit",day: "2-digit",year:"numeric", hour: "2-digit",minute:"2-digit",second:"2-digit" })
+        name: commentForm.elements["commentName"].value,
+        comment: commentForm.elements["commentText"].value
     };
-    //Push comment to the array
-    comments.push(comment);
-
-    //Clear and re-render comments
-    clearComments();
-    loadComments();
+    postComment(comment);
 
     //Clear the form
     commentForm.reset();
 });
 
 
-loadComments();
+downloadComments();
 
 //Setup refresh inverval if enabled
-if(config.refreshRate){
+if(config.timestampRefreshRate){
     setInterval(()=>{
-        clearComments();
-        loadComments();
-    }, config.refreshRate * 1000);
+        updateAllTimestamps();
+    }, config.timestampRefreshRate * 1000);
 }

@@ -240,12 +240,14 @@
     ///### Comment Content (right) 
     &__content{
         flex-grow: 1;
-        @include mixins.flexbox(space-between,$wrap:wrap);
-        gap: 1rem;
+        @include mixins.flexbox(/*space-between,*/$wrap:wrap);
+        gap: .75rem;
+        row-gap: 1rem;
     }
     
     ///### Commentname
     &__name{
+        flex: 1;
         height: 1em; 
     }
 
@@ -254,6 +256,25 @@
         color: colors.$primary-gray;
         height: 1em; 
     }
+
+    &__icon-button{
+        opacity: 0.6;
+        cursor: pointer;
+
+        &:hover{
+            opacity: 1;
+        }
+        &--delete{
+             
+        }
+        &--like{
+            
+        }
+    }
+    &__likes{
+        width: 5ch;
+    }
+    
 
     //### Comment text
     &__text{
