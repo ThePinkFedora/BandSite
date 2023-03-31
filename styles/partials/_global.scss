@@ -65,7 +65,7 @@ h4{
 }
 //## Main Navigation
 .main-nav{
-    $border-width: 0.1875rem; //3px;
+    $border-width: 0.1875rem;
     
     &__list{
         padding-top: $padding-1;
@@ -73,8 +73,8 @@ h4{
         display: flex;
 
         @include tablet{
-            margin-left: 4.5rem; //72px;
-            gap: $padding-8; //56px
+            margin-left: 4.5rem;
+            gap: $padding-8;
         }
 
         @include desktop{
@@ -88,7 +88,7 @@ h4{
         flex: 1;
 
         @include desktop{
-            flex: 1 0 3.9375rem /*63px*/;
+            flex: 1 0 3.9375rem;
         }
 
         &--active, &:hover{
@@ -185,7 +185,7 @@ h4{
     }
 
     &__icon{
-        height: 1.5rem; //24px
+        height: 1.5rem;
         padding-right: 2rem;
     }
 
@@ -245,12 +245,13 @@ h4{
     background-color: colors.$secondary-gray;
     border: none;
     width: 100%;
-    height: 0.0625rem;//1px
+    height: 0.0625rem;
     
 }
 
 ///CTA Button
 .primary-cta{
+    cursor: pointer;
     font-size: 0.9375rem;
     line-height: 1;
     background-color: colors.$primary-dark;
@@ -258,12 +259,13 @@ h4{
     border-width: 0;
     border-radius: 4px;
     width: 100%; ///For mobile
-    min-width: 9.375rem;//150px
-    height: 2.5rem; ///40px
-    padding: 0 2rem;//32px
+    min-width: 9.375rem;
+    height: 2.5rem; 
+    padding: 0 2rem;
     
     @include tablet{
         width: auto;
+        max-width: 100%;
     }
 
     &:hover{

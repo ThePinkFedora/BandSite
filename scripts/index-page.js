@@ -21,9 +21,6 @@ const config = {
     endpointUrl: "https://project-1-api.herokuapp.com/comments/",
 };
 
-const api_key = "2c2bfd22-7094-4674-9868-739f6fe3979b";
-
-
 /**
  * @typedef {object} CommentObject
  * @property {string} name - The name of the commenter
@@ -33,18 +30,24 @@ const api_key = "2c2bfd22-7094-4674-9868-739f6fe3979b";
  * @property {number} timestamp - The date posted (in ms since epoch)
  */
 
+const elements = {
+    /**
+     * The comment list element
+     * @type {HTMLDivElement}
+     */
+    commentList: document.getElementById("commentList"),
+    /**
+     * The comment form element
+     * @type {HTMLFormElement}
+     */
+    commentForm: document.getElementById("commentForm")
+};
+
 /**
  * The comments section element
  * @type {HTMLDivElement}
  */
-const commentSectionContainer = document.getElementById("commentSectionContainer");
-/**
- * The comment form element
- * @type {HTMLFormElement}
- */
-const commentForm = document.getElementById("commentForm");
 
-// You must have an array in JavaScript with 3 default comment objects to start. Comments must have a name, a timestamp, and the comment text.
 /**
  * The page comments
  * (Ordered chronology so the oldest comments are at the start)
@@ -62,7 +65,6 @@ function displayComment(comment){
     commentElement.dataset.commentId = comment.id;
 
     //Avatar / Left
-    
     let avatarElement = document.createElement("img");
     avatarElement.classList.add("avatar");
     avatarElement.setAttribute("alt","avatar");
@@ -70,7 +72,6 @@ function displayComment(comment){
     
 
     //Content / Right
-
     let contentElement = document.createElement("div");
     contentElement.classList.add("comment__content");
 
@@ -107,13 +108,12 @@ function displayComment(comment){
     
     //Append content's children
     contentElement.append(nameElement,timestampElement,deleteElement,likeElement,likesLabelElement,textElement);
+
     //Append avatar and content to the comment
     commentElement.append(avatarElement,contentElement);
-    //Append the comment to the list
-    commentSectionContainer.append(commentElement);
 
-    //Create and append divider
-    generateDivider();
+    //Append the comment to the list
+    elements.commentList.append(commentElement);
 }
 
 /**
@@ -148,20 +148,6 @@ function updateAllTimestamps(){
     document.querySelectorAll('.comment__timestamp').forEach(element => updateTimestamp(element));
 }
 
-
-
-/**
- * Creates and appends a divider to the comment form
- * @returns {HTMLHRElement} - The created divider element
- */
-function generateDivider(){
-    let dividerElement = document.createElement("hr");
-    dividerElement.classList.add("comments-section__divider");
-    commentSectionContainer.appendChild(dividerElement);
-    return dividerElement;
-}
-
-
 /**
  * Converts a date to a human-readable relative formated string.
  * @param {(number|Date)} date - The date to be compared to now
@@ -171,7 +157,6 @@ function getRelativeTimestamp(date){
     const toAgoString = (unit,number) => `${Math.ceil(number)} ${unit}${Math.ceil(number)!==1?"s":""} ago`;
     
     let now = new Date();
-
     let difference = now - date; ///In milliseconds
 
     let seconds = difference/1000;
@@ -194,17 +179,14 @@ function getRelativeTimestamp(date){
 
     let years = months / 12;
     return toAgoString("year",years);
-    
 }
 
 /**
  * Clears the comment form
  */
 function clearAllComments(){
-    //Clear comments and dividers
-    commentSectionContainer.querySelectorAll(".comment, .comments-section__divider").forEach(element => element.remove());
-    //Create and append a divider
-    generateDivider();
+    //Clear comments
+    elements.commentList.innerHTML = "";
 }
 
 /**
@@ -213,21 +195,20 @@ function clearAllComments(){
 function downloadComments(){
     axios.get(config.endpointUrl + "?api_key=" + config.api_key)
         .then(response => {
-            console.log(response.data);
             comments = response.data;
+            ///Sort comments by timestamp
+            comments.sort((a,b) => a.timestamp-b.timestamp);
             displayAllComments();
-        })
+        });
 }
 
 /**
  * Sends a POST request with {@link comment} to {@link config.endpointUrl}, then invokes {@link downloadComments}.
  * @summary Posts a comment
- * @param {*} comment 
+ * @param {CommentObject} comment 
  */
 function postComment(comment){
     axios.post(config.endpointUrl + "?api_key=" + config.api_key, comment).then(response =>{
-        console.log("Received response from POST /comment");
-        console.log(response);
         downloadComments();
     });
 }
@@ -239,8 +220,6 @@ function postComment(comment){
  */
 function putLike(commentId){
     axios.put(`${config.endpointUrl}${commentId}/like?api_key=${config.api_key}`).then(response =>{
-        console.log("Received response from PUT /comments/:id/like");
-        console.log(response);
         downloadComments();
     });
 }
@@ -252,14 +231,12 @@ function putLike(commentId){
  */
 function deleteComment(commentId){
     axios.delete(`${config.endpointUrl}${commentId}?api_key=${config.api_key}`).then(response =>{
-        console.log("Received response from DELETE /comments/:id");
-        console.log(response);
         downloadComments();
     });
 }
 
 //Register comment submissions event
-commentForm.addEventListener('submit',(e) =>{
+elements.commentForm.addEventListener('submit',(e) =>{
     e.preventDefault(); ///Prevent submission reload
 
     //Collect values
@@ -286,13 +263,13 @@ commentForm.addEventListener('submit',(e) =>{
     
     //Build comment object
     let comment = {
-        name: commentForm.elements["commentName"].value,
-        comment: commentForm.elements["commentText"].value
+        name: name,
+        comment: text
     };
     postComment(comment);
 
     //Clear the form
-    commentForm.reset();
+    e.target.reset();
 });
 
 

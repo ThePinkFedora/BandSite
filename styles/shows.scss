@@ -35,20 +35,20 @@
 
     &__content{
         &--shows{
-            padding-top: 2rem; //32px
-            padding-bottom: 2rem; //32px
+            padding-top: 2rem; 
+            padding-bottom: 2rem; 
             @include mixins.flexbox(space-between,flex-end,$wrap: wrap);
-            gap: 1rem; //16px
+            gap: 1rem;
             
             @include tablet{
                 padding-top: 3.75rem;
                 padding-bottom: 3.75rem;
-                gap: 2.75rem; //60px
+                gap: 2.75rem; 
             }
     
             @include desktop{
-                padding-top: 12.5rem; //200px
-                padding-bottom: 14.75rem; //236px
+                padding-top: 12.5rem; 
+                padding-bottom: 14.75rem; 
                 
             }
         }
@@ -63,33 +63,33 @@
         @include fonts.sectionheader;
         color: colors.$secondark-dark; //Pure black for mobile/tablet
         width: auto;
-        padding-top: 2.25rem;//24px
+        padding-top: 2.25rem;
         padding-bottom: .5rem;
         margin-left: units.$margins_Mobile;
 
         @include tablet{
-            padding-top: 3.375rem;//54px
-            padding-bottom: 2.25rem;//36px
-            margin-left: units.$margins_Tablet - 1.125rem; // ( - 18px)
+            padding-top: 3.375rem;
+            padding-bottom: 2.25rem;
+            margin-left: units.$margins_Tablet - 1.125rem;
         }
         @include desktop{
             color: colors.$primary-dark;
-            padding-bottom: 3rem;//48px
+            padding-bottom: 3rem;
             margin-left: 0;
         }
     }
 
     &__content-container{
         flex: 0 1 units.$maxWidth;
-        margin-bottom: 1rem; //16px
+        margin-bottom: 1rem; 
 
         @include mixins.flexbox(space-between,baseline,$wrap:wrap);
         
         @include tablet{
-            margin: 0 1.125rem 2.125rem 1.125rem; ///18px
+            margin: 0 1.125rem 2.125rem 1.125rem; 
         }
         @include desktop{
-            margin-bottom: 2.25rem; //36 px
+            margin-bottom: 2.25rem; 
         }
     }
 }
@@ -97,8 +97,8 @@
 //# Shows Table
 .shows-table{
     width: 100%;
-    max-width: 49.5rem; //792px
-    margin-right: -1rem; //-16px
+    max-width: 49.5rem; 
+    margin-right: -1rem; 
     @include mixins.flexbox($direction: column);
 
     &__head{
@@ -119,7 +119,8 @@
         font-weight: 600;
         font-size: 0.75rem;
         color: colors.$primary-gray;
-        flex: 1 1 9.375rem; //150px
+        width: 9.375rem;
+        flex: 1 1 9.375rem;
 
         &:first-child{
             @include desktop{
@@ -136,6 +137,8 @@
     }
 
     &__row{
+        cursor: pointer;
+        border-bottom: 1px solid colors.$secondary-gray;
         padding: 1rem;
         @include mixins.flexbox($direction: column);
         gap: 0.5rem;
@@ -157,8 +160,10 @@
     &__cell{
         color: colors.$secondark-dark; ///Pure black for mobile/tablet
         flex: 1;
+        
         @include tablet{
-            flex: 1 1 9.375rem; //150px
+            width: 9.375rem;
+            flex: 1 1 9.375rem;
         }
         @include desktop{
             color: colors.$primary-dark;

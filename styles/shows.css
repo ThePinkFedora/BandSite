@@ -264,6 +264,7 @@ h4 {
 }
 
 .primary-cta, .shows-table__button {
+  cursor: pointer;
   font-size: 0.9375rem;
   line-height: 1;
   background-color: #323232;
@@ -278,6 +279,7 @@ h4 {
 @media (min-width: 768px) {
   .primary-cta, .shows-table__button {
     width: auto;
+    max-width: 100%;
   }
 }
 .primary-cta:hover, .shows-table__button:hover {
@@ -412,6 +414,7 @@ h4 {
   font-weight: 600;
   font-size: 0.75rem;
   color: #AFAFAF;
+  width: 9.375rem;
   flex: 1 1 9.375rem;
 }
 @media (min-width: 1280px) {
@@ -427,6 +430,8 @@ h4 {
   flex-direction: column;
 }
 .shows-table__row {
+  cursor: pointer;
+  border-bottom: 1px solid #E1E1E1;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -450,6 +455,7 @@ h4 {
 }
 @media (min-width: 768px) {
   .shows-table__cell {
+    width: 9.375rem;
     flex: 1 1 9.375rem;
   }
 }

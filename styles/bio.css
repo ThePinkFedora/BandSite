@@ -256,7 +256,7 @@ h4 {
   flex: 0 1 63.75rem;
 }
 
-.divider, .comments-section__divider {
+.divider {
   background-color: #E1E1E1;
   border: none;
   width: 100%;
@@ -264,6 +264,7 @@ h4 {
 }
 
 .primary-cta, .form-submit {
+  cursor: pointer;
   font-size: 0.9375rem;
   line-height: 1;
   background-color: #323232;
@@ -278,6 +279,7 @@ h4 {
 @media (min-width: 768px) {
   .primary-cta, .form-submit {
     width: auto;
+    max-width: 100%;
   }
 }
 .primary-cta:hover, .form-submit:hover {
@@ -285,17 +287,18 @@ h4 {
 }
 
 .avatar {
+  color: transparent;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: 20%;
      object-position: 20%;
+  border-width: 0;
+  border-color: transparent;
   border-radius: 50%;
   flex-shrink: 0;
   width: 2.25rem;
   height: 2.25rem;
   position: relative;
-  border-width: 0;
-  border-color: transparent;
 }
 @media (min-width: 768px) {
   .avatar {
@@ -305,6 +308,7 @@ h4 {
 }
 .avatar::before {
   content: "";
+  border-radius: 50%;
   display: block;
   background-color: #E1E1E1;
   position: absolute;
@@ -560,25 +564,17 @@ h4 {
     max-width: 31rem;
   }
 }
-.comments-section__divider {
-  margin-top: 0.625rem;
-  margin-bottom: 1rem;
-}
-@media (min-width: 768px) {
-  .comments-section__divider {
-    margin-top: 1.125rem;
-    margin-bottom: 1.625rem;
-  }
-}
-.comments-section__divider:last-child {
-  margin-bottom: 0;
-}
-
 .comment-form {
-  margin-bottom: 0.25rem;
+  border-bottom: 1px solid #E1E1E1;
+  padding-bottom: 1rem;
   display: flex;
   align-items: flex-start;
   gap: 1rem;
+}
+@media (min-width: 768px) {
+  .comment-form {
+    padding-bottom: 1.5rem;
+  }
 }
 .comment-form__avatar {
   margin-top: 1.5em;
@@ -602,18 +598,27 @@ h4 {
 }
 
 .comment {
+  border-bottom: 1px solid #E1E1E1;
   display: flex;
   align-items: flex-start;
   gap: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 0.625rem;
+}
+@media (min-width: 768px) {
+  .comment {
+    padding-top: 1.625rem;
+    padding-bottom: 1.125rem;
+  }
 }
 .comment__content {
   flex-grow: 1;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  row-gap: 1rem;
+  gap: 0.5rem;
 }
 .comment__name {
+  white-space: nowrap;
   flex: 1;
   height: 1em;
 }
@@ -629,7 +634,15 @@ h4 {
   opacity: 1;
 }
 .comment__likes {
-  width: 5ch;
+  width: 1ch;
+  overflow: hidden;
+  text-overflow: "";
+  white-space: nowrap;
+}
+@media (min-width: 768px) {
+  .comment__likes {
+    width: 5ch;
+  }
 }
 .comment__text {
   flex: 100%;

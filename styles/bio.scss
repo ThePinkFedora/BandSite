@@ -9,7 +9,7 @@
 .hero{
     &--bio{
         background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../assets/images/hero-bio.jpg");
-        height: min(58.5vw, 39.375rem /*630px*/);
+        height: min(58.5vw, 39.375rem);
     }
 }
 
@@ -43,7 +43,6 @@
 .about-header{
 
     &__image{
-        //Very cool, though there may be performance considerations
         @keyframes scrollImage {
             25%{
                 object-position: top;
@@ -63,7 +62,6 @@
     &__quote-container{
         display: flex;
         flex-direction: column;
-        // gap: units.$padding-2;
         max-width: 42rem;
     }
 
@@ -100,7 +98,7 @@
         padding: 1.5rem 0 0.8125rem;
 
         @include tablet{
-            padding: 3rem 0 1.25rem; //48px 0 20px
+            padding: 3rem 0 1.25rem;
         }
 
         @include desktop{
@@ -165,8 +163,8 @@
     &__section-header{
         @include fonts.sectionheader;
 
-        padding-top: 1.5rem;//24px
-        padding-bottom: 1rem;//16px
+        padding-top: 1.5rem;
+        padding-bottom: 1rem;
 
         @include tablet{
             padding: 3rem 0 2.25rem;
@@ -179,35 +177,44 @@
         @include mixins.flexbox($direction: column);
 
         @include tablet{
-            max-width: 36rem;//576px
+            max-width: 36rem;
         }
         @include desktop{
-            max-width: 31rem;//496px ///It actually gets thinner on desktop
+            max-width: 31rem;///It actually gets thinner on desktop
         }
         
     }
-    &__divider{
-        @extend .divider;
-        margin-top: 0.625rem;//10px
-        margin-bottom: 1rem;//16px
+    //## Comment List
+    &__list{
 
-        @include tablet{
-            margin-top: 1.125rem;//18px
-            margin-bottom: 1.625rem;//26px
-        }
-
-        ///Except no bottom margin for the last one
-        &:last-child{
-            margin-bottom: 0;
-        }
     }
+    // &__divider{
+    //     @extend .divider;
+    //     margin-top: 0.625rem;
+    //     margin-bottom: 1rem;
+
+    //     @include tablet{
+    //         margin-top: 1.125rem;
+    //         margin-bottom: 1.625rem;
+    //     }
+
+    //     ///Except no bottom margin for the last one
+    //     &:last-child{
+    //         margin-bottom: 0;
+    //     }
+    // }
 }
 
  //## Comment Form
  .comment-form{
-    margin-bottom: .25rem;
+    border-bottom: 1px solid colors.$secondary-gray;
+    padding-bottom: 1rem;
     @include mixins.flexbox($align-items:flex-start);
     gap: 1rem;
+
+    @include tablet{
+        padding-bottom: 1.5rem;
+    }
 
     &__avatar{
         margin-top: 1.5em;
@@ -234,19 +241,29 @@
 
 //## Comment
 .comment{
+    border-bottom: 1px solid colors.$secondary-gray;
     @include mixins.flexbox($align-items: flex-start);
     gap: 1rem;
     
+    padding-top: 1rem;
+    padding-bottom: 0.625rem;
+
+    @include tablet{
+        padding-top: 1.625rem;
+        padding-bottom: 1.125rem;
+        
+    }
+
     ///### Comment Content (right) 
     &__content{
         flex-grow: 1;
-        @include mixins.flexbox(/*space-between,*/$wrap:wrap);
-        gap: .75rem;
-        row-gap: 1rem;
+        @include mixins.flexbox($wrap:wrap);
+        gap: .5rem;
     }
     
     ///### Commentname
     &__name{
+        white-space: nowrap;
         flex: 1;
         height: 1em; 
     }
@@ -264,18 +281,19 @@
         &:hover{
             opacity: 1;
         }
-        &--delete{
-             
-        }
-        &--like{
-            
-        }
-    }
-    &__likes{
-        width: 5ch;
     }
     
+    &__likes{
+        width: 1ch;
+        overflow: hidden;
+        text-overflow: "";
+        white-space: nowrap;
 
+        @include tablet{
+            width: 5ch;
+        }
+    }
+    
     //### Comment text
     &__text{
         flex: 100%;

@@ -8,18 +8,20 @@
 
 //## Avatars
 .avatar{
-    $mobile-size: 2.25rem; //36px
-    $tablet-size: 3rem; //48px
-
+    $mobile-size: 2.25rem; 
+    $tablet-size: 3rem;
+    
+    color: transparent; ///Hides alt text on firefox
     object-fit: cover;
     object-position: 20%;
+    border-width: 0;
+    border-color: transparent;
     border-radius: 50%;
     flex-shrink: 0;
     width: $mobile-size;
     height: $mobile-size;
     position: relative;
-    border-width: 0;
-    border-color: transparent;
+    
 
     @include tablet{
         width: $tablet-size;
@@ -29,6 +31,7 @@
     ///Image placeholder (Covers missing image icon)
     &::before{
         content: '';
+        border-radius: 50%;
         display: block;
         background-color: colors.$secondary-gray;
         position: absolute;
@@ -49,13 +52,13 @@
     &__field{
         background-color: colors.$secondary-light;
         width: 100%;
-        padding: 0.75rem; //12px
+        padding: 0.75rem; 
         border: 1px solid colors.$secondary-gray;
         border-radius: 4px;
         resize: none;
 
         @include tablet{
-            padding: 1rem; //16px
+            padding: 1rem; 
         }
 
         &:where([type="text"]){

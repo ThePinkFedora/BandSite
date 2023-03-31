@@ -1,42 +1,39 @@
-$space-unit: 0.5rem; //8px;
-
 $margins_Desktop: auto;
-$columns_Desktop: 3.9375rem; //63px;    // Haven't actually figured out how to utilize this yet
-$gutters_Desktop: 1.5rem; //24px;
+$gutters_Desktop: 1.5rem;
 
-$margins_Tablet: 2.25rem; //36px;
+$margins_Tablet: 2.25rem;
 $columns_Tablet: auto;
-$gutters_Tablet: 1.5rem; //24px;
+$gutters_Tablet: 1.5rem;
 
-$margins_Mobile: 1rem; //16px;
+$margins_Mobile: 1rem;
 $columns_Mobile: auto;
-$gutters_Mobile: 1rem; //16px;
+$gutters_Mobile: 1rem;
 
 
-$maxWidth: 63.75rem;//1020px;
+$maxWidth: 63.75rem;
 
 
 //Padding increments
-$padding-1: 0.25rem; //4px;
-$padding-2: 0.5rem; //8px;
-$padding-3: 1rem; //16px;
-$padding-4: 1.5rem; //24px;
-$padding-5: 2rem; //32px;
-$padding-6: 2.5rem; //40px;
-$padding-7: 3rem; //48px;
-$padding-8: 3.5rem; //56px;
-$padding-9: 4rem; //64px;
-$padding-10: 5rem; //80px;
+$padding-1: 0.25rem;
+$padding-2: 0.5rem;
+$padding-3: 1rem;
+$padding-4: 1.5rem;
+$padding-5: 2rem;
+$padding-6: 2.5rem;
+$padding-7: 3rem;
+$padding-8: 3.5rem;
+$padding-9: 4rem;
+$padding-10: 5rem;
 
 
-$pad-before-headlines-mobile: 1.5rem; //24px 
-$pad-after-headlines-mobile: 1rem; //16px;
-$pad-between-components-mobile: 1rem; //16px;
+$pad-before-headlines-mobile: 1.5rem;
+$pad-after-headlines-mobile: 1rem;
+$pad-between-components-mobile: 1rem;
 
 
-$pad-before-headlines-tablet: 3rem; //48px
-$pad-after-headlines-tablet:  1.5rem; //24px;
-$pad-between-components-tablet: 2.25rem; //36px;
+$pad-before-headlines-tablet: 3rem;
+$pad-after-headlines-tablet:  1.5rem;
+$pad-between-components-tablet: 2.25rem;
 
 
 

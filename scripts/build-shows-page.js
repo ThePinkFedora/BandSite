@@ -12,7 +12,6 @@ const config = {
     endpointUrl: "https://project-1-api.herokuapp.com/showdates/",
 };
 
-
 /**
  * @typedef {object} Concert
  * @property {number} id - A unique identifier for this concert
@@ -22,23 +21,22 @@ const config = {
  */
 
 /**
- * The shows table body, which is the parent of the rows in the table
- * @type {HTMLDivElement}
- */
-let showsTableBody;
-
-/**
  * The list of concerts (aka shows)
  * @type {Concert[]}
  */
 let concerts = [];
 
 /**
+ * The shows table body, which is the parent of the rows in the table
+ * @type {HTMLDivElement}
+ */
+let showsTableBody;
+
+/**
  * The currently selected row, if any
  * @type {HTMLElement|null}
  */
 let selectedRow = null;
-
 
 /**
  * Builds the shows section and appends it to <main>
@@ -60,7 +58,7 @@ function buildShowsSection(){
     let tableHead = document.createElement("div");
     tableHead.classList.add("shows-table__head");
     
-    for(columnName of ["DATE","VENUE","LOCATION",""]){
+    for(let columnName of ["DATE","VENUE","LOCATION",""]){
         let header = document.createElement("h4");
         header.classList.add("shows-table__column-header");
         header.textContent = columnName;
@@ -69,7 +67,6 @@ function buildShowsSection(){
 
     let tableBody = document.createElement("div");
     tableBody.classList.add("shows-table__body");
-
 
     //Append tableHead and body to showsTable
     showsTable.append(tableHead,tableBody);
@@ -101,17 +98,11 @@ function createCell(content,header){
         headerElement.textContent = header;
 
         //Append it
-        cellElement.appendChild(headerElement);
+        cellElement.append(headerElement);
     }
 
-    //if content is a string:  create and append a text node for that content
-    if(typeof content === 'string'){
-        cellElement.appendChild(document.createTextNode(content));
-    }
-    //Else:    we'll assume it's an HTML Element.  (We could type check with instanceof HTMLElement if we needed additional validation)
-    else{
-        cellElement.appendChild(content);
-    }
+    ///Append the content
+    cellElement.append(content);
 
     return cellElement;
 }
@@ -124,21 +115,8 @@ function createCell(content,header){
 function createButton(textContent){
     const buyButton = document.createElement("button");
     buyButton.classList.add("shows-table__button");
-
     buyButton.innerText = textContent;
-
     return buyButton;
-}
-
-/**
- * Creates an hr.divider element
- * @returns {HTMLHRElement} - The created divider element.
- */
-function createDivider(){
-    const divider = document.createElement("hr");
-    divider.classList.add("divider");
-
-    return divider;
 }
 
 /**
@@ -164,9 +142,6 @@ function displayShow(show){
 
     //Add the click event listener for selecting the row
     rowElement.addEventListener("click",() => setSelectedRow(rowElement));
-
-    //Create and append an hr.divider
-    showsTableBody.appendChild(createDivider());
 }
 
 /**
@@ -203,18 +178,15 @@ function setSelectedRow(rowElement){
 }
 
 /**
- * Download shows from ${@link config.endpointUrl} , then invoke {@link}
+ * Download shows from ${@link config.endpointUrl} and store them in {@link concerts}, then invoke {@link displayAllShows}
  */
 function downloadShows(){
     axios.get(`${config.endpointUrl}?api_key=${config.api_key}`).then(response => {
-        concerts = response.data;
+        concerts.push(...response.data);
         displayAllShows();
     });
 }
 
-
-
+//Initialization
 buildShowsSection();
-
-
 downloadShows();
