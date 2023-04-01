@@ -596,6 +596,9 @@ h4 {
 .comment-form__form-submit {
   align-self: flex-end;
 }
+.comment-form__error {
+  color: #D22D2D;
+}
 
 .comment {
   border-bottom: 1px solid #E1E1E1;

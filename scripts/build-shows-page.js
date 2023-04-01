@@ -126,6 +126,7 @@ function createButton(textContent){
 function displayShow(show){
     const rowElement = document.createElement("div");
     rowElement.classList.add("shows-table__row");
+    rowElement.dataset.showId = show.id;
 
     //Create Cells
     let dateCell = createCell(new Date(show.date).toDateString(),"DATE");
@@ -181,10 +182,12 @@ function setSelectedRow(rowElement){
  * Download shows from ${@link config.endpointUrl} and store them in {@link concerts}, then invoke {@link displayAllShows}
  */
 function downloadShows(){
-    axios.get(`${config.endpointUrl}?api_key=${config.api_key}`).then(response => {
-        concerts.push(...response.data);
-        displayAllShows();
-    });
+    axios.get(`${config.endpointUrl}?api_key=${config.api_key}`)
+        .then(response => {
+            concerts.push(...response.data);
+            displayAllShows();
+        })
+        .catch(error => console.error(error));
 }
 
 //Initialization

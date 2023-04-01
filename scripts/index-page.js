@@ -40,7 +40,12 @@ const elements = {
      * The comment form element
      * @type {HTMLFormElement}
      */
-    commentForm: document.getElementById("commentForm")
+    commentForm: document.getElementById("commentForm"),
+    /**
+     * The comment form error message element
+     * @type {HTMLSpanElement}
+     */
+    commentFormError: document.getElementById("commentFormError")
 };
 
 /**
@@ -185,7 +190,6 @@ function getRelativeTimestamp(date){
  * Clears the comment form
  */
 function clearAllComments(){
-    //Clear comments
     elements.commentList.innerHTML = "";
 }
 
@@ -195,9 +199,8 @@ function clearAllComments(){
 function downloadComments(){
     axios.get(config.endpointUrl + "?api_key=" + config.api_key)
         .then(response => {
-            comments = response.data;
-            ///Sort comments by timestamp
-            comments.sort((a,b) => a.timestamp-b.timestamp);
+            //Assign comments, sorted by timestamp
+            comments = response.data.sort((a,b) => a.timestamp-b.timestamp);
             displayAllComments();
         });
 }
@@ -206,11 +209,11 @@ function downloadComments(){
  * Sends a POST request with {@link comment} to {@link config.endpointUrl}, then invokes {@link downloadComments}.
  * @summary Posts a comment
  * @param {CommentObject} comment 
+ * @returns {Promise}
  */
 function postComment(comment){
-    axios.post(config.endpointUrl + "?api_key=" + config.api_key, comment).then(response =>{
-        downloadComments();
-    });
+    return axios.post(config.endpointUrl + "?api_key=" + config.api_key, comment)
+        .then(() => downloadComments());
 }
 
 /**
@@ -219,9 +222,9 @@ function postComment(comment){
  * @param {number} commentId - The id of the comment to like
  */
 function putLike(commentId){
-    axios.put(`${config.endpointUrl}${commentId}/like?api_key=${config.api_key}`).then(response =>{
-        downloadComments();
-    });
+    axios.put(`${config.endpointUrl}${commentId}/like?api_key=${config.api_key}`)
+        .then(() => downloadComments())
+        .catch(() => console.error(error));
 }
 
 /**
@@ -230,9 +233,17 @@ function putLike(commentId){
  * @param {number} commentId - The id of the comment to like
  */
 function deleteComment(commentId){
-    axios.delete(`${config.endpointUrl}${commentId}?api_key=${config.api_key}`).then(response =>{
-        downloadComments();
-    });
+    axios.delete(`${config.endpointUrl}${commentId}?api_key=${config.api_key}`)
+        .then(() =>{ downloadComments(); })
+        .catch(error => console.error(error));
+}
+
+/**
+ * Sets the displayed error in the comment form, if any
+ * @param {string} error - The error to be displayed
+ */
+function setDisplayedCommentFormError(error=""){
+    elements.commentFormError.innerText = error ? error : "";
 }
 
 //Register comment submissions event
@@ -244,6 +255,9 @@ elements.commentForm.addEventListener('submit',(e) =>{
     let text = e.target.commentText.value;
     
     //Validation 
+    //Reset error message
+    setDisplayedCommentFormError();
+
     //Reset valid state for inputs
     [...e.target.elements].forEach(formElement => formElement.classList.remove("form-field__field--invalid"));
 
@@ -266,10 +280,16 @@ elements.commentForm.addEventListener('submit',(e) =>{
         name: name,
         comment: text
     };
-    postComment(comment);
 
-    //Clear the form
-    e.target.reset();
+    //Post comment to the server, if successful reset the form, otherwise display an error
+    postComment(comment)
+        .then(()=>e.target.reset())
+        .catch(error => {
+            setDisplayedCommentFormError("An unexpected error occured while trying to post the comment. Please try again.");
+            console.error(error);
+        });
+
+    
 });
 
 

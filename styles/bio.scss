@@ -185,24 +185,7 @@
         
     }
     //## Comment List
-    &__list{
-
-    }
-    // &__divider{
-    //     @extend .divider;
-    //     margin-top: 0.625rem;
-    //     margin-bottom: 1rem;
-
-    //     @include tablet{
-    //         margin-top: 1.125rem;
-    //         margin-bottom: 1.625rem;
-    //     }
-
-    //     ///Except no bottom margin for the last one
-    //     &:last-child{
-    //         margin-bottom: 0;
-    //     }
-    // }
+    &__list{}
 }
 
  //## Comment Form
@@ -236,6 +219,10 @@
 
     &__form-submit{
         align-self: flex-end;
+    }
+
+    &__error{
+        color: colors.$error-color;
     }
 }
 
