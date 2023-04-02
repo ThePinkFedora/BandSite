@@ -42,7 +42,7 @@ h4{
     text-align: center;
 
     &__logo-link{
-        padding: $padding-2 0;
+        padding: 0.5rem 0;
     }
     &__logo-image{
         margin: auto;
@@ -51,7 +51,7 @@ h4{
     
     &__content{
         flex: 0 1 $maxWidth;
-        padding-top: $padding-2;
+        padding-top: 0.5rem;
         @include mixins.flexbox($direction: column);
 
         @include tablet{
@@ -67,18 +67,18 @@ h4{
     $border-width: 0.1875rem;
     
     &__list{
-        padding-top: $padding-1;
+        padding-top: 0.25rem;
         list-style-type: none;
         display: flex;
 
         @include tablet{
             margin-left: 4.5rem;
-            gap: $padding-8;
+            gap: 3.5rem;
         }
 
         @include desktop{
-            margin-left: $padding-9;
-            gap: $padding-4;
+            margin-left: 4rem;
+            gap: 1.5rem;
         }
     }
 
@@ -104,13 +104,13 @@ h4{
 
     &__link{
         display: block;
-        padding-bottom: $padding-2;
+        padding-bottom: 0.5rem;
         @include tablet{
-            padding: $padding-4 - $border-width 0;
+            padding: 1.5rem - $border-width 0;
         }
 
         @include desktop{
-            padding: $padding-5 - $border-width 0; 
+            padding: 2rem - $border-width 0; 
         }
     }
 }
@@ -152,7 +152,7 @@ h4{
 
     //## Footer Contacts
     &__contact-list{
-        margin-bottom: $padding-2;
+        margin-bottom: 0.5rem;
         padding-top: 1.5rem;
         @include mixins.flexbox($direction: column);
         list-style-type: none;
