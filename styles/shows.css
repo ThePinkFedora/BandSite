@@ -4,8 +4,9 @@
   padding: 0;
   color: unset;
   font-style: normal;
-  font-family: unset;
   text-decoration: none;
+  font-family: unset;
+  font-size: 1em;
 }
 
 @font-face {
@@ -254,13 +255,6 @@ h4 {
 .hero__content {
   color: #FFFFFF;
   flex: 0 1 63.75rem;
-}
-
-.divider {
-  background-color: #E1E1E1;
-  border: none;
-  width: 100%;
-  height: 0.0625rem;
 }
 
 .primary-cta, .shows-table__button {

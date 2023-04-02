@@ -29,7 +29,7 @@
             aspect-ratio: 3;
         }
         &__song-iframe{
-            display: block; ///Removes whitespace
+            display: block; //Removes whitespace
         }
     }
 
@@ -158,7 +158,7 @@
     }
 
     &__cell{
-        color: colors.$secondark-dark; ///Pure black for mobile/tablet
+        color: colors.$secondark-dark; //Pure black for mobile/tablet
         flex: 1;
         
         @include tablet{

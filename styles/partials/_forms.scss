@@ -5,13 +5,12 @@
 
 // Generic forms components
 
-
-//## Avatars
+//# Avatars
 .avatar{
     $mobile-size: 2.25rem; 
     $tablet-size: 3rem;
     
-    color: transparent; ///Hides alt text on firefox
+    color: transparent; //Hides alt text on firefox
     object-fit: cover;
     object-position: 20%;
     border-width: 0;
@@ -22,13 +21,12 @@
     height: $mobile-size;
     position: relative;
     
-
     @include tablet{
         width: $tablet-size;
         height: $tablet-size;
     }
 
-    ///Image placeholder (Covers missing image icon)
+    //Image placeholder (Covers missing image icon)
     &::before{
         content: '';
         border-radius: 50%;
@@ -38,9 +36,6 @@
         inset: 0;
     }
 }
-
-
-
 
 .form-field{
     &__label{
@@ -78,7 +73,7 @@
 
         &:focus{
             border-color: colors.$primary-dark;
-            outline: none; ///Chrome adds a thick outline by default
+            outline: none; //Chrome adds a thick outline by default
         }
         
         &--invalid{
@@ -86,8 +81,6 @@
         }
     }
 }
-
-
 
 .form-submit{
     @extend .primary-cta;

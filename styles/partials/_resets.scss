@@ -8,6 +8,7 @@
     padding: 0;
     color: unset;
     font-style: normal;
-    font-family: unset; ///Textarea overrides by default
     text-decoration: none;
+    font-family: unset; //Browsers override on some input fields
+    font-size: 1em; //Firefox overrides on some input fields
 }

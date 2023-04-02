@@ -6,6 +6,7 @@
 @use './partials/forms';
 @use './partials/fonts';
 
+//# Hero
 .hero{
     &--bio{
         background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../assets/images/hero-bio.jpg");
@@ -39,7 +40,7 @@
     }
 }
 
-///# About Header , top help of the about section before the bio
+//# About Header , top part of the about section before the bio
 .about-header{
 
     &__image{
@@ -111,7 +112,7 @@
 }
 
 
-///# Gallery Section
+//# Gallery Section
 .photo-gallery{
     background-color: colors.$secondary-light; 
 
@@ -159,7 +160,7 @@
 
 //# Comments Section
 .comments-section{
-
+    //## Section Header
     &__section-header{
         @include fonts.sectionheader;
 
@@ -180,16 +181,14 @@
             max-width: 36rem;
         }
         @include desktop{
-            max-width: 31rem;///It actually gets thinner on desktop
+            max-width: 31rem;//It actually gets thinner on desktop
         }
         
     }
-    //## Comment List
-    &__list{}
 }
 
- //## Comment Form
- .comment-form{
+//# Comment Form
+.comment-form{
     border-bottom: 1px solid colors.$secondary-gray;
     padding-bottom: 1rem;
     @include mixins.flexbox($align-items:flex-start);
@@ -199,11 +198,12 @@
         padding-bottom: 1.5rem;
     }
 
+    //## Comment Form Avatar (left)
     &__avatar{
         margin-top: 1.5em;
     }
 
-    //### Comment Form Content (right)
+    //## Comment Form Content (right)
     &__content{
         flex-grow: 1;
         @include mixins.flexbox($direction: column);
@@ -226,7 +226,7 @@
     }
 }
 
-//## Comment
+//# Comment
 .comment{
     border-bottom: 1px solid colors.$secondary-gray;
     @include mixins.flexbox($align-items: flex-start);
@@ -241,26 +241,27 @@
         
     }
 
-    ///### Comment Content (right) 
+    //## Comment Content (right) 
     &__content{
         flex-grow: 1;
         @include mixins.flexbox($wrap:wrap);
         gap: .5rem;
     }
     
-    ///### Commentname
+    //## Comment Name
     &__name{
         white-space: nowrap;
         flex: 1;
         height: 1em; 
     }
 
-    ///### Comment timestamp
+    //## Comment Timestamp
     &__timestamp{
         color: colors.$primary-gray;
         height: 1em; 
     }
 
+    //## Comment Icon-Buttons
     &__icon-button{
         opacity: 0.6;
         cursor: pointer;
@@ -270,6 +271,7 @@
         }
     }
     
+    //## Likes Label
     &__likes{
         width: 1ch;
         overflow: hidden;
@@ -281,7 +283,7 @@
         }
     }
     
-    //### Comment text
+    //## Comment text
     &__text{
         flex: 100%;
     }

@@ -162,7 +162,7 @@ function getRelativeTimestamp(date){
     const toAgoString = (unit,number) => `${Math.ceil(number)} ${unit}${Math.ceil(number)!==1?"s":""} ago`;
     
     let now = new Date();
-    let difference = now - date; ///In milliseconds
+    let difference = now - date; //In milliseconds
 
     let seconds = difference/1000;
     if(seconds < 60)return toAgoString("second",seconds);
@@ -248,7 +248,7 @@ function setDisplayedCommentFormError(error=""){
 
 //Register comment submissions event
 elements.commentForm.addEventListener('submit',(e) =>{
-    e.preventDefault(); ///Prevent submission reload
+    e.preventDefault(); //Prevent submission reload
 
     //Collect values
     let name = e.target.commentName.value;

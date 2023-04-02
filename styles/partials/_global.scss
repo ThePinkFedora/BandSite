@@ -41,7 +41,6 @@ h4{
     @include mixins.flexbox(center);
     text-align: center;
 
-    ///Figure out how to not have this be a complex selector
     &__logo-link{
         padding: $padding-2 0;
     }
@@ -176,7 +175,7 @@ h4{
         }
     }
     
-    ///## Social Icons 
+    //## Social Icons 
     &__social-icons{
         line-height: 0;
         flex: 1;
@@ -200,7 +199,7 @@ h4{
 
 //# Generic Components
 
-///#Section Content Container
+//## Section Content Container
 .section-container{
     max-width: $maxWidth + $margins_Tablet*2;
     margin: 0 auto;
@@ -217,7 +216,7 @@ h4{
 }
 
 
-
+//## Hero
 .hero{
     background-position: 0 20%;
     background-size: cover;
@@ -238,18 +237,9 @@ h4{
         color: colors.$primary-light;
         flex: 0 1 $maxWidth;
     }
-}
+} 
 
-///Divider line
-.divider{
-    background-color: colors.$secondary-gray;
-    border: none;
-    width: 100%;
-    height: 0.0625rem;
-    
-}
-
-///CTA Button
+//## CTA Button
 .primary-cta{
     cursor: pointer;
     font-size: 0.9375rem;
@@ -258,7 +248,7 @@ h4{
     color: colors.$primary-light;
     border-width: 0;
     border-radius: 4px;
-    width: 100%; ///For mobile
+    width: 100%; //For mobile
     min-width: 9.375rem;
     height: 2.5rem; 
     padding: 0 2rem;

@@ -101,7 +101,7 @@ function createCell(content,header){
         cellElement.append(headerElement);
     }
 
-    ///Append the content
+    //Append the content
     cellElement.append(content);
 
     return cellElement;
