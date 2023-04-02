@@ -46,7 +46,6 @@ h4 {
   font: 400 0.8125rem/1.125rem "Avenir Next";
   color: #FFFFFF;
   background-color: #323232;
-  margin: 0;
 }
 @media (min-width: 768px) {
   .footer {
@@ -84,8 +83,8 @@ h4 {
 
 .main-nav__list {
   padding-top: 0.25rem;
-  list-style-type: none;
   display: flex;
+  list-style-type: none;
 }
 @media (min-width: 768px) {
   .main-nav__list {
@@ -116,8 +115,8 @@ h4 {
   font-weight: 600;
 }
 .main-nav__link {
-  display: block;
   padding-bottom: 0.5rem;
+  display: block;
 }
 @media (min-width: 768px) {
   .main-nav__link {
@@ -209,8 +208,8 @@ h4 {
   padding-right: 2rem;
 }
 .footer__copyright {
-  flex-basis: 100%;
   font-size: min(3.33vw, 1em);
+  flex-basis: 100%;
   padding-top: 0.75rem;
 }
 

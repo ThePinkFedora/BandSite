@@ -127,6 +127,7 @@
                 flex: 1.5 0 30%;
             }
         }
+
         &:last-child{
             flex-grow: 0; 
         }
@@ -165,18 +166,22 @@
             width: 9.375rem;
             flex: 1 1 9.375rem;
         }
+
         @include desktop{
             color: colors.$primary-dark;
         }
+
         &--strong{
             font-weight: 600;
             color: colors.$primary-dark;
         }
+
         &:first-child{
             @include desktop{
                 flex:1.5 0 30%;
             }
         }
+        
         &:last-child{
             flex-grow: 0;
         }

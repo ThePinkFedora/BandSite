@@ -5,17 +5,12 @@
 @use './fonts';
 @use './mixins';
 
-
 //# Setup initial Fonts, Colors, Padding
 //## Body
 body{
-    font: fonts.$font-body-mobile;
+    @include fonts.body;
     color: colors.$primary-dark;
     background-color: colors.$primary-light; 
-
-    @include tablet{
-        font: fonts.$font-body-tablet;
-    }
 }
 
 h4{
@@ -24,13 +19,9 @@ h4{
 
 //## Footer
 .footer{
-    font: fonts.$font-footer-mobile;
+    @include fonts.footer;
     color: colors.$primary-light;
     background-color: colors.$primary-dark;
-    margin: 0;
-    @include tablet{
-        font: fonts.$font-footer-tablet;
-    }
 }
 
 //# Setup static components
@@ -62,14 +53,15 @@ h4{
         }
     }
 }
+
 //## Main Navigation
 .main-nav{
     $border-width: 0.1875rem;
     
     &__list{
         padding-top: 0.25rem;
-        list-style-type: none;
         display: flex;
+        list-style-type: none;
 
         @include tablet{
             margin-left: 4.5rem;
@@ -98,13 +90,12 @@ h4{
         &--active{
             font-weight: 600;
         }
-
-
     }
 
     &__link{
-        display: block;
         padding-bottom: 0.5rem;
+        display: block;
+        
         @include tablet{
             padding: 1.5rem - $border-width 0;
         }
@@ -114,6 +105,7 @@ h4{
         }
     }
 }
+
 //## Footer
 .footer{
     //## Section-Container
@@ -190,12 +182,11 @@ h4{
 
     //## Copyright
     &__copyright{
-        flex-basis: 100%;
         font-size: min(3.33vw,1em);
+        flex-basis: 100%;
         padding-top: .75rem;
     }
 }
-
 
 //# Generic Components
 
@@ -203,7 +194,6 @@ h4{
 .section-container{
     max-width: $maxWidth + $margins_Tablet*2;
     margin: 0 auto;
-    
     padding-left: $margins_Mobile;
     padding-right: $margins_Mobile;
     padding-bottom: $margins_Mobile;
@@ -214,7 +204,6 @@ h4{
         padding-bottom: $margins_Tablet;
     }
 }
-
 
 //## Hero
 .hero{

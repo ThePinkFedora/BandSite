@@ -21,7 +21,6 @@ $font-family: 'Avenir Next';
     font-style: normal;
 }
 
-
 //# Font Values
 
 //## Mobile
@@ -52,13 +51,6 @@ $font-body-tablet: 400 #{0.875rem}/#{1.375rem} $font-family;
 $font-footer-tablet: 400 #{0.875rem}/#{1.25rem} $font-family;
 //Labels/Buttons
 $font-labelsbuttons-tablet: 600 #{0.75rem}/#{1.25rem} $font-family;
-
-
-
-
-
-
-
 
 //# Typography Mixins
 @mixin pageheader{

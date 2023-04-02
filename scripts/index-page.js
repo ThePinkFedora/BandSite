@@ -49,11 +49,6 @@ const elements = {
 };
 
 /**
- * The comments section element
- * @type {HTMLDivElement}
- */
-
-/**
  * The page comments
  * (Ordered chronology so the oldest comments are at the start)
  * @type {CommentObject[]}
@@ -291,7 +286,6 @@ elements.commentForm.addEventListener('submit',(e) =>{
 
     
 });
-
 
 downloadComments();
 

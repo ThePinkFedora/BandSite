@@ -1,7 +1,6 @@
 @use './breakpoints' as *;
 @use './units';
 
-
 @mixin flexbox($justify-content:null,$align-items:null,$direction: null, $wrap:null){
     display: flex;
     justify-content: $justify-content;
@@ -10,11 +9,11 @@
     flex-wrap: $wrap;
 }
 
-
 @mixin common-flex-container($rowOrColumn: row){
     display: flex;
     flex-direction: $rowOrColumn;
     gap: units.$pad-between-components-mobile;
+
     @include tablet{
         gap: units.$pad-between-components-tablet;
     }
@@ -25,11 +24,9 @@
     display: flex;
     flex-direction: $rowOrColumn;
     gap: units.$gutters_Mobile;
+    
     @include tablet{
         flex-direction: $rowOrColumn-tablet;
         gap: units.$gutters_Tablet;
     }
 }
-
-
-

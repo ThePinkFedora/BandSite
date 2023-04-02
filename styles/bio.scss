@@ -42,7 +42,6 @@
 
 //# About Header , top part of the about section before the bio
 .about-header{
-
     &__image{
         @keyframes scrollImage {
             25%{
@@ -76,6 +75,7 @@
             line-height: 1.9rem;
             padding: 1rem 0 0.5rem;
         }
+
         @include desktop{
             padding: 1.5rem 0 1rem;
         }
@@ -84,12 +84,12 @@
     &__quote-cite{
         font-weight: 600;
         word-spacing: .2em;
+
         @include tablet{
             font-size: 1.1em;
         }
     }
 }
-
 
 //# About Bio
 .bio{
@@ -106,11 +106,11 @@
             padding-bottom: 2rem;;
         }
     }
+
     &__content{
         @include mixins.common-flex-container-items(column,$rowOrColumn-tablet: row);
     }
 }
-
 
 //# Gallery Section
 .photo-gallery{
@@ -156,14 +156,11 @@
     }
 }
 
-
-
 //# Comments Section
 .comments-section{
     //## Section Header
     &__section-header{
         @include fonts.sectionheader;
-
         padding-top: 1.5rem;
         padding-bottom: 1rem;
 
@@ -231,7 +228,6 @@
     border-bottom: 1px solid colors.$secondary-gray;
     @include mixins.flexbox($align-items: flex-start);
     gap: 1rem;
-    
     padding-top: 1rem;
     padding-bottom: 0.625rem;
 
