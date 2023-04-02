@@ -70,7 +70,6 @@ function displayComment(comment){
     avatarElement.setAttribute("alt","avatar");
     avatarElement.setAttribute("src","");
     
-
     //Content / Right
     let contentElement = document.createElement("div");
     contentElement.classList.add("comment__content");
@@ -197,7 +196,8 @@ function downloadComments(){
             //Assign comments, sorted by timestamp
             comments = response.data.sort((a,b) => a.timestamp-b.timestamp);
             displayAllComments();
-        });
+        })
+        .catch(error => console.error(error));
 }
 
 /**
@@ -219,13 +219,13 @@ function postComment(comment){
 function putLike(commentId){
     axios.put(`${config.endpointUrl}${commentId}/like?api_key=${config.api_key}`)
         .then(() => downloadComments())
-        .catch(() => console.error(error));
+        .catch(error => console.error(error));
 }
 
 /**
  * Sends a DELETE request to {@link config.endpointUrl}/:id (where :id is the {@link commentId} specified), then invokes {@link downloadComments}.
  * @summary Deletes a comment
- * @param {number} commentId - The id of the comment to like
+ * @param {number} commentId - The id of the comment to delete
  */
 function deleteComment(commentId){
     axios.delete(`${config.endpointUrl}${commentId}?api_key=${config.api_key}`)
@@ -282,9 +282,7 @@ elements.commentForm.addEventListener('submit',(e) =>{
         .catch(error => {
             setDisplayedCommentFormError("An unexpected error occured while trying to post the comment. Please try again.");
             console.error(error);
-        });
-
-    
+        });    
 });
 
 downloadComments();
